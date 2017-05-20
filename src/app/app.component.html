@@ -1,3 +1,27 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="over">
+    <md-list>
+      <md-list-item>Item 1</md-list-item>
+      <md-list-item>Item 2</md-list-item>
+      <md-list-item>Item 3</md-list-item>
+    </md-list>
+  </md-sidenav>
+
+  <div class="main-content">
+    <md-toolbar color="primary">
+      <span class="clickable" (click)="sidenav.open()">
+        <md-icon>menu</md-icon>
+      </span>
+      <span>Voyage</span>
+      <span></span>
+    </md-toolbar>
+
+    <router-outlet></router-outlet>
+
+    <span class="done">
+      <button md-fab>
+        <md-icon>add</md-icon>
+      </button>
+    </span>
+  </div>
+</md-sidenav-container>
