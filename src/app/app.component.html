@@ -1,5 +1,5 @@
 <md-sidenav-container>
-  <md-sidenav #sidenav mode="push">
+  <md-sidenav #sidenav mode="{{navMode}}" opened="true">
     <md-list>
       <md-list-item>Item 1</md-list-item>
       <md-list-item>Item 2</md-list-item>
@@ -9,7 +9,7 @@
 
   <div class="main-content">
     <md-toolbar color="primary">
-      <span class="clickable" (click)="sidenav.open()">
+      <span class="clickable" (click)="sidenav.open()" *ngIf="isMobile">
         <md-icon>menu</md-icon>
       </span>
       <span>Voyage</span>
