@@ -1,4 +1,12 @@
-<md-sidenav-container>
+<md-toolbar color="primary">
+  <span class="clickable" (click)="sidenav.toggle()" *ngIf="isMobile">
+    <md-icon>menu</md-icon>
+  </span>
+  <span>Voyage</span>
+  <span></span>
+</md-toolbar>
+
+<md-sidenav-container class="sidenav-height">
   <md-sidenav #sidenav mode="{{navMode}}" opened="true">
     <md-list>
       <md-list-item>Item 1</md-list-item>
@@ -8,13 +16,6 @@
   </md-sidenav>
 
   <div class="main-content">
-    <md-toolbar color="primary">
-      <span class="clickable" (click)="sidenav.open()" *ngIf="isMobile">
-        <md-icon>menu</md-icon>
-      </span>
-      <span>Voyage</span>
-      <span></span>
-    </md-toolbar>
 
     <router-outlet></router-outlet>
 
