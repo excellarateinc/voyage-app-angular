@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2  } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 
 @Component({
