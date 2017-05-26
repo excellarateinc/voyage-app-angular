@@ -7,7 +7,7 @@
 </md-toolbar>
 
 <md-sidenav-container class="sidenav-height">
-  <md-sidenav #sidenav mode="{{navMode}}" opened="true">
+  <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="true">
     <md-list>
       <md-list-item>Item 1</md-list-item>
       <md-list-item>Item 2</md-list-item>
