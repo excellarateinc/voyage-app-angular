@@ -21,7 +21,8 @@ html, body {
 }
 
 md-sidenav {
-  width: 250px;
+  width: 220px;
+  border-right: 1px solid lightgray;
 }
 
 md-toolbar-row {
@@ -46,8 +47,6 @@ md-sidenav ul {
 }
 
 md-sidenav li {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
   margin: 0;
   padding: 0;
   border-color: rgba(0,0,0,.06);
@@ -57,7 +56,7 @@ md-sidenav li {
 md-sidenav li > a {
   box-sizing: border-box;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 47px;
   text-decoration: none;
