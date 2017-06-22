@@ -2,12 +2,11 @@
   <span class="clickable" (click)="sidenav.toggle()" *ngIf="isMobile">
     <md-icon>menu</md-icon>
   </span>
-  <span>Voyage</span>
-  <span></span>
+  <span *ngIf="isAuthenticated">Welcome User!</span>
 </md-toolbar>
 
 <md-sidenav-container class="sidenav-height">
-  <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="true">
+  <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="true" *ngIf="isAuthenticated">
     <nav>
       <ul>
         <li *ngFor="let i of [1, 2, 3, 4, 5]">
