@@ -1,5 +1,5 @@
 <md-sidenav-container class="sidenav-height">
-  <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="true" *ngIf="isAuthenticated">
+  <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav>
       <ul>
         <li *ngFor="let i of [1, 2, 3, 4, 5]">

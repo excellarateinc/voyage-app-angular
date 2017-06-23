@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild, Renderer2  } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2, Input } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-shell',
   templateUrl: './shell.component.html'
 })
 export class ShellComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MdSidenav;
-  isMobile = false;
+  isMobile: boolean;
   isAuthenticated: boolean;
+  @ViewChild('sidebar') sidebar: SidebarComponent;
 
   constructor(private renderer: Renderer2, private authenticationService: AuthenticationService) { }
 
@@ -21,15 +22,11 @@ export class ShellComponent implements OnInit {
     });
   }
 
+  onToggleSidebar(): void {
+    this.sidebar.toggle();
+  }
+
   private checkWindowWidth(): void {
-    if (!this.sidenav) {
-      return;
-    }
     this.isMobile = window.innerWidth <= 768;
-    if (this.isMobile) {
-      this.sidenav.close();
-    } else {
-      this.sidenav.open();
-    }
   }
 }
