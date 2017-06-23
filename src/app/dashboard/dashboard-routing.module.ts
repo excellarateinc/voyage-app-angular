@@ -8,6 +8,7 @@ import { AuthenticationModule } from '../authentication/authentication.module';
 import { AuthGuardService } from '../authentication/auth-guard.service';
 
 const dashboardRoutes: Routes = [
+  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] }
 ];
 
