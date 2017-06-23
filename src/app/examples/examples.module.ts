@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ExampleDashboardComponent } from './example-dashboard.component';
-import { HsaBalancesComponent } from './hsa-balances/hsa-balances.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ],
-  declarations: [ExampleDashboardComponent, HsaBalancesComponent],
+  declarations: [ExampleDashboardComponent],
   exports: [ExampleDashboardComponent]
 })
 export class ExamplesModule { }
