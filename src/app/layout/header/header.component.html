@@ -1,3 +1,6 @@
-<p>
-  header works!
-</p>
+<md-toolbar color="primary">
+  <span class="clickable" (click)="sidenav.toggle()" *ngIf="isMobile">
+    <md-icon>menu</md-icon>
+  </span>
+  <span>Voyage</span>
+</md-toolbar>
