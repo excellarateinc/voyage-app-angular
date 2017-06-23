@@ -25,6 +25,11 @@ md-sidenav {
   border-right: 1px solid lightgray;
 }
 
+md-card {
+  margin: 15px;
+  width: 400px;
+}
+
 md-toolbar-row {
   justify-content: space-between;
 }

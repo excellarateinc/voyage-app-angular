@@ -2,9 +2,14 @@
   <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav>
       <ul>
-        <li *ngFor="let i of [1, 2, 3, 4, 5]">
-          <a class="clickable">Item {{i}}</a>
-        </li>
+        <li><a class="clickable">Balances</a></li>
+        <li><a class="clickable">Deposit</a></li>
+        <li><a class="clickable">Notifications</a></li>
+        <li><a class="clickable">Chat</a></li>
+        <li><a class="clickable">User Admin</a></li>
+        <li><a class="clickable">Role Admin</a></li>
+        <li><a class="clickable">Settings</a></li>
+        <li><a class="clickable">Help & Feedback</a></li>
       </ul>
     </nav>
   </md-sidenav>

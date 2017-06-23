@@ -14,5 +14,4 @@ export class LoginComponent implements OnInit {
   goToOauthLogin(): void {
     this.authenticationService.goToOauthLogin();
   }
-
 }
