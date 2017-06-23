@@ -4,12 +4,21 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
-  private sessionStorageTokenKey = 'ACCESS_TOKEN';
+  private sessionStorageTokenKey = 'voyage.token';
 
   constructor(private router: Router) { }
 
   getToken(): string {
-    const token = sessionStorage.getItem(this.sessionStorageTokenKey);
+    // Attempt to retrieve the token from session storage.
+    let token = sessionStorage.getItem(this.sessionStorageTokenKey);
+    // If not in session storage, attempt to get it from the URL.
+    if (!token) {
+      token = this.getTokenFromUrl();
+      // If it was in the URL, save it to session storage.
+      if (token) {
+        sessionStorage.setItem(this.sessionStorageTokenKey, token);
+      }
+    }
     return token;
   }
 
@@ -25,6 +34,16 @@ export class AuthenticationService {
   logout(): void {
     sessionStorage.removeItem(this.sessionStorageTokenKey);
     this.router.navigate(['/authentication/login']);
+  }
+
+  private getTokenFromUrl(): string {
+    const tokenIndex = window.location.href.indexOf('access_token');
+    if (tokenIndex === -1) {
+      return null;
+    }
+
+    const paramLength = 'access_token='.length;
+    return window.location.href.substring(tokenIndex + paramLength, window.location.href.indexOf('&'));
   }
 
 }

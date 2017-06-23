@@ -6,6 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SecureHttpClient } from './secure-http-client';
+import { AuthGuardService } from './auth-guard.service';
 import { AuthenticationService } from './authentication.service';
 import { RegisterComponent } from './register/register.component';
 
@@ -25,7 +26,8 @@ export function secureHttpClientFactory(
   declarations: [ LoginComponent, RegisterComponent ],
   providers: [
     AuthenticationService,
-    { provide: Http, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] }
+    { provide: Http, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] },
+    AuthGuardService
   ]
 })
 export class AuthenticationModule { }

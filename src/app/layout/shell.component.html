@@ -1,0 +1,29 @@
+<md-toolbar color="primary">
+  <span class="clickable" (click)="sidenav.toggle()" *ngIf="isMobile">
+    <md-icon>menu</md-icon>
+  </span>
+  <span>Voyage</span>
+</md-toolbar>
+
+<md-sidenav-container class="sidenav-height">
+  <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="true" *ngIf="isAuthenticated">
+    <nav>
+      <ul>
+        <li *ngFor="let i of [1, 2, 3, 4, 5]">
+          <a class="clickable">Item {{i}}</a>
+        </li>
+      </ul>
+    </nav>
+  </md-sidenav>
+
+  <div class="main-content">
+
+    <router-outlet></router-outlet>
+
+    <span class="done">
+      <button md-fab>
+        <md-icon>add</md-icon>
+      </button>
+    </span>
+  </div>
+</md-sidenav-container>
