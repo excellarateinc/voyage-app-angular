@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '/themes/voyage-theme.scss';
 
 html, body {
   margin: 0;
@@ -20,9 +20,8 @@ html, body {
   }
 }
 
-md-sidenav {
-  width: 220px;
-  border-right: 1px solid lightgray;
+md-card {
+  margin: 10px;
 }
 
 md-toolbar-row {
@@ -42,6 +41,11 @@ md-toolbar-row {
 
 .clickable {
   cursor: pointer;
+}
+
+md-sidenav {
+  width: 256px;
+  background-color: inherit !important;
 }
 
 md-sidenav ul {
