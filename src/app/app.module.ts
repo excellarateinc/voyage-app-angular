@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     FlexLayoutModule,
     AppRoutingModule,
     LayoutModule,
-    AuthenticationModule,
-    DashboardModule
+    AuthenticationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
