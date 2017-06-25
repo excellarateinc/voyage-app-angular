@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 
@@ -6,7 +7,7 @@ import { environment } from '../../environments/environment';
 export class AuthenticationService {
   private sessionStorageTokenKey = 'voyage.token';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private location: Location) { }
 
   getToken(): string {
     // Attempt to retrieve the token from session storage.
@@ -43,7 +44,9 @@ export class AuthenticationService {
     }
 
     const paramLength = 'access_token='.length;
-    return window.location.href.substring(tokenIndex + paramLength, window.location.href.indexOf('&'));
+    const token = window.location.href.substring(tokenIndex + paramLength, window.location.href.indexOf('&'));
+    this.location.replaceState('');
+    return token;
   }
 
 }
