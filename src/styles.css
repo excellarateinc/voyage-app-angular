@@ -115,6 +115,12 @@ md-sidenav ul {
   border-radius: 10px;
 }
 
+.badge-notification {
+  margin-top: -46px;
+  margin-left: -15px;
+  background-color: #F44336;
+}
+
 .fill-space {
   flex: 1 1 auto;
 }

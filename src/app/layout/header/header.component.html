@@ -6,12 +6,39 @@
     <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
   </span>
   <span *ngIf="!isMobile" class="fill-space"></span>
-  <span *ngIf="!isMobile">
+  <span *ngIf="!isMobile" [mdMenuTriggerFor]="notificationMenu" class="clickable">
     <md-icon style="font-size: 32px;">notifications</md-icon>
-    <span class="badge" style="margin-top: -46px; margin-left: -15px; background-color: #F44336;">3</span>
+    <span class="badge badge-notification">3</span>
   </span>
-  <button md-icon-button [mdMenuTriggerFor]="menu" class="profile-icon"></button>
-  <md-menu #menu="mdMenu">
+  <md-menu #notificationMenu="mdMenu">
+    <md-list>
+      <md-list-item>
+        <img md-list-avatar src="http://lssinc.com/files/original/headshot-tim1.png" alt="icon">
+        <h3 md-line>Tim M.</h3>
+        <p md-line>
+          <span>Donec id elit non mi porta gravida at eget metus</span>
+        </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item>
+        <img md-list-avatar src="http://lssinc.com/files/original/headshot-eric1.png" alt="icon">
+        <h3 md-line>Eric S.</h3>
+        <p md-line>
+          <span>Maecenas sed diam eget risus varius blandit.</span>
+        </p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item>
+        <img md-list-avatar src="http://lssinc.com/files/original/headshot-mike1.png" alt="icon">
+        <h3 md-line>Mike D.</h3>
+        <p md-line>
+          <span>Maecenas sed diam eget risus varius blandit.</span>
+        </p>
+      </md-list-item>
+    </md-list>
+  </md-menu>
+  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
+  <md-menu #profileMenu="mdMenu">
     <button md-menu-item>
       <span>Profile</span>
     </button>
