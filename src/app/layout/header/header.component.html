@@ -5,4 +5,21 @@
   <span>
     <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
   </span>
+  <span *ngIf="!isMobile" class="fill-space"></span>
+  <span *ngIf="!isMobile">
+    <md-icon style="font-size: 32px;">notifications</md-icon>
+    <span class="badge" style="margin-top: -46px; margin-left: -15px; background-color: #F44336;">3</span>
+  </span>
+  <button md-icon-button [mdMenuTriggerFor]="menu" class="profile-icon"></button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item>
+      <span>Profile</span>
+    </button>
+    <button md-menu-item style="border-bottom: 1px solid #dedede;">
+      <span>Settings</span>
+    </button>
+    <button md-menu-item>
+      <span>Logout</span>
+    </button>
+  </md-menu>
 </md-toolbar>
