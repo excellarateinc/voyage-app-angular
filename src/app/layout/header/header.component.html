@@ -37,7 +37,7 @@
       </md-list-item>
     </md-list>
   </md-menu>
-  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
+  <button *ngIf="!isMobile" md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
   <md-menu #profileMenu="mdMenu">
     <button md-menu-item>
       <span>Profile</span>
