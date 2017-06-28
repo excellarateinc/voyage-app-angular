@@ -1,3 +1,28 @@
-<p>
-  register works!
-</p>
+<div fxLayout="row">
+  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <md-card-title>Register</md-card-title>
+    <form>
+      <div fxLayout="column">
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Email">
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="First Name">
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Last Name">
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Password">
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Confirm Password">
+        </md-input-container>
+        <div fxLayout="row">
+          <span fxFlex></span>
+          <button fxFlex="10" md-raised-button color="primary">Register</button>
+        </div>
+      </div>
+    </form>
+  </md-card>
+</div>

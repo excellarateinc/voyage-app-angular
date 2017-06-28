@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, Http, XHRBackend } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -20,7 +22,9 @@ export function secureHttpClientFactory(
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule,
+    FlexLayoutModule,
     AuthenticationRoutingModule
   ],
   declarations: [ LoginComponent, RegisterComponent ],
