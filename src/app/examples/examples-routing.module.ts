@@ -5,8 +5,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { DepositComponent } from './deposit/deposit.component';
 
 const exampleRoutes: Routes = [
-  { path: 'examples/profile', component: ProfileComponent },
-  { path: 'examples/deposit', component: DepositComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'deposit', component: DepositComponent }
 ];
 
 @NgModule({

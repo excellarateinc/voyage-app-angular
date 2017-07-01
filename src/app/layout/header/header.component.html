@@ -39,7 +39,7 @@
   </md-menu>
   <button *ngIf="!isMobile" md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
   <md-menu #profileMenu="mdMenu">
-    <button md-menu-item>
+    <button md-menu-item routerLink="/examples/profile">
       <span>Profile</span>
     </button>
     <button md-menu-item style="border-bottom: 1px solid #dedede;">
