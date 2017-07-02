@@ -16,6 +16,13 @@ md-toolbar-row {
   justify-content: space-between;
 }
 
+/*
+There's a bug with transform conflicting with position:fixed. This fixes the issue.
+https://github.com/angular/material2/issues/998 */
+.mat-sidenav-container, .mat-sidenav-content {
+  transform: none !important;
+}
+
 .done {
   position: fixed;
   bottom: 20px;
