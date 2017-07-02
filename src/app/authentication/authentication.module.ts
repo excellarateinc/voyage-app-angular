@@ -11,6 +11,7 @@ import { SecureHttpClient } from './secure-http-client';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthenticationService } from './authentication.service';
 import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './register/register.service';
 
 export function secureHttpClientFactory(
   xhrBackend: XHRBackend,
@@ -31,7 +32,8 @@ export function secureHttpClientFactory(
   providers: [
     AuthenticationService,
     { provide: Http, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] },
-    AuthGuardService
+    AuthGuardService,
+    RegisterService
   ]
 })
 export class AuthenticationModule { }

@@ -1,4 +1,3 @@
 export class Phone {
-  phoneNumber: string;
-  phoneType: string;
+  constructor(public phoneNumber: string, public phoneType: string) { }
 }
