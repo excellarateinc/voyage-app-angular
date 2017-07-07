@@ -2,7 +2,7 @@
   <span class="clickable" (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
     <md-icon>menu</md-icon>
   </span>
-  <span>
+  <span routerLink="/dashboard" class="clickable">
     <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
   </span>
   <span *ngIf="!isMobile" class="fill-space"></span>
