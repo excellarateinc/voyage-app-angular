@@ -1,5 +1,5 @@
 <md-toolbar color="primary">
-  <span class="clickable" (click)="toggleSidebar()" *ngIf="isMobile">
+  <span class="clickable" (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
     <md-icon>menu</md-icon>
   </span>
   <span>

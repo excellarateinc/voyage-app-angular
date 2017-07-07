@@ -11,6 +11,7 @@ import { Phone } from './phone.model';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  registrationErrors: Array<any>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(register)
       .subscribe(result => {
         this.router.navigate(['/authentication/login']);
-      }, error => console.log(error));
+      }, errors => this.registrationErrors = errors);
   }
 
   get phoneNumbers(): FormArray {

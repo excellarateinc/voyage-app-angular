@@ -11,7 +11,7 @@ export class SecureHttpClient extends Http {
     protected defaultOptions: RequestOptions,
     private authenticationService: AuthenticationService) {
       super(backend, defaultOptions);
-  }
+    }
 
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);

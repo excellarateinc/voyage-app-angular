@@ -12,7 +12,7 @@ export class RegisterService {
   register(register: Register): Observable<void> {
     return this.http.post(`${environment.API_URL}/profile`, register)
       .map(response => response.json())
-      .catch(error => Observable.throw(error));
+      .catch(error => Observable.throw(error.json()));
   }
 
 }
