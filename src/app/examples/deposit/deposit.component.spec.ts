@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { DepositComponent } from './deposit.component';
 
 describe('DepositComponent', () => {
@@ -8,6 +10,11 @@ describe('DepositComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule
+      ],
       declarations: [ DepositComponent ]
     })
     .compileComponents();

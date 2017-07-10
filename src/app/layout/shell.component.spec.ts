@@ -1,14 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ShellComponent } from './shell.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 describe('ShellComponent', () => {
   let component: ShellComponent;
   let fixture: ComponentFixture<ShellComponent>;
 
   beforeEach(async(() => {
+
+    const authenticationServiceStub: any = {
+      getToken: () => { }
+    };
+
     TestBed.configureTestingModule({
-      declarations: [ ShellComponent ]
+      imports: [
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule
+      ],
+      declarations: [
+        ShellComponent,
+        HeaderComponent,
+        SidebarComponent
+      ],
+      providers: [
+        { provide: AuthenticationService, useValue: authenticationServiceStub }
+      ]
     })
     .compileComponents();
   }));

@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExampleDashboardComponent } from './example-dashboard.component';
 
 describe('ExampleDashboardComponent', () => {
@@ -8,6 +11,12 @@ describe('ExampleDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule,
+        ChartsModule
+      ],
       declarations: [ ExampleDashboardComponent ]
     })
     .compileComponents();
