@@ -1,37 +1,43 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './login.component';
 import { AuthenticationService } from '../authentication.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let authenticationService: AuthenticationService;
 
   beforeEach(async(() => {
 
-    const authenticationServiceStub: any = { };
+    const authenticationServiceStub: any = { goToOauthLogin: () => { } };
 
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule,
-        FlexLayoutModule
-      ],
+      imports: [],
       declarations: [ LoginComponent ],
       providers: [
         { provide: AuthenticationService, useValue: authenticationServiceStub }
       ]
     })
-    .compileComponents();
+    .overrideComponent(LoginComponent, { set: { template: '' } });
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    authenticationService = TestBed.get(AuthenticationService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('when calling goToOauthLogin()', () => {
+    it('should call the authentication service', () => {
+      spyOn(authenticationService, 'goToOauthLogin');
+      component.goToOauthLogin();
+      expect(authenticationService.goToOauthLogin).toHaveBeenCalled();
+    });
+  });
+
 });

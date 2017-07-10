@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Observable } from 'rxjs/Observable';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './register.component';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
@@ -10,18 +8,16 @@ import { RegisterService } from './register.service';
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  let registerService: RegisterService;
 
   beforeEach(async(() => {
 
-    const registerServiceStub: any = { };
-    const routerStub: any = { };
+    const registerServiceStub: any = { register: () => { } };
+    const routerStub: any = { navigate: (url: Array<string>) => { } };
 
     TestBed.configureTestingModule({
       imports: [
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        FlexLayoutModule
+        ReactiveFormsModule
       ],
       declarations: [ RegisterComponent ],
       providers: [
@@ -29,16 +25,46 @@ describe('RegisterComponent', () => {
         { provide: Router, useValue: routerStub }
       ]
     })
-    .compileComponents();
+    .overrideComponent(RegisterComponent, { set: { template: '' } });
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    registerService = TestBed.get(RegisterService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('when calling register()', () => {
+    it('should return if the form is invalid', () => {
+      spyOn(registerService, 'register');
+      component.register();
+      expect(registerService.register).not.toHaveBeenCalled();
+    });
+
+    it('should call the register service if the form is valid', () => {
+      spyOn(registerService, 'register').and.callFake(() => new Observable(observer => observer.next()));
+      component.registerForm.controls['firstName'].setValue('test');
+      component.registerForm.controls['lastName'].setValue('test');
+      component.registerForm.controls['email'].setValue('test@test.com');
+      component.registerForm.controls['username'].setValue('user');
+      component.registerForm.controls['password'].setValue('pass');
+      component.registerForm.controls['confirmPassword'].setValue('pass');
+      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      component.register();
+      expect(registerService.register).toHaveBeenCalled();
+    });
+  });
+
+  describe('when calling the phoneNumbers() getter', () => {
+    it('should retrieve the phone numbers out of the form', () => {
+      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      const phoneNumbers = component.phoneNumbers;
+      expect(phoneNumbers.length).toBe(1);
+    });
   });
 });
