@@ -1,0 +1,43 @@
+<div fxLayout="row">
+  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <md-card-title>Register</md-card-title>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+      <div fxLayout="column">
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Email" formControlName="email" required>
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="First Name" formControlName="firstName" required>
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Last Name" formControlName="lastName" required>
+        </md-input-container>
+        <div formArrayName="phoneNumbers" fxFlex>
+          <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
+            <md-input-container fxFlex>
+              <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+            </md-input-container>
+            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top:10px;">
+              <md-option value="Mobile">Mobile</md-option>
+              <md-option value="Work">Work</md-option>
+              <md-option value="Home">Home</md-option>
+            </md-select>
+          </div>
+        </div>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Username" formControlName="username" required>
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Password" formControlName="password" required>
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" required>
+        </md-input-container>
+        <div fxLayout="row">
+          <span fxFlex></span>
+          <button fxFlex="10" md-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+        </div>
+      </div>
+    </form>
+  </md-card>
+</div>

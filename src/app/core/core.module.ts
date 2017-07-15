@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule
-  ],
-  declarations: []
+  ]
 })
-export class AuthRoutingModule { }
+export class CoreModule { }

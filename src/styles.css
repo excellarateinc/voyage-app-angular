@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~/themes/voyage-theme.scss';
 
 html, body {
   margin: 0;
@@ -8,25 +8,19 @@ html, body {
   height: 100%;
 }
 
-/* Since we have the toolbar over the sidenav, we need to give it 100% height minus the toolbar's height. */
-.sidenav-height {
-  height: calc(100% - 64px);
-}
-
-@media screen and (max-width: 600px) {
-  /* The toolbar shrinks to 56px at this breakpoint, need to update the sidenav height in that case. */
-  .sidenav-height {
-    height: calc(100% - 56px);
-  }
-}
-
-md-sidenav {
-  width: 220px;
-  border-right: 1px solid lightgray;
+md-card {
+  margin: 10px;
 }
 
 md-toolbar-row {
   justify-content: space-between;
+}
+
+/*
+There's a bug with transform conflicting with position:fixed. This fixes the issue.
+https://github.com/angular/material2/issues/998 */
+.mat-sidenav-container, .mat-sidenav-content {
+  transform: none !important;
 }
 
 .done {
@@ -36,32 +30,62 @@ md-toolbar-row {
   color: white;
 }
 
+.main-content {
+  padding: 10px;
+}
+
 .clickable {
   cursor: pointer;
 }
 
-md-sidenav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.voyage-table-header {
+  font-weight:bold;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 5px;
 }
 
-md-sidenav li {
-  margin: 0;
-  padding: 0;
-  border-color: rgba(0,0,0,.06);
-  color: rgba(0,0,0,.54);
+.voyage-table-row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
 }
 
-md-sidenav li > a {
-  box-sizing: border-box;
-  display: block;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 47px;
-  text-decoration: none;
-  transition: all .3s;
-  padding: 0 16px;
-  position: relative;
-  color: rgba(0,0,0,.54);
+.dark-row {
+  background-color: #f6f6f6;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+}
+
+.badge-notification {
+  margin-top: -46px;
+  margin-left: -15px;
+  background-color: #F44336;
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.profile-icon {
+  background-image: url('~/assets/images/profile-resize.jpg') !important;
+  background-size: cover !important;
+  border-radius: 50% !important;
+  height: 45px !important;
+  margin-bottom: 5px !important;
+  min-width: 45px !important;
+  width: 45px !important;
+  margin-left: 20px !important;
 }
