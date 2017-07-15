@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
@@ -17,7 +20,10 @@ describe('RegisterComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule
       ],
       declarations: [ RegisterComponent ],
       providers: [
@@ -25,7 +31,7 @@ describe('RegisterComponent', () => {
         { provide: Router, useValue: routerStub }
       ]
     })
-    .overrideComponent(RegisterComponent, { set: { template: '' } });
+    .compileComponents();
   }));
 
   beforeEach(() => {
