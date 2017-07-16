@@ -6,8 +6,8 @@ import { AuthenticationService } from './authentication.service';
 describe('AuthGuardService', () => {
   beforeEach(() => {
 
-    const authenticationServiceStub: any = { };
-    const routerStub: any = { };
+    const authenticationServiceStub: any = { getToken: () => { } };
+    const routerStub: any = { navigate: (url: Array<string>) => { } };
 
     TestBed.configureTestingModule({
       providers: [
@@ -18,7 +18,29 @@ describe('AuthGuardService', () => {
     });
   });
 
-  it('should ...', inject([AuthGuardService], (service: AuthGuardService) => {
+  it('should exist', inject([AuthGuardService], (service: AuthGuardService) => {
     expect(service).toBeTruthy();
   }));
+
+  describe('when canActivate() is called', () => {
+    it('should redirect to login and return false if token is invalid',
+      inject([AuthGuardService, Router, AuthenticationService],
+        (service: AuthGuardService, router: Router, authService: AuthenticationService) => {
+          spyOn(router, 'navigate');
+          spyOn(authService, 'getToken').and.callFake(() => null);
+          const canActivate = service.canActivate();
+          expect(canActivate).toBe(false);
+          expect(router.navigate).toHaveBeenCalledWith(['authentication/login']);
+    }));
+
+    it('should return true if token is valid',
+      inject([AuthGuardService, Router, AuthenticationService],
+        (service: AuthGuardService, router: Router, authService: AuthenticationService) => {
+          spyOn(router, 'navigate');
+          spyOn(authService, 'getToken').and.callFake(() => 'valid_token');
+          const canActivate = service.canActivate();
+          expect(canActivate).toBe(true);
+          expect(router.navigate).not.toHaveBeenCalled();
+    }));
+  });
 });
