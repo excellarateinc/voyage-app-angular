@@ -19,5 +19,4 @@ export class HeaderComponent implements OnInit {
   toggleSidebar(): void {
     this.onToggleSidebar.emit();
   }
-
 }
