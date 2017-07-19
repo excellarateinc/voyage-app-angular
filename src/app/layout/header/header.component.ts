@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NotificationService } from '../../notifications/notification.service';
+import { Notification } from '../../notifications/notification.model';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +13,23 @@ export class HeaderComponent implements OnInit {
   @Input()
   isAuthenticated = false;
   @Output() onToggleSidebar = new EventEmitter<void>();
+  notifications: Array<Notification>;
 
-  constructor() { }
+  constructor(private notificationService: NotificationService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getNotifications();
+  }
 
   toggleSidebar(): void {
     this.onToggleSidebar.emit();
+  }
+
+  getNotifications(): void {
+    if (!this.isAuthenticated) {
+      return;
+    }
+    this.notificationService.getNotifications()
+      .subscribe(result => this.notifications = result);
   }
 }
