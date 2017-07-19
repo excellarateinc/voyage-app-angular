@@ -13,14 +13,16 @@
   <md-menu #notificationMenu="mdMenu">
     <md-list>
       <h3 md-subheader>Notifications</h3>
-      <md-list-item *ngFor="let notification of notifications">
-        <img md-list-avatar src="http://lssinc.com/files/original/headshot-tim1.png" alt="icon">
-        <h3 md-line>Tim M.</h3>
-        <p md-line>
-          <span>{{notification.text}}</span>
-        </p>
-      </md-list-item>
-      <md-divider></md-divider>
+      <ng-template ngFor let-last="last" let-notification [ngForOf]="notifications">
+        <md-list-item >
+          <img md-list-avatar src="http://lssinc.com/files/original/headshot-tim1.png" alt="icon">
+          <h3 md-line>{{notification.createdBy}}</h3>
+          <p md-line>
+            <span>{{notification.text}}</span>
+          </p>
+        </md-list-item>
+        <md-divider *ngIf="!last"></md-divider>
+      </ng-template>
     </md-list>
   </md-menu>
   <button *ngIf="isAuthenticated" md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
