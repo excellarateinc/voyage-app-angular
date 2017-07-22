@@ -6,7 +6,7 @@
     <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
   </span>
   <span class="fill-space"></span>
-  <app-notification *ngIf="isAuthenticated"></app-notification>
+  <app-notifications-icon *ngIf="isAuthenticated"></app-notifications-icon>
   <button *ngIf="isAuthenticated" md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
   <md-menu #profileMenu="mdMenu">
     <button md-menu-item routerLink="/examples/profile">

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
-import { NotificationService } from './notification.service';
-import { NotificationComponent } from './notification.component';
+import { NotificationsService } from './notifications.service';
+import { NotificationsIconComponent } from './notifications-icon/notifications-icon.component';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule
   ],
-  declarations: [NotificationComponent],
+  declarations: [NotificationsIconComponent],
   providers: [
-    NotificationService
+    NotificationsService
   ],
-  exports: [NotificationComponent]
+  exports: [NotificationsIconComponent]
 })
 export class NotificationsModule { }

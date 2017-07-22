@@ -3,7 +3,7 @@
   <span class="badge badge-notification" *ngIf="notifications?.length">{{notifications.length}}</span>
 </span>
 <md-menu #notificationMenu="mdMenu" [overlapTrigger]="false">
-  <md-list>
+  <md-list *ngIf="notifications?.length > 0">
     <h3 md-subheader>Notifications</h3>
     <ng-template ngFor let-last="last" let-notification [ngForOf]="notifications">
       <md-list-item (click)="markNotificationRead(notification)" class="clickable">
@@ -16,4 +16,5 @@
       <md-divider *ngIf="!last"></md-divider>
     </ng-template>
   </md-list>
+  <div md-menu-item *ngIf="notifications?.length === 0">No new notifications</div>
 </md-menu>

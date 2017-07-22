@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Notification } from './notification.model';
 
 @Injectable()
-export class NotificationService {
+export class NotificationsService {
 
   constructor(private http: Http) { }
 
