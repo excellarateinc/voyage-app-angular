@@ -18,12 +18,12 @@ export class NotificationsService {
   markNotificationAsRead(id: number): Observable<void> {
     return this.http.put(`${environment.API_URL}/notifications/${id}`, { })
       .map(response => response.json())
-      .catch(error => Observable.throw(error));
+      .catch(error => Observable.throw(error.json()));
   }
 
   markAllRead(): Observable<void> {
     return this.http.put(`${environment.API_URL}/notifications`, { })
       .map(response => response.json())
-      .catch(error => Observable.throw(error));
+      .catch(error => Observable.throw(error.json()));
   }
 }

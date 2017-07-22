@@ -20,12 +20,10 @@ export class NotificationsIconComponent implements OnInit {
       .subscribe(result => this.notifications = result);
   }
 
-  markNotificationRead(notification: Notification): void {
-    this.notificationsService.markNotificationAsRead(notification.id)
+  markNotificationRead(id: number): void {
+    this.notificationsService.markNotificationAsRead(id)
       .subscribe(result => {
-        this.notifications = this.notifications.filter((item: Notification) => {
-          return item.id !== notification.id;
-        });
+        this.notifications = this.notifications.filter((item: Notification) => item.id !== id);
       });
   }
 
@@ -33,5 +31,4 @@ export class NotificationsIconComponent implements OnInit {
     this.notificationsService.markAllRead()
       .subscribe(() => this.notifications = null);
   }
-
 }
