@@ -23,13 +23,15 @@ export class NotificationsIconComponent implements OnInit {
   markNotificationRead(notification: Notification): void {
     this.notificationsService.markNotificationAsRead(notification.id)
       .subscribe(result => {
-        notification.isRead = true;
+        this.notifications = this.notifications.filter((item: Notification) => {
+          return item.id !== notification.id;
+        });
       });
   }
 
   markAllRead(): void {
     this.notificationsService.markAllRead()
-      .subscribe(result => { });
+      .subscribe(() => this.notifications = null);
   }
 
 }
