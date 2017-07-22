@@ -14,7 +14,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SecureHttpClient } from './authentication/secure-http-client';
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { AuthenticationService } from './authentication/authentication.service';
-import { NotificationsModule } from './notifications/notifications.module';
 
 export function secureHttpClientFactory(
   xhrBackend: XHRBackend,
@@ -37,8 +36,7 @@ export function secureHttpClientFactory(
     AppRoutingModule,
     CoreModule,
     LayoutModule,
-    AuthenticationModule,
-    NotificationsModule
+    AuthenticationModule
   ],
   providers: [
     { provide: Http, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] },

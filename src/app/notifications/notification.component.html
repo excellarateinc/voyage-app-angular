@@ -1,0 +1,19 @@
+<span [mdMenuTriggerFor]="notificationMenu" class="clickable">
+  <md-icon style="font-size: 32px;">notifications</md-icon>
+  <span class="badge badge-notification" *ngIf="notifications?.length">{{notifications.length}}</span>
+</span>
+<md-menu #notificationMenu="mdMenu" [overlapTrigger]="false">
+  <md-list>
+    <h3 md-subheader>Notifications</h3>
+    <ng-template ngFor let-last="last" let-notification [ngForOf]="notifications">
+      <md-list-item (click)="markNotificationRead(notification)" class="clickable">
+        <div *ngIf="!notification.isRead" md-list-avatar style="width: 4px; height: 4px; border-radius: 50%; background: #167ac6;"></div>
+        <h3 md-line>{{notification.subject}}</h3>
+        <p md-line>
+          <span>{{notification.description}}</span>
+        </p>
+      </md-list-item>
+      <md-divider *ngIf="!last"></md-divider>
+    </ng-template>
+  </md-list>
+</md-menu>

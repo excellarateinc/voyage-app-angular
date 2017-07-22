@@ -1,6 +1,8 @@
 export class Notification {
   id: number;
-  text: string;
+  subject: string;
+  description: string;
+  isRead: boolean;
   createdBy: string;
   createdDate: Date;
 }
