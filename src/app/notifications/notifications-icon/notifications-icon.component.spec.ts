@@ -5,9 +5,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { NotificationsIconComponent } from './notifications-icon.component';
 import { NotificationsService } from '../notifications.service';
+import { Notification } from '../notification.model';
 
 const notificationsServiceStub: any = {
-  getNotifications: () => { }
+  getNotifications: () => { },
+  markNotificationAsRead: () => { },
+  markAllRead: () => { }
 };
 
 describe('NotificationsIconComponent', () => {
@@ -40,11 +43,13 @@ describe('NotificationsIconComponent', () => {
 
   it('should call get notifications on initialization', () => {
     expect(component).toBeTruthy();
+    expect(notificationsService.getNotifications).toHaveBeenCalled();
   });
 
   describe('when calling markNotificationRead()', () => {
     it('should call the notifications service to mark read', () => {
-      spyOn(notificationsService, 'markNotificationRead').and.callFake(() => new Observable(observer => observer.next()));
+      spyOn(notificationsService, 'markNotificationAsRead').and.callFake(() => new Observable(observer => observer.next()));
+      component.notifications = new Array<Notification>();
       component.markNotificationRead(1);
       expect(notificationsService.markNotificationAsRead).toHaveBeenCalledWith(1);
     });
