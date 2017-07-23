@@ -38,7 +38,23 @@ describe('NotificationsIconComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should call get notifications on initialization', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('when calling markNotificationRead()', () => {
+    it('should call the notifications service to mark read', () => {
+      spyOn(notificationsService, 'markNotificationRead').and.callFake(() => new Observable(observer => observer.next()));
+      component.markNotificationRead(1);
+      expect(notificationsService.markNotificationAsRead).toHaveBeenCalledWith(1);
+    });
+  });
+
+  describe('when calling markAllRead()', () => {
+    it('should call the notifications service to mark all read', () => {
+      spyOn(notificationsService, 'markAllRead').and.callFake(() => new Observable(observer => observer.next()));
+      component.markAllRead();
+      expect(notificationsService.markAllRead).toHaveBeenCalled();
+    });
   });
 });
