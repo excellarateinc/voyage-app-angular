@@ -1,19 +1,38 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { Observable } from 'rxjs/Observable';
 import { NotificationsIconComponent } from './notifications-icon.component';
+import { NotificationsService } from '../notifications.service';
 
-describe('NotificationComponent', () => {
+const notificationsServiceStub: any = {
+  getNotifications: () => { }
+};
+
+describe('NotificationsIconComponent', () => {
   let component: NotificationsIconComponent;
   let fixture: ComponentFixture<NotificationsIconComponent>;
+  let notificationsService: NotificationsService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationsIconComponent ]
+      imports: [
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule
+      ],
+      declarations: [ NotificationsIconComponent ],
+      providers: [
+        { provide: NotificationsService, useValue: notificationsServiceStub }
+      ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
+    notificationsService = TestBed.get(NotificationsService);
+    spyOn(notificationsService, 'getNotifications').and.callFake(() => new Observable(observer => observer.next()));
     fixture = TestBed.createComponent(NotificationsIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

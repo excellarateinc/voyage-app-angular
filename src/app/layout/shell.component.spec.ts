@@ -1,13 +1,37 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ShellComponent } from './shell.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { AuthenticationService } from '../authentication/authentication.service';
+
+@Component({
+  template: '',
+  selector: 'app-header',
+})
+class StubHeaderComponent {
+  @Input()
+  isMobile = false;
+  @Input()
+  isAuthenticated = false;
+  @Output() onToggleSidebar = new EventEmitter<void>();
+}
+
+@Component({
+  template: '',
+  selector: 'app-sidebar'
+})
+class StubSidebarComponent {
+  @Input()
+  isMobile = false;
+  @Input()
+  isAuthenticated = false;
+  @ViewChild('sidenav')
+  sidenav: any;
+}
 
 describe('ShellComponent', () => {
   let component: ShellComponent;
@@ -28,8 +52,8 @@ describe('ShellComponent', () => {
       ],
       declarations: [
         ShellComponent,
-        HeaderComponent,
-        SidebarComponent
+        StubHeaderComponent,
+        StubSidebarComponent
       ],
       providers: [
         { provide: AuthenticationService, useValue: authenticationServiceStub }
