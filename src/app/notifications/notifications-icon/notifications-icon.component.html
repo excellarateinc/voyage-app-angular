@@ -1,0 +1,26 @@
+<span [mdMenuTriggerFor]="notificationMenu" class="clickable">
+  <md-icon style="font-size: 32px;">notifications</md-icon>
+  <span class="badge badge-notification" *ngIf="notifications?.length">
+    {{notifications.length > 99 ? '99+': notifications.length}}
+  </span>
+</span>
+<md-menu #notificationMenu="mdMenu" [overlapTrigger]="false">
+  <md-list *ngIf="notifications?.length > 0" (click)="$event.stopPropagation()">
+    <div md-subheader>
+      Notifications
+      <md-icon title="Mark All Read" class="clickable" (click)="markAllRead()" style="float:right; margin-top:-5px;">done_all</md-icon>
+    </div>
+    <md-divider></md-divider>
+    <ng-template ngFor let-last="last" let-notification [ngForOf]="notifications">
+      <md-list-item>
+        <h3 md-line>{{notification.subject}}</h3>
+        <p md-line>
+          <span>{{notification.description}}</span>
+        </p>
+        <md-icon title="Mark Read" class="clickable" (click)="markNotificationRead(notification.id)">done</md-icon>
+      </md-list-item>
+      <md-divider *ngIf="!last"></md-divider>
+    </ng-template>
+  </md-list>
+  <div md-menu-item *ngIf="notifications == null || notifications.length === 0">No New Notifications</div>
+</md-menu>

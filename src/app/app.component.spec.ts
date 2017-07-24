@@ -1,14 +1,22 @@
 import { TestBed, async } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
+
+@Component({
+  template: '',
+  selector: 'app-shell'
+})
+class StubShellComponent { }
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        StubShellComponent
       ],
-    }).overrideComponent(AppComponent, { set: { template: '' } });
+    }).compileComponents();
   }));
 
   it('should create the app', async(() => {
