@@ -4,9 +4,9 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
-import { ExampleDashboardComponent } from './example-dashboard/example-dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-import { DepositComponent } from './deposit/deposit.component';
+import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
+import { TransferComponent } from './banking/transfer/transfer.component';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { DepositComponent } from './deposit/deposit.component';
     ChartsModule,
     ExamplesRoutingModule
   ],
-  declarations: [ExampleDashboardComponent, ProfileComponent, DepositComponent],
-  exports: [ExampleDashboardComponent]
+  declarations: [AccountsDashboardComponent, ProfileComponent, TransferComponent],
+  exports: [AccountsDashboardComponent]
 })
 export class ExamplesModule { }

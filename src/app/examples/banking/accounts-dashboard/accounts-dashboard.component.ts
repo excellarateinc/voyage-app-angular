@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-example-dashboard',
-  templateUrl: './example-dashboard.component.html'
+  selector: 'app-accounts-dashboard',
+  templateUrl: './accounts-dashboard.component.html'
 })
-export class ExampleDashboardComponent implements OnInit {
+export class AccountsDashboardComponent implements OnInit {
   // line Chart
   lineChartData: Array<any> = [
     {data: [900, 1020, 2100, 1900, 3000, 4100, 5000], label: 'HSA Balance'},

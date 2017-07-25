@@ -3,11 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { ExampleDashboardComponent } from './example-dashboard.component';
+import { AccountsDashboardComponent } from './accounts-dashboard.component';
 
-describe('ExampleDashboardComponent', () => {
-  let component: ExampleDashboardComponent;
-  let fixture: ComponentFixture<ExampleDashboardComponent>;
+describe('AccountsDashboardComponent', () => {
+  let component: AccountsDashboardComponent;
+  let fixture: ComponentFixture<AccountsDashboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -17,13 +17,13 @@ describe('ExampleDashboardComponent', () => {
         FlexLayoutModule,
         ChartsModule
       ],
-      declarations: [ ExampleDashboardComponent ]
+      declarations: [ AccountsDashboardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExampleDashboardComponent);
+    fixture = TestBed.createComponent(AccountsDashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
