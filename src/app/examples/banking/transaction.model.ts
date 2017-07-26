@@ -8,4 +8,5 @@ export class Transaction {
   description: string;
   status: string;
   amount: number;
+  balance: number;
 }
