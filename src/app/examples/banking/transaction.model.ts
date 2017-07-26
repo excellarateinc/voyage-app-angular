@@ -6,7 +6,6 @@ export class Transaction {
   date: Date;
   type: TransactionType;
   description: string;
-  status: string;
   amount: number;
   balance: number;
 }
