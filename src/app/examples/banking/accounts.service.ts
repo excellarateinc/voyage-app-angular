@@ -21,43 +21,9 @@ export class AccountsService {
   }
 
   getTransactionHistory(): Observable<Array<TransactionHistory>> {
-
-    // TODO: Once API is built, uncomment this.
-    // return this.http.get(`${environment.API_URL}/banking/transactions`)
-    //   .map(response => response.json())
-    //   .catch(error => Observable.throw(error.json()));
-
-    const transactions: Array<Transaction> = [];
-    transactions.push({
-      accountId: 1,
-      description: 'Check from **8088',
-      amount: 12,
-      balance: 2546,
-      date: new Date('7/1/2017'),
-      transactionId: 1,
-      type: TransactionType.Deposit
-    },
-    {
-      accountId: 1,
-      description: 'vanguard invest',
-      amount: 500,
-      balance: 1875,
-      date: new Date('7/3/2017'),
-      transactionId: 2,
-      type: TransactionType.Withdrawal
-    });
-
-    const transactionHistory = new TransactionHistory();
-    transactionHistory.accountId = 1;
-    transactionHistory.accountName = 'Checking ****1234';
-    transactionHistory.transactions = transactions;
-
-    const transactionHistory2 = new TransactionHistory();
-    transactionHistory2.accountId = 2;
-    transactionHistory2.accountName = 'Savings ****1234';
-    transactionHistory2.transactions = transactions;
-
-    return Observable.create(observer => observer.next([transactionHistory, transactionHistory2]));
+    return this.http.get(`${environment.API_URL}/banking/accounts/transactions`)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
   }
 
   transfer(transfer: Transfer): Observable<any> {

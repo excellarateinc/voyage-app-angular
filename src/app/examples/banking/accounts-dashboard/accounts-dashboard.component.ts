@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountsService } from '../accounts.service';
 import { TransactionHistory } from '../transaction-history.model';
+import { Transaction } from '../transaction.model';
+import { TransactionType } from '../transaction-type.enum';
 
 @Component({
   selector: 'app-accounts-dashboard',
@@ -8,6 +10,7 @@ import { TransactionHistory } from '../transaction-history.model';
 })
 export class AccountsDashboardComponent implements OnInit {
   transactionHistory: Array<TransactionHistory>;
+
   // line Chart
   lineChartData: Array<any> = [];
   lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -26,13 +29,14 @@ export class AccountsDashboardComponent implements OnInit {
   lineChartType = 'line';
 
   // Doughnut Charts
-  doughnutChartLabels: string[] = ['Current Balance', 'Incoming', 'Outgoing'];
-  doughnutChartData1: number[] = [3000, 1500, 500];
-  doughnutChartData2: number[] = [400, 300, 500];
-  doughnutChartType = 'doughnut';
-  doughtnutChartColors: Array<any> = [{ backgroundColor: ['#3793cc', '#3cbfa4', '#cccccc'] }];
-  doughnutChartOptions: any = {
-    maintainAspectRatio: true
+  doughnutCharts: any = {
+    charts: [],
+    labels: ['Deposits', 'Withdrawals'],
+    type: 'doughnut',
+    colors: [
+      { backgroundColor: ['#3793cc', '#3cbfa4'] }
+    ],
+    options: { maintainAspectRatio: true }
   };
 
   constructor(private accountsService: AccountsService) { }
@@ -56,6 +60,32 @@ export class AccountsDashboardComponent implements OnInit {
     }
   }
 
-  private buildDoughnutCharts(history: Array<TransactionHistory>): void {
+  private buildDoughnutCharts(history: Array<TransactionHistory>): any {
+    for (let i = 0; i < history.length; i++) {
+      const data = this.buildData(history[i]);
+      this.doughnutCharts.charts.push({ data: data, title: history[i].accountName });
+    }
+  }
+
+  private buildData(item: TransactionHistory): Array<number> {
+      const deposits = item.transactions.filter((transaction) => {
+        return transaction.type === TransactionType.Deposit;
+      });
+
+      const withdrawals = item.transactions.filter((transaction) => {
+        return transaction.type === TransactionType.Withdrawal;
+      });
+
+      let totalDeposits = 0;
+      for (let i = 0; i < deposits.length; i++) {
+        totalDeposits += deposits[i].amount;
+      }
+
+      let totalWithdrawals = 0;
+      for (let i = 0; i < withdrawals.length; i++) {
+        totalWithdrawals += withdrawals[i].amount;
+      }
+
+      return [totalDeposits, totalWithdrawals];
   }
 }

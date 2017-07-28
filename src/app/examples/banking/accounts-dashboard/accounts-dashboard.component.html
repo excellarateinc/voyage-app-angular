@@ -3,7 +3,7 @@
     <md-card-title>Balance History</md-card-title>
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
       <div fxFlex="50">
-        <canvas baseChart
+        <canvas baseChart *ngIf="lineChartData?.length > 0"
           [datasets]="lineChartData"
           [labels]="lineChartLabels"
           [options]="lineChartOptions"
@@ -11,57 +11,35 @@
           [legend]="lineChartLegend"
           [chartType]="lineChartType"></canvas>
       </div>
-      <div fxFlex="24">
-        HSA Breakdown
+      <div fxFlex="24" *ngFor="let chart of doughnutCharts.charts">
+        {{chart.title}} Breakdown
         <canvas baseChart
-          [data]="doughnutChartData1"
-          [labels]="doughnutChartLabels"
-          [chartType]="doughnutChartType"
-          [options]="doughnutChartOptions"
-          [colors]="doughtnutChartColors"></canvas>
-      </div>
-      <div fxFlex="24">
-        FSA Breakdown
-        <canvas baseChart
-          [data]="doughnutChartData2"
-          [labels]="doughnutChartLabels"
-          [chartType]="doughnutChartType"
-          [options]="doughnutChartOptions"
-          [colors]="doughtnutChartColors"></canvas>
+          [data]="chart.data"
+          [labels]="doughnutCharts.labels"
+          [chartType]="doughnutCharts.type"
+          [options]="doughnutCharts.options"
+          [colors]="doughnutCharts.colors"></canvas>
       </div>
     </div>
   </md-card>
 </div>
 
 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
-  <md-card fxFlex>
-    <md-card-title>HSA Activity</md-card-title>
+  <md-card fxFlex *ngFor="let history of transactionHistory">
+    <md-card-title>{{history.accountName}} Activity</md-card-title>
     <div fxLayout="row" class="voyage-table-header">
-      <div fxFlex>Transaction ID</div>
-      <div fxFlex>Type</div>
       <div fxFlex>Date</div>
-      <div fxFlex>Amount</div>
-    </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let i of [1, 2, 3, 4, 5, 6, 7]">
-      <div fxFlex>Item 000{{i}}</div>
-      <div fxFlex>{{i % 2 === 0 ? 'Deposit' : 'Withdrawal'}}</div>
-      <div fxFlex>0{{i}}/1{{i}}/2016</div>
-      <div fxFlex>{{i + 1000 | currency:'USD':true}}</div>
-    </div>
-  </md-card>
-  <md-card fxFlex>
-    <md-card-title>FSA Activity</md-card-title>
-    <div fxLayout="row" class="voyage-table-header">
-      <div fxFlex>Transaction ID</div>
       <div fxFlex>Type</div>
-      <div fxFlex>Date</div>
+      <div fxFlex>Description</div>
       <div fxFlex>Amount</div>
+      <div fxFlex>Balance</div>
     </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let i of [1, 2, 3, 4, 5, 6, 7]">
-      <div fxFlex>Item 000{{i}}</div>
-      <div fxFlex>{{i % 2 === 0 ? 'Deposit' : 'Withdrawal'}}</div>
-      <div fxFlex>0{{i}}/1{{i}}/2016</div>
-      <div fxFlex>{{i + 1000 | currency:'USD':true}}</div>
+    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of history.transactions">
+      <div fxFlex>{{transaction.date | date}}</div>
+      <div fxFlex>{{transaction.type == 0 ? 'Withdrawal' : 'Deposit'}}</div>
+      <div fxFlex>{{transaction.description}}</div>
+      <div fxFlex>{{transaction.amount | currency:'USD':true}}</div>
+      <div fxFlex>{{transaction.balance | currency:'USD':true}}</div>
     </div>
   </md-card>
 </div>
