@@ -7,12 +7,9 @@ import { TransactionHistory } from '../transaction-history.model';
   templateUrl: './accounts-dashboard.component.html'
 })
 export class AccountsDashboardComponent implements OnInit {
-  transactionHistory: TransactionHistory;
+  transactionHistory: Array<TransactionHistory>;
   // line Chart
-  lineChartData: Array<any> = [
-    // {data: [900, 1020, 2100, 1900, 3000, 4100, 5000], label: 'HSA Balance'},
-    // {data: [150, 480, 730, 1500, 1100, 900, 1200], label: 'FSA Balance'}
-  ];
+  lineChartData: Array<any> = [];
   lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   lineChartOptions: any = { };
   lineChartColors: Array<any> = [
@@ -29,7 +26,7 @@ export class AccountsDashboardComponent implements OnInit {
   lineChartType = 'line';
 
   // Doughnut Charts
-  doughnutChartLabels: string[] = ['Available Balance', 'Investment Balance', 'Pending Contributions'];
+  doughnutChartLabels: string[] = ['Current Balance', 'Incoming', 'Outgoing'];
   doughnutChartData1: number[] = [3000, 1500, 500];
   doughnutChartData2: number[] = [400, 300, 500];
   doughnutChartType = 'doughnut';
@@ -44,16 +41,21 @@ export class AccountsDashboardComponent implements OnInit {
     this.accountsService.getTransactionHistory()
       .subscribe(result => {
         this.transactionHistory = result;
-        this.initializeBalanceHistory(result);
+        this.buildLineChart(result);
+        this.buildDoughnutCharts(result);
       });
   }
 
-  private initializeBalanceHistory(history: TransactionHistory): void {
-    const lineData: any = { data: [], label: history.accountName };
-    for (const transaction of history.transactions) {
-      lineData.data.push(transaction.balance);
+  private buildLineChart(history: Array<TransactionHistory>): void {
+    for (const item of history) {
+      const lineData: any = { data: [], label: item.accountName };
+      for (const transaction of item.transactions) {
+        lineData.data.push(transaction.balance);
+      }
+      this.lineChartData.push(lineData);
     }
-    this.lineChartData.push(lineData);
   }
 
+  private buildDoughnutCharts(history: Array<TransactionHistory>): void {
+  }
 }
