@@ -1,6 +1,6 @@
 <md-sidenav-container class="sidenav-height">
   <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
-    <nav>
+    <nav (click)="close()">
       <ul>
         <li>
           <a class="nav-item-container" routerLink="/examples/banking/dashboard">

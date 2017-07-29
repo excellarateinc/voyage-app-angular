@@ -12,17 +12,19 @@ export class AccountsDashboardComponent implements OnInit {
   transactionHistory: Array<TransactionHistory>;
   lineChart: any;
   doughnutCharts: any;
+  working = false;
 
   constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
     this.initializeCharts();
-
+    this.working = true;
     this.accountsService.getTransactionHistory()
       .subscribe(result => {
         this.transactionHistory = result;
         this.buildLineChart(this.transactionHistory);
         this.buildDoughnutCharts(this.transactionHistory);
+        this.working = false;
       });
   }
 

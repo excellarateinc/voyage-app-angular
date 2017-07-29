@@ -31,4 +31,11 @@ export class SidebarComponent implements OnInit {
   toggle(): void {
     this.sidenav.toggle();
   }
+
+  close(): void {
+    if (!this.mobile) {
+      return;
+    }
+    this.sidenav.close();
+  }
 }

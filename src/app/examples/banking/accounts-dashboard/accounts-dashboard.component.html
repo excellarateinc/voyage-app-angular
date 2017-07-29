@@ -1,6 +1,7 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
   <md-card fxFlex>
     <md-card-title>Balance History</md-card-title>
+    <md-spinner *ngIf="working"></md-spinner>
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
       <div fxFlex="50">
         <canvas baseChart *ngIf="lineChart.data.length > 0"
