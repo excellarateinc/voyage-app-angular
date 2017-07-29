@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { DepositComponent } from './deposit/deposit.component';
+import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
+import { TransferComponent } from './banking/transfer/transfer.component';
 
 const exampleRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
-  { path: 'deposit', component: DepositComponent }
+  { path: 'banking/dashboard', component: AccountsDashboardComponent },
+  { path: 'banking/transfer', component: TransferComponent }
 ];
 
 @NgModule({
