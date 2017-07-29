@@ -4,4 +4,3 @@ export class Transfer {
   amount: number;
   memo: string;
 }
-

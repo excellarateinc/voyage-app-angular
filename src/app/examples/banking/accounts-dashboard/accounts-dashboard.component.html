@@ -3,13 +3,13 @@
     <md-card-title>Balance History</md-card-title>
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
       <div fxFlex="50">
-        <canvas baseChart *ngIf="lineChartData?.length > 0"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"></canvas>
+        <canvas baseChart *ngIf="lineChart.data.length > 0"
+          [datasets]="lineChart.data"
+          [labels]="lineChart.labels"
+          [options]="lineChart.options"
+          [colors]="lineChart.colors"
+          [legend]="lineChart.legend"
+          [chartType]="lineChart.type"></canvas>
       </div>
       <div fxFlex="24" *ngFor="let chart of doughnutCharts.charts">
         {{chart.title}} Breakdown
@@ -29,16 +29,14 @@
     <md-card-title>{{history.accountName}} Activity</md-card-title>
     <div fxLayout="row" class="voyage-table-header">
       <div fxFlex>Date</div>
-      <div fxFlex>Type</div>
-      <div fxFlex>Description</div>
+      <div fxFlex="35">Description</div>
       <div fxFlex>Amount</div>
       <div fxFlex>Balance</div>
     </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of history.transactions">
+    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of history.transactions; let i = index;">
       <div fxFlex>{{transaction.date | date}}</div>
-      <div fxFlex>{{transaction.type == 0 ? 'Withdrawal' : 'Deposit'}}</div>
-      <div fxFlex>{{transaction.description}}</div>
-      <div fxFlex>{{transaction.amount | currency:'USD':true}}</div>
+      <div fxFlex="35">{{transaction.description}}</div>
+      <div fxFlex>{{transaction.type == 0 ? '-' : '+'}}{{transaction.amount | currency:'USD':true}}</div>
       <div fxFlex>{{transaction.balance | currency:'USD':true}}</div>
     </div>
   </md-card>

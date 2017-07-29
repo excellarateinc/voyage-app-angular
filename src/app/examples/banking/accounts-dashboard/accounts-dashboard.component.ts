@@ -10,53 +10,60 @@ import { TransactionType } from '../transaction-type.enum';
 })
 export class AccountsDashboardComponent implements OnInit {
   transactionHistory: Array<TransactionHistory>;
-
-  // line Chart
-  lineChartData: Array<any> = [];
-  lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  lineChartOptions: any = { };
-  lineChartColors: Array<any> = [
-    {
-      backgroundColor: 'rgba(60, 191, 164, 0.2)',
-      borderColor: 'rgba(60, 191, 164, 1)'
-    },
-    {
-      backgroundColor: 'rgba(55, 147, 204, 0.2)',
-      borderColor: 'rgba(55, 147, 204, 1)'
-    }
-  ];
-  lineChartLegend = true;
-  lineChartType = 'line';
-
-  // Doughnut Charts
-  doughnutCharts: any = {
-    charts: [],
-    labels: ['Deposits', 'Withdrawals'],
-    type: 'doughnut',
-    colors: [
-      { backgroundColor: ['#3793cc', '#3cbfa4'] }
-    ],
-    options: { maintainAspectRatio: true }
-  };
+  lineChart: any;
+  doughnutCharts: any;
 
   constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
+    this.initializeCharts();
+
     this.accountsService.getTransactionHistory()
       .subscribe(result => {
         this.transactionHistory = result;
-        this.buildLineChart(result);
-        this.buildDoughnutCharts(result);
+        this.buildLineChart(this.transactionHistory);
+        this.buildDoughnutCharts(this.transactionHistory);
       });
+  }
+
+  private initializeCharts() {
+    this.lineChart = {
+      data: [],
+      labels: ['', '', '', '', ''],
+      options: { },
+      colors: [
+        {
+          backgroundColor: 'rgba(60, 191, 164, 0.2)',
+          borderColor: 'rgba(60, 191, 164, 1)'
+        },
+        {
+          backgroundColor: 'rgba(55, 147, 204, 0.2)',
+          borderColor: 'rgba(55, 147, 204, 1)'
+        }
+      ],
+      legend: true,
+      type: 'line'
+    };
+
+    this.doughnutCharts = {
+      charts: [],
+      labels: ['Deposits', 'Withdrawals'],
+      type: 'doughnut',
+      colors: [
+        { backgroundColor: ['#3793cc', '#3cbfa4'] }
+      ],
+      options: { maintainAspectRatio: true }
+    };
   }
 
   private buildLineChart(history: Array<TransactionHistory>): void {
     for (const item of history) {
       const lineData: any = { data: [], label: item.accountName };
-      for (const transaction of item.transactions) {
+      const transactionsCopy = Object.assign([], item.transactions);
+      for (const transaction of transactionsCopy.reverse()) {
         lineData.data.push(transaction.balance);
       }
-      this.lineChartData.push(lineData);
+      this.lineChart.data.push(lineData);
     }
   }
 

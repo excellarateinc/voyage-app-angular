@@ -29,6 +29,6 @@ export class AccountsService {
   transfer(transfer: Transfer): Observable<any> {
     return this.http.post(`${environment.API_URL}/banking/accounts/transfers`, transfer)
       .map(response => response)
-      .catch(error => Observable.throw(error));
+      .catch(error => Observable.throw(error.json()));
   }
 }
