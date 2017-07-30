@@ -79,13 +79,3 @@ https://github.com/angular/material2/issues/998 */
   flex: 1 1 auto;
 }
 
-.profile-icon {
-  background-image: url('~/assets/images/profile-resize.jpg') !important;
-  background-size: cover !important;
-  border-radius: 50% !important;
-  height: 45px !important;
-  margin-bottom: 5px !important;
-  min-width: 45px !important;
-  width: 45px !important;
-  margin-left: 20px !important;
-}

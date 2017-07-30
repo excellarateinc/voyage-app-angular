@@ -8,6 +8,7 @@ import { NotificationsModule } from '../notifications/notifications.module';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ShellComponent } from './shell.component';
+import { ProfileIconComponent } from './header/profile-icon/profile-icon.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,12 @@ import { ShellComponent } from './shell.component';
     SharedModule,
     NotificationsModule
   ],
-  declarations: [HeaderComponent, SidebarComponent, ShellComponent],
+  declarations: [
+    HeaderComponent,
+    SidebarComponent,
+    ShellComponent,
+    ProfileIconComponent
+  ],
   exports: [ShellComponent]
 })
 export class LayoutModule { }

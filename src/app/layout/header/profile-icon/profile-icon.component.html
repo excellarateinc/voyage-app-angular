@@ -1,0 +1,12 @@
+  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
+  <md-menu #profileMenu="mdMenu" [overlapTrigger]="false">
+    <button md-menu-item routerLink="/examples/profile">
+      <span>Profile</span>
+    </button>
+    <button md-menu-item style="border-bottom: 1px solid #dedede;">
+      <span>Settings</span>
+    </button>
+    <button md-menu-item (click)="logout()">
+      <span>Logout</span>
+    </button>
+  </md-menu>
