@@ -15,27 +15,27 @@ export class SecureHttpClient extends Http {
 
   request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);
-    return super.request(url, options);
+    return this.intercept(super.request(url, options));
   }
 
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);
-    return super.get(url, options);
+    return this.intercept(super.get(url, options));
   }
 
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);
-    return super.post(url, body, options);
+    return this.intercept(super.post(url, body, options));
   }
 
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);
-    return super.put(url, body, options);
+    return this.intercept(super.put(url, body, options));
   }
 
   delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
     options = this.setCustomHeaders(options);
-    return super.delete(url, options);
+    return this.intercept(super.delete(url, options));
   }
 
   private setCustomHeaders(options?: RequestOptionsArgs): RequestOptionsArgs {
@@ -50,5 +50,22 @@ export class SecureHttpClient extends Http {
       options.headers.set('Authorization', `Bearer ${accessToken}`);
     }
     return options;
+  }
+
+  private intercept(request: Observable<any>): Observable<any> {
+    return request.catch((err, source) => {
+      if (err.status !== 401) {
+        return Observable.throw(err);
+      }
+
+      const errorList = JSON.parse(err._body);
+      const error = errorList[0];
+      if (error.error === 'UserDisabled') {
+        this.authenticationService.logout();
+      } else if (error.error === 'RequireVerification') {
+        this.authenticationService.goToVerification();
+      }
+      return Observable.throw(err);
+    });
   }
 }

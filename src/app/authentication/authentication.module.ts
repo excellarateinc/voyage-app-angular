@@ -10,6 +10,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthenticationService } from './authentication.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './register/register.service';
+import { VerificationComponent } from './verification/verification.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,11 @@ import { RegisterService } from './register/register.service';
     FlexLayoutModule,
     AuthenticationRoutingModule
   ],
-  declarations: [ LoginComponent, RegisterComponent ],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    VerificationComponent
+  ],
   providers: [
     AuthenticationService,
     AuthGuardService,

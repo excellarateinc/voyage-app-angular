@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 export class AuthenticationService {
   private sessionStorageTokenKey = 'voyage.token';
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private router: Router) { }
 
   getToken(): string {
     // Attempt to retrieve the token from session storage.
@@ -36,6 +36,10 @@ export class AuthenticationService {
   logout(): void {
     sessionStorage.removeItem(this.sessionStorageTokenKey);
     window.location.href = '/';
+  }
+
+  goToVerification(): void {
+    this.router.navigate(['authentication/verification']);
   }
 
   private getTokenFromUrl(): string {

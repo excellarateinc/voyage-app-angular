@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const authRoutes: Routes = [
   { path: 'authentication/login', component: LoginComponent },
-  { path: 'authentication/register', component: RegisterComponent }
+  { path: 'authentication/register', component: RegisterComponent },
+  { path: 'authentication/verification', component: VerificationComponent }
 ];
 
 @NgModule({
