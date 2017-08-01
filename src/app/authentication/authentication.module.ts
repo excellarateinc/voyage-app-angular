@@ -11,6 +11,7 @@ import { AuthenticationService } from './authentication.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './register/register.service';
 import { VerificationComponent } from './verification/verification.component';
+import { VerificationService } from './verification/verification.service';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { VerificationComponent } from './verification/verification.component';
   providers: [
     AuthenticationService,
     AuthGuardService,
-    RegisterService
+    RegisterService,
+    VerificationService
   ]
 })
 export class AuthenticationModule { }
