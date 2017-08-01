@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
 import { Phone } from './phone.model';
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MdSnackBar) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -29,6 +31,9 @@ export class RegisterComponent implements OnInit {
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
       .subscribe(result => {
+        this.snackBar.open('Registration successful', null, {
+          duration: 2000,
+        });
         this.router.navigate(['/authentication/login']);
       }, errors => this.registrationErrors = errors);
   }

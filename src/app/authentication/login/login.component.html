@@ -2,7 +2,12 @@
   <span fxFlex></span>
   <md-card fxFlex="33" fxFlex.lg="45" fxFlex.md="66" fxFlex.sm="100" fxFlex.xs="100">
     <img src="./assets/images/voyage-logo-vert.svg" style="margin: 0 100px;">
-    <a (click)="goToOauthLogin()" md-raised-button>Log In</a>
+    <div fxLayout="row">
+      <span fxFlex></span>
+      <a fxFlex="45" (click)="goToOauthLogin()" color="primary" md-raised-button>Log In</a>
+      <a fxFlex="45" routerLink="/authentication/register" md-raised-button color="primary" style="margin-left:10px;">Register</a>
+      <span fxFlex></span>
+    </div>
   </md-card>
   <span fxFlex></span>
 </div>

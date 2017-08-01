@@ -23,16 +23,13 @@
         </md-input-container>
         <div formArrayName="phoneNumbers" fxFlex>
           <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-            <md-input-container fxFlex>
+            <md-input-container fxFlex="60">
               <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
               <md-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
-                Phone is required
-              </md-error>
-              <md-error *ngIf="phoneNumbers.controls[i].controls['phoneType'].hasError('required')">
-                Type is required
+                Phone and Type are required
               </md-error>
             </md-input-container>
-            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top:10px;">
+            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 16px;">
               <md-option value="Mobile">Mobile</md-option>
               <md-option value="Work">Work</md-option>
               <md-option value="Home">Home</md-option>
@@ -46,13 +43,13 @@
           </md-error>
         </md-input-container>
         <md-input-container fxFlex>
-          <input mdInput placeholder="Password" formControlName="password" required>
+          <input mdInput placeholder="Password" formControlName="password" type="password" required>
           <md-error *ngIf="registerForm.controls['password'].hasError('required')">
             Password is required
           </md-error>
         </md-input-container>
         <md-input-container fxFlex>
-          <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" required>
+          <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
           <md-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
             Confirm Password is required
           </md-error>
