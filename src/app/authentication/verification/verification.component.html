@@ -1,0 +1,41 @@
+<div fxLayout="row">
+  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="!codeSent">
+    <md-card-title>Two-Factor Authentication</md-card-title>
+    <md-card-content>
+      Your account requires verification. A message with a verification code will be sent to your phone.
+      Click the "Send Code" button to continue.
+    </md-card-content>
+    <md-card-actions>
+      <div fxLayout="row">
+        <button fxFlex.md="40" fxFlex.lg="30" fxFlex.xl="25" md-raised-button color="primary" (click)="sendCode()">
+          Send Code
+        </button>
+      </div>
+    </md-card-actions>
+  </md-card>
+
+  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="codeSent">
+    <md-card-title>Two-Factor Authentication</md-card-title>
+    <md-card-content>
+      A message with a verification code has been sent to your phone. Enter the code to continue.
+    </md-card-content>
+    <form [formGroup]="verificationForm" (ngSubmit)="verify()" novalidate>
+      <div fxLayout="column">
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Code" formControlName="code" required>
+          <md-error *ngIf="verificationForm.controls['code'].hasError('required')">
+            Code is required
+          </md-error>
+        </md-input-container>
+        <div fxLayout="row" style="margin-top:10px;">
+          <button fxFlex.md="40" fxFlex.lg="30" fxFlex.xl="25" md-raised-button color="primary" type="submit" [disabled]="verificationForm.invalid">
+            Verify
+          </button>
+        </div>
+        <div fxLayout="row" *ngIf="verificationFailed" style="color:lightcoral; margin-top:20px;">
+          Invalid code entered. Try again.
+        </div>
+      </div>
+    </form>
+  </md-card>
+</div>

@@ -7,16 +7,5 @@
   </span>
   <span class="fill-space"></span>
   <app-notifications-icon *ngIf="isAuthenticated"></app-notifications-icon>
-  <button *ngIf="isAuthenticated" md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
-  <md-menu #profileMenu="mdMenu">
-    <button md-menu-item routerLink="/examples/profile">
-      <span>Profile</span>
-    </button>
-    <button md-menu-item style="border-bottom: 1px solid #dedede;">
-      <span>Settings</span>
-    </button>
-    <button md-menu-item>
-      <span>Logout</span>
-    </button>
-  </md-menu>
+  <app-profile-icon *ngIf="isAuthenticated"></app-profile-icon>
 </md-toolbar>
