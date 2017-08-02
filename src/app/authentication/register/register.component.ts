@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       phoneNumbers: this.formBuilder.array([
         this.formBuilder.group({
           phoneNumber: ['', Validators.required],
-          phoneType: ['', Validators.required]
+          phoneType: [null, Validators.required]
         })
       ])
     });
