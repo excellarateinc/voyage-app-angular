@@ -62,11 +62,10 @@
             <br />
           </span>
         </div>
-        <div fxLayout="row" style="margin-top: 10px;">
-          <button fxFlex md-raised-button color="primary" type="submit">Register</button>
-        </div>
-        <div fxLayout="row" style="margin-top: 15px;">
-          <button routerLink="/authentication/login" color="accent" fxFlex md-raised-button type="submit">Cancel</button>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 10px;">
+          <button md-raised-button color="primary" type="submit">Register</button>
+          <span>&nbsp;</span>
+          <button routerLink="/authentication/login" color="accent" md-raised-button type="submit">Cancel</button>
         </div>
       </div>
     </form>

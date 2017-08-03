@@ -6,9 +6,9 @@
         <img src="./assets/images/voyage-logo-vert.svg">
       </div>
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
-        <a fxFlex (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
+        <a fxFlex.gt-sm (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
         <span>&nbsp;</span>
-        <a fxFlex routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
+        <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
       </div>
     </div>
   </md-card>
