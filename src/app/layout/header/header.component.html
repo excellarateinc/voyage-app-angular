@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
-  <span class="clickable" (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
-    <md-icon>menu</md-icon>
+  <span (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
+    <md-icon class="clickable menu-icon">menu</md-icon>
   </span>
   <span routerLink="/" class="clickable header-image">
     <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
