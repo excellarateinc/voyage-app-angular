@@ -10,7 +10,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 $voyage-app-primary: mat-palette($mat-blue);
-$voyage-app-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+$voyage-app-accent:  mat-palette($mat-grey, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $voyage-app-warn:    mat-palette($mat-red);
@@ -22,3 +22,79 @@ $voyage-app-theme: mat-light-theme($voyage-app-primary, $voyage-app-accent, $voy
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($voyage-app-theme);
+
+//
+// Define custom palettes for dark theme.
+//
+$voyage-mat-grey: (
+  50: #7a7a7a,
+  100: #7a7a7a,
+  200: #7a7a7a,
+  300: #7a7a7a,
+  400: #7a7a7a,
+  500: #7a7a7a,
+  600: #7a7a7a,
+  700: #7a7a7a,
+  800: #7a7a7a,
+  900: #7a7a7a,
+  A100: #7a7a7a,
+  A200: #4e4e4e,
+  A400: #262626,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$voyage-mat-orange: (
+  50: #ff8d54,
+  100: #ff8d54,
+  200: #ff8d54,
+  300: #ff8d54,
+  400: #ff8d54,
+  500: #ff8d54,
+  600: #ff8d54,
+  700: #ff8d54,
+  800: #ff8d54,
+  900: #ff8d54,
+  A100: #ff8d54,
+  A200: #f15b27,
+  A400: #b72600,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$voyage-app-primary: mat-palette($voyage-mat-grey, A200, A100, A400);
+$voyage-app-accent:  mat-palette($voyage-mat-orange, A200, A100, A400);
+$voyage-app-warn:    mat-palette($mat-red);
+$voyage-theme-dark: mat-light-theme($voyage-app-primary, $voyage-app-accent, $voyage-app-warn);
+
+.voyage-theme-dark {
+  @include angular-material-theme($voyage-theme-dark);
+}

@@ -26,8 +26,14 @@
             <input mdInput placeholder="Memo" formControlName="memo">
           </md-input-container>
         </div>
-        <div fxLayout="row">
-          <button fxFlex.md="40" fxFlex.lg="30" fxFlex.xl="25" md-raised-button color="primary">Transfer</button>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 10px;">
+          <button md-raised-button color="primary" type="submit">
+            Transfer
+          </button>
+          <span>&nbsp;</span>
+          <button routerLink="/examples/banking/dashboard" color="accent" md-raised-button>
+            Cancel
+          </button>
         </div>
       </div>
     </form>

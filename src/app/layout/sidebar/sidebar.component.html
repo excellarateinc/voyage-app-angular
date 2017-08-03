@@ -51,19 +51,21 @@
             Help & feedback
           </a>
         </li>
+         <li>
+          <md-slide-toggle class="nav-item-container" style="margin-left: 25px;" (click)="toggleTheme = !toggleTheme; $event.stopPropagation();">
+            Use Dark Theme
+          </md-slide-toggle>
+        </li>
       </ul>
     </nav>
   </md-sidenav>
 
   <div class="main-content">
-
     <router-outlet></router-outlet>
-
     <span class="done" *ngIf="isAuthenticated">
       <button md-fab>
         <md-icon>add</md-icon>
       </button>
     </span>
   </div>
-
 </md-sidenav-container>

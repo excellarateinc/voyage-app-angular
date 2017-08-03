@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { AccountsService } from '../accounts.service';
 import { Account } from '../account.model';
@@ -16,6 +17,7 @@ export class TransferComponent implements OnInit {
   constructor(
     private accountsService: AccountsService,
     private formBuilder: FormBuilder,
+    private router: Router,
     private snackBar: MdSnackBar) { }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class TransferComponent implements OnInit {
         this.snackBar.open('Transfer completed', null, {
           duration: 2000,
         });
+        this.router.navigate(['/examples/banking/dashboard']);
       }, (error) => {
         this.snackBar.open(error[0].errorDescription, null, {
           duration: 2000,

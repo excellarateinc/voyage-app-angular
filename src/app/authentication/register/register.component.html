@@ -30,7 +30,7 @@
                 Phone and Type are required
               </md-error>
             </md-input-container>
-            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 16px;">
+            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
               <md-option value="0">Mobile</md-option>
               <md-option value="1">Office</md-option>
               <md-option value="2">Home</md-option>
@@ -62,11 +62,11 @@
             <br />
           </span>
         </div>
-        <div fxLayout="row">
-          <button fxFlex md-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+        <div fxLayout="row" style="margin-top: 10px;">
+          <button fxFlex md-raised-button color="primary" type="submit">Register</button>
         </div>
-        <div fxLayout="row" style="margin-top: 20px;">
-          <button routerLink="/authentication/login" fxFlex md-raised-button type="submit">Cancel</button>
+        <div fxLayout="row" style="margin-top: 15px;">
+          <button routerLink="/authentication/login" color="accent" fxFlex md-raised-button type="submit">Cancel</button>
         </div>
       </div>
     </form>

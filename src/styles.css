@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
-@import '~/themes/voyage-theme.scss';
 
 html, body {
   margin: 0;
@@ -9,12 +8,23 @@ html, body {
   height: 100%;
 }
 
-md-card {
-  margin: 10px;
-}
-
 md-toolbar-row {
   justify-content: space-between;
+}
+
+md-card {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 960px) {
+  md-card {
+    margin: 10px;
+  }
+
+  .main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 /*
@@ -29,10 +39,6 @@ https://github.com/angular/material2/issues/998 */
   bottom: 20px;
   right: 20px;
   color: white;
-}
-
-.main-content {
-  padding: 10px;
 }
 
 .clickable {
