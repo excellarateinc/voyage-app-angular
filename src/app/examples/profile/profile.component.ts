@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { MdSnackBar } from '@angular/material';
-import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader, FileItem } from 'ng2-file-upload/ng2-file-upload';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
+import { BroadcastService } from '../../core/broadcast.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,16 +13,18 @@ import { User } from '../../core/user/user.model';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public uploader: FileUploader = new FileUploader({ url: `${environment.API_URL}/profile/image` });
+  public uploader: FileUploader = new FileUploader({});
   @ViewChild('uploaderInput') uploaderInput: any;
   profileForm: FormGroup;
   profileErrors: Array<any>;
   user: User;
+  profileImage: any;
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private snackbar: MdSnackBar) { }
+    private snackbar: MdSnackBar,
+    private broadcastService: BroadcastService) { }
 
   ngOnInit() {
     this.userService.getCurrentUser()
@@ -37,22 +40,38 @@ export class ProfileComponent implements OnInit {
     }
     this.profileErrors = [];
     const profile = this.profileForm.value;
+    if (this.profileImage != null) {
+      profile.image = this.profileImage;
+    }
     this.userService.updateProfile(profile)
       .subscribe(
         user => {
           this.user = user;
+          this.broadcastService.emitProfileUpdated();
           this.snackbar.open('Profile updated successfully', null, { duration: 5000 });
         },
         errors => this.profileErrors = errors);
   }
 
   initFileUpload(): void {
+    this.uploader.queue = [];
     this.uploaderInput.nativeElement.click();
+  }
+
+  onProfileImageChange(image: any): void {
+    this.profileImage = image;
   }
 
   get phones(): FormArray {
     return this.profileForm.get('phones') as FormArray;
   };
+
+  get uploadItem(): FileItem {
+    if (!this.uploader.queue.length) {
+      return null;
+    }
+    return this.uploader.queue[0];
+  }
 
   private initializeForm(user: User): void {
     this.profileForm = this.formBuilder.group({

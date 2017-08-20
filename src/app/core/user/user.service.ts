@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 import { environment } from '../../../environments/environment';
 import { User } from './user.model';
 import { UserStatus } from './user-status.model';
 
 @Injectable()
 export class UserService {
+  currentUser: User;
 
   constructor(private http: Http) { }
 
@@ -16,9 +18,16 @@ export class UserService {
       .catch(error => Observable.throw(error.json()));
   }
 
-  getCurrentUser(): Observable<User> {
+  getCurrentUser(force = false): Observable<User> {
+    if (this.currentUser != null && !force) {
+      return Observable.of(this.currentUser);
+    }
     return this.http.get(`${environment.API_URL}/users/me`)
-      .map(response => response.json())
+      .map(response => {
+        const currentUser = response.json();
+        this.currentUser = currentUser;
+        return currentUser;
+      })
       .catch(error => Observable.throw(error.json()));
   }
 

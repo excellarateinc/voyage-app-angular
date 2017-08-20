@@ -1,19 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthenticationService } from '../../../authentication/authentication.service';
+import { UserService } from '../../../core/user/user.service';
+import { User } from '../../../core/user/user.model';
+import { BroadcastService } from '../../../core/broadcast.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-profile-icon',
   templateUrl: './profile-icon.component.html',
   styleUrls: ['./profile-icon.component.scss']
 })
-export class ProfileIconComponent implements OnInit {
+export class ProfileIconComponent implements OnInit, OnDestroy {
+  currentUser: User;
+  private broadcastWatcher: Subscription;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(
+    private authService: AuthenticationService,
+    private userService: UserService,
+    private broadcastService: BroadcastService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getCurrentUser();
+    this.broadcastWatcher = this.broadcastService.profileUpdated$
+      .subscribe(() => {
+        this.getCurrentUser();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.broadcastWatcher.unsubscribe();
   }
 
   logout(): void {
     this.authService.logout();
+  }
+
+  private getCurrentUser(): void {
+    this.userService.getCurrentUser(true)
+      .subscribe(user => this.currentUser = user);
   }
 }

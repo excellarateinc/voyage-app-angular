@@ -3,7 +3,7 @@
     <md-card-title>Profile</md-card-title>
       <div fxLayout="row">
         <div fxLayout="column" fxFlex="20" fxShow fxHide.xs>
-          <div class="profile-image" (click)="initFileUpload()">
+          <div class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
             <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
             <span class="change-image">
               Change

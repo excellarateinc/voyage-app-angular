@@ -1,4 +1,4 @@
-  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon"></button>
+  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon" appProfileImage [image]="currentUser?.profileImage"></button>
   <md-menu #profileMenu="mdMenu" [overlapTrigger]="false">
     <button md-menu-item routerLink="/examples/profile">
       <span>Profile</span>

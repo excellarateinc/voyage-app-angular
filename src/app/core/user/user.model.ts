@@ -10,4 +10,5 @@ export class User {
   isVerifyRequired: boolean;
   roles: Array<string>;
   phones: Array<Phone>;
+  profileImage: string;
 }
