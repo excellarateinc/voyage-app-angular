@@ -20,11 +20,11 @@ export class ProfileIconComponent implements OnInit, OnDestroy {
     private broadcastService: BroadcastService) { }
 
   ngOnInit(): void {
-    this.getCurrentUser();
+    this.userService.getCurrentUser()
+      .subscribe(user => this.currentUser = user);
+
     this.broadcastWatcher = this.broadcastService.profileUpdated$
-      .subscribe(() => {
-        this.getCurrentUser();
-      });
+      .subscribe(user => this.currentUser = user);
   }
 
   ngOnDestroy(): void {
@@ -33,10 +33,5 @@ export class ProfileIconComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.authService.logout();
-  }
-
-  private getCurrentUser(): void {
-    this.userService.getCurrentUser(true)
-      .subscribe(user => this.currentUser = user);
   }
 }
