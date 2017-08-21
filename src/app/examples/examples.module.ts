@@ -29,6 +29,8 @@ import { AccountsService } from './banking/accounts.service';
     TransferComponent
   ],
   exports: [AccountsDashboardComponent],
-  providers: [ AccountsService ]
+  providers: [
+    AccountsService
+  ]
 })
 export class ExamplesModule { }

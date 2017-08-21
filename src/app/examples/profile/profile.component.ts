@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   profileErrors: Array<any>;
   user: User;
-  profileImage: any;
+  profileImage: string;
 
   constructor(
     private userService: UserService,
@@ -39,9 +39,9 @@ export class ProfileComponent implements OnInit {
       return;
     }
     this.profileErrors = [];
-    const profile = this.profileForm.value;
+    const profile = this.profileForm.value as User;
     if (this.profileImage != null) {
-      profile.image = this.profileImage;
+      profile.profileImage = this.profileImage;
     }
     this.userService.updateProfile(profile)
       .subscribe(

@@ -22,7 +22,7 @@ export class UserService {
     if (this.currentUser != null && !force) {
       return Observable.of(this.currentUser);
     }
-    return this.http.get(`${environment.API_URL}/users/me`)
+    return this.http.get(`${environment.API_URL}/profiles/me`)
       .map(response => {
         const currentUser = response.json();
         this.currentUser = currentUser;
@@ -37,10 +37,9 @@ export class UserService {
       .catch(error => Observable.throw(error.json()));
   }
 
-  updateProfile(profile: any): Observable<User> {
-    return this.http.put(`${environment.API_URL}/profile`, profile)
+  updateProfile(user: User): Observable<User> {
+    return this.http.put(`${environment.API_URL}/profiles/me`, user)
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
   }
-
 }

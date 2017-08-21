@@ -2,15 +2,12 @@
   <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>Profile</md-card-title>
       <div fxLayout="row">
-        <div fxLayout="column" fxFlex="20" fxShow fxHide.xs>
+        <div fxLayout="column" fxFlex="18" fxShow fxHide.xs>
           <div class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
             <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
             <span class="change-image">
               Change
             </span>
-          </div>
-          <div style="margin-left:15px">
-            <h3>{{user?.firstName}} {{user?.lastName}}</h3>
           </div>
         </div>
         <form *ngIf="profileForm" fxFlex fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
