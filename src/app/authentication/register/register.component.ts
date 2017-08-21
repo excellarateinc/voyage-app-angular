@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
-import { Phone } from './phone.model';
+import { Phone } from '../../core/user/phone.model';
 
 @Component({
   selector: 'app-register',

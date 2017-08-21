@@ -1,35 +1,64 @@
 <div fxLayout="row">
-  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>Profile</md-card-title>
-    <!-- <form> -->
+      <md-spinner *ngIf="loading"></md-spinner>
       <div fxLayout="row">
-        <div fxLayout="column" fxFlex="25">
-          <img src="../assets/images/profile-resize.jpg" alt="profile" style="max-width: 100px; width: 100%; height: auto; border-radius: 50% !important;" />
-          <div><h3>Rob Louie</h3></div>
-          <div>Platinum HSA</div>
-          <div>Gold FSA</div>
-        </div>
-        <div fxLayout="column" fxFlex>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Email">
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Cell Phone">
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="City">
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="State">
-          </md-input-container>
-          <div fxLayout="row">
-            <span fxFlex></span>
-            <button fxFlex.xs="50" fxFlex.lg="40" md-button>Reset Password</button>
-            <button fxFlex.xs="50" fxFlex.lg="40" md-raised-button color="primary" style="margin-left: 15px;">Save Changes</button>
+        <div fxLayout="column" fxFlex="18" fxShow fxHide.xs>
+          <div *ngIf="user != null" class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
+            <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
+            <span class="change-image">
+              Change
+            </span>
           </div>
         </div>
-      </div>
-
-    <!-- </form> -->
+        <form *ngIf="profileForm" fxFlex fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
+          <md-input-container>
+            <input mdInput placeholder="Email" formControlName="email" required>
+            <md-error *ngIf="profileForm.controls['email'].hasError('required')">
+              Email is required
+            </md-error>
+          </md-input-container>
+          <md-input-container style="margin-top:10px;">
+            <input mdInput placeholder="First Name" formControlName="firstName" required>
+            <md-error *ngIf="profileForm.controls['firstName'].hasError('required')">
+              First Name is required
+            </md-error>
+          </md-input-container>
+          <md-input-container style="margin-top:10px;">
+            <input mdInput placeholder="Last Name" formControlName="lastName" required>
+            <md-error *ngIf="profileForm.controls['lastName'].hasError('required')">
+              Last Name is required
+            </md-error>
+          </md-input-container>
+          <div formArrayName="phones" style="margin-top:10px;">
+            <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
+              <md-input-container fxFlex="60">
+                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+                <md-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
+                  Phone and Type are required
+                </md-error>
+              </md-input-container>
+              <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
+                <md-option value="Mobile">Mobile</md-option>
+                <md-option value="Office">Office</md-option>
+                <md-option value="Home">Home</md-option>
+                <md-option value="Other">Other</md-option>
+              </md-select>
+            </div>
+          </div>
+          <div *ngIf="profileErrors?.length > 0">
+            <span *ngFor="let error of profileErrors" style="color:lightcoral">
+              {{error.errorDescription}}
+              <br />
+            </span>
+          </div>
+          <div fxLayout="row" style="margin-top:30px;">
+            <span fxFlex></span>
+            <button fxFlex="50" fxFlex.xs="100" fxFlex.lg="40" fxFlex.xl="40" md-raised-button color="primary">
+              Save Changes
+            </button>
+          </div>
+      </form>
+    </div>
   </md-card>
 </div>

@@ -1,4 +1,4 @@
-import { Phone } from './phone.model';
+import { Phone } from '../../core/user/phone.model';
 
 export class Register {
   email: string;
