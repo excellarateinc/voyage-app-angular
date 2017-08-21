@@ -1,9 +1,10 @@
 <div fxLayout="row">
   <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>Profile</md-card-title>
+      <md-spinner *ngIf="loading"></md-spinner>
       <div fxLayout="row">
         <div fxLayout="column" fxFlex="18" fxShow fxHide.xs>
-          <div class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
+          <div *ngIf="user != null" class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
             <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
             <span class="change-image">
               Change

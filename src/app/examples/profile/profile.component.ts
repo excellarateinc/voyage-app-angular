@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   profileErrors: Array<any>;
   user: User;
   profileImage: string;
+  loading = false;
 
   constructor(
     private userService: UserService,
@@ -27,10 +28,12 @@ export class ProfileComponent implements OnInit {
     private broadcastService: BroadcastService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.getCurrentUser()
       .subscribe(user => {
         this.user = user;
         this.initializeForm(user);
+        this.loading = false;
       });
   }
 
