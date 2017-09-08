@@ -14,6 +14,7 @@ import {
 
 // Import our Angular Material theme to avoid Material warnings during Karma test runs.
 import './themes/voyage-theme.scss';
+import 'rxjs/add/operator/catch';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare var __karma__: any;
