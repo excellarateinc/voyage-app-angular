@@ -1,28 +1,117 @@
-# VoyageAppAngular
+![Voyage Logo](https://github.com/lssinc/voyage-app-angular1/blob/master/readme_docs/voyage-logo-horiz-color.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+## Overview
+A Google Angular app that implements the fundamental features found in most business applications.
 
-## Development server
+__Intended Audiences:__
+* Businesses that wish to get their app out to market faster by "buying off the shelf" and extending
+* Businesses that want to avoid the high risk of failure when rewriting or building a new app
+* Development teams that want to leap forward in their technology stacks by leveraging an existing platform they can extend
+* Development teams that want to follow and adopt a standard of development and best practices
+* Developers that wish to learn new technology by reading good documentation and extending code that tightly follows the reference documentation. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+__Development Core Tenants__
+* Keep it simple
+* Build for the "now". Don't build features for a future that is unclear
+* Follow defacto standards & best practices of the tech stacks chosen
+* Memorialize team decisions in Markdown (.md) files and store in the repo for future developers (ie this doc)
 
-## Code scaffolding
+__App Features__
+* User Login w/ Password Recovery
+* User Account Management
+* User Admin Console
+* User Settings
+* Alerts & Notifications
+* Responsive UI for Desktop, Tablet, Mobile
+* Integrates with the Voyage API for all data
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+__Technology Stack__
+* Angular 4.x
+* Angular Material 4.x
+* Angular Flex Layout
+* TypeScript
+* SASS 
+* Angular CLI
+* TSLint enforcement of TypeScript best practices
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+> NOTE: If you are extending this codebase to build a new app, then replace this section with a detailed overview of the new app. Include as much or as little detail as necessary to convey to the developers what this project is about. Often times less is more. 
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Quick start
 
-## Running end-to-end tests
+> Clone/Download the repo from git
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+```bash
+# clone repo
+$ git clone https://github.com/lssinc/voyage-app-angular.git voyage-angular
 
-## Further help
+# change directory to your app
+$ cd voyage-angular
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# install development dependencies with npm
+$ npm install
+
+# install angular cli globally.
+$ npm install -g @angular/cli
+
+# start the server
+$ ng serve
+```
+
+The app will open in your browser.
+
+# Table of Contents
+
+* [Getting Started](#getting-started)
+    * [Dependencies](#dependencies)
+    * [Installing](#installing)
+    * [Generate constants](#generate-constants)
+    * [Running the app](#running-the-app)
+    * [Developing](#developing)
+    * [Testing](#testing)
+* [Developer Recipes](./readme_docs/RECIPES.md)
+* [TypeScript Best Practices](./readme_docs/JAVASCRIPT.md)
+* [Angular Best Practices](./readme_docs/ANGULAR.md)
+
+# Getting Started
+
+## Dependencies
+
+What you need to run this app:
+* `node`, `npm` and `angular cli`
+* Ensure you're running Node (`v6.11.x`+) and NPM (`3.10.x`+)
+
+## Installing
+
+* `clone` this repo
+* `npm install` to install npm dependencies
+
+## Generate constants
+
+Voyage relies on certain constants that may change based on project or environment, things like the api url or the client id for oauth.  These constants are configured in environment/environment.ts and declared in angular-cli.json.
+
+To generate the actual Angular constants from this config, run `ng build --environment={environment}`.  You're now ready to run the app.
+
+
+## Running the app
+
+After you have installed all dependencies you can now run the app with:
+```bash
+ng serve
+```
+
+It will start a local server which will watch and reload for you. The port will be displayed to you as `http://localhost:3000`.
+
+## Developing
+
+### Build files
+
+* single run: `ng build`
+* build and serve files: `ng serve`
+
+## Testing
+
+#### 1. Unit Tests
+
+* single run: `ng test`
