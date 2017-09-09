@@ -27,7 +27,7 @@ __App Features__
 
 __Technology Stack__
 * Angular 4.x
-* Angular Material 4.x
+* Angular Material
 * Angular Flex Layout
 * TypeScript
 * SASS 
