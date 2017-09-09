@@ -87,13 +87,6 @@ What you need to run this app:
 * `clone` this repo
 * `npm install` to install npm dependencies
 
-## Generate constants
-
-Voyage relies on certain constants that may change based on project or environment, things like the api url or the client id for oauth.  These constants are configured in environment/environment.ts and declared in angular-cli.json.
-
-To generate the actual Angular constants from this config, run `ng build --environment={environment}`.  You're now ready to run the app.
-
-
 ## Running the app
 
 After you have installed all dependencies you can now run the app with:
