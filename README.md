@@ -66,13 +66,10 @@ The app will open in your browser.
 * [Getting Started](#getting-started)
     * [Dependencies](#dependencies)
     * [Installing](#installing)
-    * [Generate constants](#generate-constants)
     * [Running the app](#running-the-app)
     * [Developing](#developing)
     * [Testing](#testing)
-* [Developer Recipes](./readme_docs/RECIPES.md)
-* [TypeScript Best Practices](./readme_docs/JAVASCRIPT.md)
-* [Angular Best Practices](./readme_docs/ANGULAR.md)
+* [Angular Best Practices](https://angular.io/guide/styleguide)
 
 # Getting Started
 
