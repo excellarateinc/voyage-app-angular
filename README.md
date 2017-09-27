@@ -44,7 +44,7 @@ __Technology Stack__
 
 ```bash
 # clone repo
-$ git clone https://github.com/lssinc/voyage-app-angular.git voyage-angular
+$ git clone https://github.com/lssinc/voyage-app-angular.git
 
 # change directory to your app
 $ cd voyage-app-angular
