@@ -47,7 +47,7 @@ __Technology Stack__
 $ git clone https://github.com/lssinc/voyage-app-angular.git voyage-angular
 
 # change directory to your app
-$ cd voyage-angular
+$ cd voyage-app-angular
 
 # install development dependencies with npm
 $ npm install
