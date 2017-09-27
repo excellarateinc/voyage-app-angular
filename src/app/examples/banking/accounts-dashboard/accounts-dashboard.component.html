@@ -1,44 +1,103 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
-  <md-card fxFlex>
-    <md-card-title>Balance History</md-card-title>
-    <md-spinner *ngIf="working"></md-spinner>
-    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
-      <div fxFlex="50">
-        <canvas baseChart *ngIf="lineChart.data.length > 0"
-          [datasets]="lineChart.data"
-          [labels]="lineChart.labels"
-          [options]="lineChart.options"
-          [colors]="lineChart.colors"
-          [legend]="lineChart.legend"
-          [chartType]="lineChart.type"></canvas>
+<div fxLayout="row" fxLayout.lt-lg="column">
+  <md-card fxFlex.gt-md="50">
+    <div fxLayout="row">
+      <h4 class="card-title">Cash Accounts</h4>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+        <div fxLayout="column">
+          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-account">#{{account.accountNumber}}</span>
+        </div>
+        <span fxFlex></span>
+        <span style="margin-right: 10px;" fxHide.xs>
+          <div *ngIf="lineChart.data.length > 0">
+            <canvas baseChart
+              [datasets]="lineChart.data"
+              [labels]="lineChart.labels"
+              [options]="lineChart.options"
+              [colors]="lineChart.colors"
+              [legend]="lineChart.legend"
+              [chartType]="lineChart.type" style="width:150px; height:50px;"></canvas>
+          </div>
+        </span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-account">Available balance</span>
+        </div>
       </div>
-      <div fxFlex="24" *ngFor="let chart of doughnutCharts.charts">
-        {{chart.title}} Breakdown
-        <canvas baseChart
-          [data]="chart.data"
-          [labels]="doughnutCharts.labels"
-          [chartType]="doughnutCharts.type"
-          [options]="doughnutCharts.options"
-          [colors]="doughnutCharts.colors"></canvas>
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
+        <span fxFlex></span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">
+            <strong>{{totalBalance | currency:'USD':true}}</strong>
+          </span>
+          <span class="activity-account">Total available balance</span>
+        </div>
+      </div>
+    </div>
+  </md-card>
+
+  <md-card fxFlex.gt-md="50">
+    <div fxLayout="row">
+      <h4 class="card-title">Credit</h4>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+        <div fxLayout="column">
+          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-account">#{{account.accountNumber}}</span>
+        </div>
+        <span fxFlex></span>
+        <span style="margin-right: 10px;" fxHide.xs>
+          <div *ngIf="lineChart2.data.length > 0">
+            <canvas baseChart
+              [datasets]="lineChart2.data"
+              [labels]="lineChart2.labels"
+              [options]="lineChart2.options"
+              [colors]="lineChart2.colors"
+              [legend]="lineChart2.legend"
+              [chartType]="lineChart2.type" style="width:150px; height:50px;"></canvas>
+          </div>
+        </span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-account">Available balance</span>
+        </div>
+      </div>
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
+        <span fxFlex></span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">
+            <strong>{{totalBalance | currency:'USD':true}}</strong>
+          </span>
+          <span class="activity-account">Total available balance</span>
+        </div>
       </div>
     </div>
   </md-card>
 </div>
 
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
-  <md-card fxFlex *ngFor="let history of transactionHistory">
-    <md-card-title>{{history.accountName}} Activity</md-card-title>
-    <div fxLayout="row" class="voyage-table-header">
-      <div fxFlex>Date</div>
-      <div fxFlex="35" fxHide.xs>Description</div>
-      <div fxFlex>Amount</div>
-      <div fxFlex>Balance</div>
+<div fxLayout="row">
+  <md-card fxFlex>
+    <div fxLayout="row">
+      <h4 class="card-title">Recent Activity</h4>
     </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of history.transactions; let i = index;">
-      <div fxFlex>{{transaction.date | date}}</div>
-      <div fxFlex="35" fxHide.xs>{{transaction.description}}</div>
-      <div fxFlex>{{transaction.type == 0 ? '-' : '+'}}{{transaction.amount | currency:'USD':true}}</div>
-      <div fxFlex>{{transaction.balance | currency:'USD':true}}</div>
+    <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of transactions;">
+      <div fxLayout="column" class="date-stamp">
+        <span class="month">{{transaction.date | date:'MMM'}}</span>
+        <span class="day">{{transaction.date | date:'d'}}</span>
+      </div>
+      <div fxLayout="column" style="margin-left:10px;">
+        <span class="activity-description">{{transaction.description}}</span>
+        <span class="activity-account">{{transaction.accountName}}</span>
+      </div>
+      <span fxFlex></span>
+      <div style="margin-right:10px;">
+        <span class="activity-amount" [ngClass]="{'withdrawal-action': transaction.type == 0}">
+          {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':true}}
+        </span>
+      </div>
     </div>
   </md-card>
 </div>

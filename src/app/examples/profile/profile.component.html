@@ -1,64 +1,64 @@
 <div fxLayout="row">
-  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <md-card fxFlex.xl="60" fxFlex.lg="70" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" class="overflow-wrapper">
     <md-card-title>Profile</md-card-title>
       <md-spinner *ngIf="loading"></md-spinner>
-      <div fxLayout="row">
-        <div fxLayout="column" fxFlex="18" fxShow fxHide.xs>
-          <div *ngIf="user != null" class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
-            <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
-            <span class="change-image">
-              Change
-            </span>
-          </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div style="margin-bottom:10px; margin-right:20px;" [hidden]="user == null">
+          <app-profile-image [currentImage]="user?.profileImage" (imageChanged)="onProfileImageChanged($event)"></app-profile-image>
         </div>
-        <form *ngIf="profileForm" fxFlex fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
-          <md-input-container>
-            <input mdInput placeholder="Email" formControlName="email" required>
-            <md-error *ngIf="profileForm.controls['email'].hasError('required')">
-              Email is required
-            </md-error>
-          </md-input-container>
-          <md-input-container style="margin-top:10px;">
-            <input mdInput placeholder="First Name" formControlName="firstName" required>
-            <md-error *ngIf="profileForm.controls['firstName'].hasError('required')">
-              First Name is required
-            </md-error>
-          </md-input-container>
-          <md-input-container style="margin-top:10px;">
-            <input mdInput placeholder="Last Name" formControlName="lastName" required>
-            <md-error *ngIf="profileForm.controls['lastName'].hasError('required')">
-              Last Name is required
-            </md-error>
-          </md-input-container>
-          <div formArrayName="phones" style="margin-top:10px;">
-            <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
-              <md-input-container fxFlex="60">
-                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
-                <md-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
-                  Phone and Type are required
-                </md-error>
-              </md-input-container>
-              <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
-                <md-option value="Mobile">Mobile</md-option>
-                <md-option value="Office">Office</md-option>
-                <md-option value="Home">Home</md-option>
-                <md-option value="Other">Other</md-option>
-              </md-select>
+        <div fxFlex.gt-sm>
+          <form *ngIf="profileForm" fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
+            <md-input-container>
+              <input mdInput placeholder="Email" formControlName="email" required>
+              <md-error *ngIf="profileForm.controls['email'].hasError('required')">
+                Email is required
+              </md-error>
+            </md-input-container>
+            <md-input-container style="margin-top:10px;">
+              <input mdInput placeholder="First Name" formControlName="firstName" required>
+              <md-error *ngIf="profileForm.controls['firstName'].hasError('required')">
+                First Name is required
+              </md-error>
+            </md-input-container>
+            <md-input-container style="margin-top:10px;">
+              <input mdInput placeholder="Last Name" formControlName="lastName" required>
+              <md-error *ngIf="profileForm.controls['lastName'].hasError('required')">
+                Last Name is required
+              </md-error>
+            </md-input-container>
+            <div formArrayName="phones" style="margin-top:10px;">
+              <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
+                <md-input-container fxFlex="60">
+                  <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+                  <md-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
+                    Phone and Type are required
+                  </md-error>
+                </md-input-container>
+                <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
+                  <md-option value="Mobile">Mobile</md-option>
+                  <md-option value="Office">Office</md-option>
+                  <md-option value="Home">Home</md-option>
+                  <md-option value="Other">Other</md-option>
+                </md-select>
+              </div>
             </div>
-          </div>
-          <div *ngIf="profileErrors?.length > 0">
-            <span *ngFor="let error of profileErrors" style="color:lightcoral">
-              {{error.errorDescription}}
-              <br />
-            </span>
-          </div>
-          <div fxLayout="row" style="margin-top:30px;">
-            <span fxFlex></span>
-            <button fxFlex="50" fxFlex.xs="100" fxFlex.lg="40" fxFlex.xl="40" md-raised-button color="primary">
-              Save Changes
-            </button>
-          </div>
-      </form>
+            <div *ngIf="profileErrors?.length > 0">
+              <span *ngFor="let error of profileErrors" style="color:#f44336">
+                {{error.errorDescription}}
+                <br />
+              </span>
+            </div>
+            <div fxLayout="column" style="margin-top:30px;">
+              <button type="submit" md-raised-button color="primary">
+                Save Changes
+              </button>
+              <span>&nbsp;</span>
+              <button type="button" routerLink="/examples/banking/dashboard" color="accent" md-raised-button>
+                Cancel
+              </button>
+            </div>
+        </form>
+      </div>
     </div>
   </md-card>
 </div>

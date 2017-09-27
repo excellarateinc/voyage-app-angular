@@ -8,4 +8,5 @@ export class Transaction {
   description: string;
   amount: number;
   balance: number;
+  accountName: string;
 }

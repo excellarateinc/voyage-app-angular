@@ -1,36 +1,115 @@
-<div fxLayout="row">
-  <span fxFlex></span>
-  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
-    <div>Sign Up</div>
+<!-- Tablet / Desktop -->
+<div class="masthead" fxShow fxHide.xs fxHide.sm>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <md-card fxFlex.md="80" fxFlex.lg="60" fxFlex.xl="50" style="margin-top:100px;">
+      <div>Create Account</div>
+      <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+        <div fxLayout="column">
+          <md-input-container>
+            <input mdInput placeholder="Email" formControlName="email" required>
+            <md-error *ngIf="registerForm.controls['email'].hasError('required')">
+              Email is required
+            </md-error>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="First Name" formControlName="firstName" required>
+            <md-error *ngIf="registerForm.controls['firstName'].hasError('required')">
+              First Name is required
+            </md-error>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Last Name" formControlName="lastName" required>
+            <md-error *ngIf="registerForm.controls['lastName'].hasError('required')">
+              Last Name is required
+            </md-error>
+          </md-input-container>
+          <div formArrayName="phoneNumbers">
+            <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
+              <md-input-container fxFlex="60">
+                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+                <md-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
+                  Phone and Type are required
+                </md-error>
+              </md-input-container>
+              <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
+                <md-option value="0">Mobile</md-option>
+                <md-option value="1">Office</md-option>
+                <md-option value="2">Home</md-option>
+                <md-option value="3">Other</md-option>
+              </md-select>
+            </div>
+          </div>
+          <md-input-container>
+            <input mdInput placeholder="Username" formControlName="username" required>
+            <md-error *ngIf="registerForm.controls['username'].hasError('required')">
+              Username is required
+            </md-error>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Password" formControlName="password" type="password" required>
+            <md-error *ngIf="registerForm.controls['password'].hasError('required')">
+              Password is required
+            </md-error>
+          </md-input-container>
+          <md-input-container>
+            <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+            <md-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
+              Confirm Password is required
+            </md-error>
+          </md-input-container>
+          <div *ngIf="registrationErrors?.length > 0">
+            <span *ngFor="let error of registrationErrors" style="color:#f44336">
+              {{error.errorDescription}}
+              <br />
+            </span>
+          </div>
+          <div fxLayout="column" style="margin-top: 20px;">
+            <button md-raised-button color="primary" type="submit">Register</button>
+            <span>&nbsp;</span>
+            <button type="button" routerLink="/authentication/login" color="accent" md-raised-button>Cancel</button>
+          </div>
+        </div>
+      </form>
+    </md-card>
+    <span fxFlex></span>
+  </div>
+</div>
+
+<!-- Mobile -->
+<div class="masthead-mobile" fxHide fxShow.xs fxShow.sm>
+  <div fxLayout="column" style="margin-left:10px; margin-right:10px;">
+    <span>&nbsp;</span>
+    <div style="color:white">Create Account</div>
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
       <div fxLayout="column">
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Email" formControlName="email" required>
           <md-error *ngIf="registerForm.controls['email'].hasError('required')">
             Email is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="First Name" formControlName="firstName" required>
           <md-error *ngIf="registerForm.controls['firstName'].hasError('required')">
             First Name is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Last Name" formControlName="lastName" required>
           <md-error *ngIf="registerForm.controls['lastName'].hasError('required')">
             Last Name is required
           </md-error>
         </md-input-container>
-        <div formArrayName="phoneNumbers" fxFlex>
+        <div formArrayName="phoneNumbers">
           <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-            <md-input-container fxFlex="60">
+            <md-input-container fxFlex="60" class="light-input">
               <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
               <md-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
                 Phone and Type are required
               </md-error>
             </md-input-container>
-            <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
+            <md-select placeholder="Type" fxFlex formControlName="phoneType" required style="margin-top: 14px;" class="light-input">
               <md-option value="0">Mobile</md-option>
               <md-option value="1">Office</md-option>
               <md-option value="2">Home</md-option>
@@ -38,37 +117,40 @@
             </md-select>
           </div>
         </div>
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Username" formControlName="username" required>
           <md-error *ngIf="registerForm.controls['username'].hasError('required')">
             Username is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Password" formControlName="password" type="password" required>
           <md-error *ngIf="registerForm.controls['password'].hasError('required')">
             Password is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
           <md-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
             Confirm Password is required
           </md-error>
         </md-input-container>
         <div *ngIf="registrationErrors?.length > 0">
-          <span *ngFor="let error of registrationErrors" style="color:lightcoral">
+          <span *ngFor="let error of registrationErrors" style="color:white">
             {{error.errorDescription}}
             <br />
           </span>
         </div>
-        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 10px;">
+        <span>&nbsp;</span>
+        <div fxLayout="column" style="margin-top: 20px;">
           <button md-raised-button color="primary" type="submit">Register</button>
           <span>&nbsp;</span>
-          <button routerLink="/authentication/login" color="accent" md-raised-button type="submit">Cancel</button>
+          <button type="button" routerLink="/authentication/login" md-raised-button style="background-color:#ffa500; color:white;">
+            Cancel
+          </button>
         </div>
       </div>
     </form>
-  </md-card>
-  <span fxFlex></span>
+    <span>&nbsp;</span>
+  </div>
 </div>

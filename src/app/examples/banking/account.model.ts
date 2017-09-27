@@ -6,4 +6,5 @@ export class Account {
   name: string;
   type: AccountType;
   balance: number;
+  mine: boolean;
 }

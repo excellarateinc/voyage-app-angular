@@ -16,9 +16,20 @@ md-card {
   margin-bottom: 10px;
 }
 
+.card-title {
+  color: #3a405b;
+  font-size: 1.125rem !important;
+  font-weight: 500 !important;
+}
+
+.card-divider {
+  margin-left: -1.5rem !important;
+  margin-right: -1.5rem !important;
+}
+
 @media only screen and (min-width: 960px) {
   md-card {
-    margin: 10px;
+    margin: 5px;
   }
 
   .main-content {
@@ -43,22 +54,6 @@ https://github.com/angular/material2/issues/998 */
 
 .clickable {
   cursor: pointer;
-}
-
-.voyage-table-header {
-  font-weight:bold;
-  border-bottom: 1px solid #dddddd;
-  padding-bottom: 5px;
-}
-
-.voyage-table-row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #dddddd;
-}
-
-.dark-row {
-  background-color: #f6f6f6;
 }
 
 .badge {
@@ -86,3 +81,80 @@ https://github.com/angular/material2/issues/998 */
   flex: 1 1 auto;
 }
 
+.full-height {
+  height: 100% !important;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}
+
+.divider {
+  display: block;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+  width: 100%
+}
+
+.masthead {
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg);
+  background-position: center top;
+  background-size: cover;
+  margin-left:-10px;
+  margin-right:-10px;
+  min-height: 100%;
+}
+
+.masthead-mobile {
+  text-align: center;
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100% !important;
+  margin: 0 !important;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg) top left no-repeat;
+  background-size: cover;
+  overflow-y: auto;
+}
+
+/* Override material colors for login/registration */
+.light-input .mat-input-placeholder {
+  color:white !important;
+}
+
+.light-input .mat-input-underline {
+  background-color: white !important;
+}
+
+.light-input .mat-input-ripple {
+  background-color: white !important;
+}
+
+.light-input .mat-input-error {
+  color: white !important;
+}
+
+.light-input .mat-placeholder-required {
+  color: white !important;
+}
+
+.light-input .mat-input-element {
+  color: white !important;
+}
+
+.light-input .mat-select-trigger {
+  color: white !important;
+}
+
+.light-input .mat-select-arrow {
+  color: white !important;
+}
+
+.light-input .mat-select-underline {
+  background: white !important;
+}
+
+.light-input .mat-select-value-text {
+  color: white !important;
+}

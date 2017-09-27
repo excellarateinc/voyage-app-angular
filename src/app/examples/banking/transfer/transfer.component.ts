@@ -8,7 +8,8 @@ import { Transfer } from './transfer.model';
 
 @Component({
   selector: 'app-transfer',
-  templateUrl: './transfer.component.html'
+  templateUrl: './transfer.component.html',
+  styleUrls: ['./transfer.component.scss']
 })
 export class TransferComponent implements OnInit {
   accounts: Array<Account>;
@@ -21,7 +22,7 @@ export class TransferComponent implements OnInit {
     private snackBar: MdSnackBar) { }
 
   ngOnInit() {
-    this.accountsService.getAccounts()
+    this.accountsService.getAllAccounts()
       .subscribe(result => this.accounts = result);
 
     this.initializeForm();
@@ -35,15 +36,18 @@ export class TransferComponent implements OnInit {
     const transfer = this.transferForm.value as Transfer;
     this.accountsService.transfer(transfer)
       .subscribe(result => {
-        this.snackBar.open('Transfer completed', null, {
-          duration: 2000,
-        });
+        this.snackBar.open('Transfer completed successfully', null, { duration: 5000 });
         this.router.navigate(['/examples/banking/dashboard']);
-      }, (error) => {
-        this.snackBar.open(error[0].errorDescription, null, {
-          duration: 2000,
-        });
+      }, error => {
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
       });
+  }
+
+  get myAccounts(): Array<Account> {
+    if (this.accounts == null) {
+      return null;
+    }
+    return this.accounts.filter(account => account.mine);
   }
 
   private initializeForm(): void {

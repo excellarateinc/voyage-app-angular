@@ -1,71 +1,60 @@
-<md-sidenav-container class="sidenav-height">
+<md-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
   <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav (click)="close()">
       <ul>
         <li>
-          <a class="nav-item-container" routerLink="/examples/banking/dashboard" routerLinkActive="active">
+          <a class="nav-item-container" routerLink="/dashboard" routerLinkActive="active">
             <i class="material-icons">show_chart</i>
-            Balances
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a class="nav-item-container" routerLink="/examples/banking/create-account" routerLinkActive="active">
+            <i class="material-icons">create</i>
+            Create Account
           </a>
         </li>
         <li>
           <a class="nav-item-container" routerLink="/examples/banking/transfer" routerLinkActive="active">
             <i class="material-icons">attach_money</i>
-            Transfer
+            Transfer & Pay
           </a>
         </li>
         <li>
-          <a class="nav-item-container" routerLinkActive="active">
-            <i class="material-icons">notifications</i>
-            Notifications
-          </a>
-        </li>
-        <li>
-          <a class="nav-item-container" routerLinkActive="active">
+          <a class="nav-item-container" routerLink="/chat" routerLinkActive="active">
             <i class="material-icons">chat</i>
-            Chat <span style="margin-left: 90px;" class="badge">3</span>
+            Chat
           </a>
         </li>
-        <li>
-          <a class="nav-item-container" routerLinkActive="active">
+        <li *ngIf="isAdmin">
+          <a class="nav-item-container" routerLink="/admin/users" routerLinkActive="active">
             <i class="material-icons">supervisor_account</i>
             User Admin
-          </a>
-        </li>
-        <li>
-          <a class="nav-item-container" routerLinkActive="active">
-            <i class="material-icons">assignment_ind</i>
-            Role Admin
           </a>
         </li>
         <div class="nav-section-divider"></div>
         <li>
           <a class="nav-item-container" routerLinkActive="active">
-            <i class="material-icons">settings</i>
-            Settings
+            <i class="material-icons">help</i>
+            Help & Feedback
           </a>
         </li>
         <li>
-          <a class="nav-item-container" routerLinkActive="active">
-            <i class="material-icons">help</i>
-            Help & feedback
+          <a class="nav-item-container" routerLinkActive="active" (click)="toggleTheme = !toggleTheme; $event.stopPropagation();">
+            <i class="material-icons md-light">lightbulb_outline</i>
+            {{toggleTheme ? 'Go Light' : 'Go Dark'}}
           </a>
         </li>
-         <li>
-          <md-slide-toggle class="nav-item-container" style="margin-left: 25px;" (click)="toggleTheme = !toggleTheme; $event.stopPropagation();">
-            Use Dark Theme
-          </md-slide-toggle>
-        </li>
+        <div class="nav-section-divider"></div>
       </ul>
     </nav>
+    <div>
+      <img src="./favicon.ico" width="20px" style="padding-left:30px; position: absolute; margin: auto;" />
+      <span style="margin-left:55px;">Powered by Voyage</span>
+    </div>
   </md-sidenav>
 
-  <div class="main-content">
+  <div class="main-content full-height">
     <router-outlet></router-outlet>
-    <span class="done" *ngIf="isAuthenticated">
-      <button md-fab>
-        <md-icon>add</md-icon>
-      </button>
-    </span>
   </div>
 </md-sidenav-container>

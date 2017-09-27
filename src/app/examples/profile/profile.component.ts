@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { MdSnackBar } from '@angular/material';
-import { FileUploader, FileItem } from 'ng2-file-upload/ng2-file-upload';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
@@ -13,8 +12,6 @@ import { BroadcastService } from '../../core/broadcast.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public uploader: FileUploader = new FileUploader({});
-  @ViewChild('uploaderInput') uploaderInput: any;
   profileForm: FormGroup;
   profileErrors: Array<any>;
   user: User;
@@ -29,7 +26,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getCurrentUser()
+    this.userService.getCurrentUser(true)
       .subscribe(user => {
         this.user = user;
         this.initializeForm(user);
@@ -56,25 +53,13 @@ export class ProfileComponent implements OnInit {
         errors => this.profileErrors = errors);
   }
 
-  initFileUpload(): void {
-    this.uploader.queue = [];
-    this.uploaderInput.nativeElement.click();
-  }
-
-  onProfileImageChange(image: any): void {
+  onProfileImageChanged(image: any): void {
     this.profileImage = image;
   }
 
   get phones(): FormArray {
     return this.profileForm.get('phones') as FormArray;
   };
-
-  get uploadItem(): FileItem {
-    if (!this.uploader.queue.length) {
-      return null;
-    }
-    return this.uploader.queue[0];
-  }
 
   private initializeForm(user: User): void {
     this.profileForm = this.formBuilder.group({

@@ -1,11 +1,13 @@
-<md-toolbar color="primary">
-  <span (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
+<md-toolbar color="primary" *ngIf="isAuthenticated">
+  <button class="mat-button menu-button" (click)="toggleSidebar()" *ngIf="isMobile">
     <md-icon class="clickable menu-icon">menu</md-icon>
-  </span>
-  <span routerLink="/" class="clickable header-image">
-    <img src="./assets/images/voyage-logo-horiz.svg" width="120px;" alt="voyage logo" />
+  </button>
+  <span routerLink="/" class="clickable">
+    <span class="nav-item-container" style="color:white;">
+      Voyage Bank
+    </span>
   </span>
   <span class="fill-space"></span>
-  <app-notifications-icon *ngIf="isAuthenticated"></app-notifications-icon>
-  <app-profile-icon *ngIf="isAuthenticated"></app-profile-icon>
+  <app-notifications-icon></app-notifications-icon>
+  <app-profile-icon></app-profile-icon>
 </md-toolbar>

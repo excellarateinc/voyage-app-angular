@@ -52,7 +52,7 @@ export class SecureHttpClient extends Http {
     return options;
   }
 
-  private intercept(request: Observable<any>): Observable<any> {
+  private intercept(request: Observable<Response>): Observable<any> {
     return request.catch((err, source) => {
       if (err.status !== 401) {
         return Observable.throw(err);

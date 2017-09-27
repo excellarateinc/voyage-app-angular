@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { NotificationsIconComponent } from './notifications-icon.component';
 import { NotificationsService } from '../notifications.service';
 import { Notification } from '../notification.model';
+import { WebNotificationsService } from '../web-notifications.service';
+import { SignalR } from 'ng2-signalr';
 
 const notificationsServiceStub: any = {
   getNotifications: () => { },
@@ -13,10 +15,17 @@ const notificationsServiceStub: any = {
   markAllRead: () => { }
 };
 
+const webNotificationsServiceStub: any = {
+  requestPermission: () => { }
+};
+
+const signalRStub: any = { connect: () => { } };
+
 describe('NotificationsIconComponent', () => {
   let component: NotificationsIconComponent;
   let fixture: ComponentFixture<NotificationsIconComponent>;
   let notificationsService: NotificationsService;
+  let signalR: SignalR;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,7 +36,9 @@ describe('NotificationsIconComponent', () => {
       ],
       declarations: [ NotificationsIconComponent ],
       providers: [
-        { provide: NotificationsService, useValue: notificationsServiceStub }
+        { provide: NotificationsService, useValue: notificationsServiceStub },
+        { provide: WebNotificationsService, useValue: webNotificationsServiceStub },
+        { provide: SignalR, useValue: signalRStub }
       ]
     })
     .compileComponents();
@@ -35,7 +46,9 @@ describe('NotificationsIconComponent', () => {
 
   beforeEach(() => {
     notificationsService = TestBed.get(NotificationsService);
+    signalR = TestBed.get(SignalR);
     spyOn(notificationsService, 'getNotifications').and.callFake(() => new Observable(observer => observer.next()));
+    spyOn(signalR, 'connect').and.callFake(() => Promise.resolve({ listenFor: () => new Observable(o => o.next()) }));
     fixture = TestBed.createComponent(NotificationsIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

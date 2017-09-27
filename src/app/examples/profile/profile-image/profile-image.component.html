@@ -1,0 +1,8 @@
+<div [hidden]="data.image" class="profile-image" appProfileImage [image]="currentImage"></div>
+<input type="file" (change)="onFileChanged($event)" #uploaderInput style="display:none" />
+<div [hidden]="!data.image">
+  <img-cropper #cropper [image]="data" [settings]="cropperSettings" (onCrop)="onCropped($event)"></img-cropper>
+</div>
+<button [ngClass]="{'margin-small': !data.image, 'margin-large': data.image }" md-button color="primary" (click)="initFileUpload()">
+  Change
+</button>

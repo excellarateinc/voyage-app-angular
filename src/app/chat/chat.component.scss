@@ -1,0 +1,69 @@
+.mine {
+  background-color: #1565c0;
+}
+
+.other {
+  background-color: #4d5863;
+}
+
+.active-channel {
+  background-color: #ddd;
+}
+
+.chat-container {
+  height: 100%;
+  background-color: white;
+}
+
+.channel-list {
+  width: 200px;
+  box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+
+.channel-toolbar {
+  background-color: white;
+}
+
+.channel-item-description {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.message-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.message-container-inner {
+  overflow-y: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.message {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.message-bubble {
+  padding: 10px;
+  color:  white;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.message-signature {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.help-message {
+  padding-left: 16px;
+}
+
+.message-actions {
+  border-top: 1px solid rgba(0,0,0,.12);
+  padding: 15px;
+  margin-top: auto;
+  padding-bottom: 40px;
+}

@@ -11,6 +11,12 @@ import { HeaderComponent } from './header.component';
 })
 class StubNotificationsIconComponent { }
 
+@Component({
+  template: '',
+  selector: 'app-profile-icon'
+})
+class StubProfileIconComponent { }
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
@@ -22,7 +28,11 @@ describe('HeaderComponent', () => {
         MaterialModule,
         FlexLayoutModule
       ],
-      declarations: [ HeaderComponent, StubNotificationsIconComponent ]
+      declarations: [
+        HeaderComponent,
+        StubNotificationsIconComponent,
+        StubProfileIconComponent
+      ]
     })
     .compileComponents();
   }));

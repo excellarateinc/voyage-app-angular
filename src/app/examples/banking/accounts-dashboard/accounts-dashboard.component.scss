@@ -1,0 +1,61 @@
+
+.withdrawal-action {
+  color: red;
+}
+
+.date-stamp {
+  border: 1px solid #5a5a5a;
+  padding-top: 1px;
+  text-align: center;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  max-height: 50px;
+
+  .month {
+    color: #5a5a5a;
+    font-size: 18px;
+    padding: 0 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .day {
+    font-size: 22px;
+    background-color: #5a5a5a;
+    color: #fff;
+    padding: 4px;
+    font-weight: bold;
+  }
+}
+
+.activity-description {
+  font-size: 18px;
+}
+
+.activity-account {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a9a8a8;
+  font-style: italic;
+}
+
+.activity-amount {
+  font-size: 18px;
+}
+
+.voyage-table-header {
+  font-weight:bold;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 5px;
+}
+
+.voyage-table-row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.dark-row {
+  background-color: #f6f6f6;
+}
