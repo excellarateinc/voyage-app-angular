@@ -1,12 +1,12 @@
   <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon" appProfileImage [image]="currentUser?.profileImage"></button>
   <md-menu #profileMenu="mdMenu" [overlapTrigger]="false">
     <button md-menu-item routerLink="/examples/profile">
+      <md-icon>account_circle</md-icon>
       <span>Profile</span>
     </button>
-    <button md-menu-item style="border-bottom: 1px solid #dedede;">
-      <span>Settings</span>
-    </button>
+    <div class="divider"></div>
     <button md-menu-item (click)="logout()">
+      <md-icon>exit_to_app</md-icon>
       <span>Logout</span>
     </button>
   </md-menu>

@@ -1,0 +1,22 @@
+<div fxLayout="row">
+  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <md-card-title>User Admin</md-card-title>
+    <div fxLayout="column">
+      <md-select [(ngModel)]="selectedUser" placeholder="Choose a User" style="margin-top:15px; margin-bottom:30px;" >
+        <md-option *ngFor="let user of users" [value]="user">{{user.username}}</md-option>
+      </md-select>
+      <md-list *ngIf="selectedUser != null">
+        <md-list-item>
+          <p md-line>
+            <md-checkbox color="primary" [(ngModel)]="selectedUser.isActive" (change)="onToggle()">
+              Is Active
+            </md-checkbox>
+            <md-checkbox color="primary" [(ngModel)]="selectedUser.isVerifyRequired" style="margin-left:20px;" (change)="onToggle()">
+              Verification Required
+            </md-checkbox>
+          </p>
+        </md-list-item>
+      </md-list>
+    </div>
+  </md-card>
+</div>

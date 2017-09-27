@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, Input } from '@angular/core';
-import { MdSidenav } from '@angular/material';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -9,14 +8,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   selector: 'app-shell',
   templateUrl: './shell.component.html'
 })
-export class ShellComponent implements OnInit, OnDestroy {
+export class ShellComponent implements OnInit {
   isMobile: boolean;
   isAuthenticated: boolean;
   @ViewChild('sidebar') sidebar: SidebarComponent;
   private watcher: Subscription;
-  toggleTheme: false;
 
-  constructor(private authService: AuthenticationService, private media: ObservableMedia) { }
+  constructor(
+    private authService: AuthenticationService,
+    private media: ObservableMedia) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.getToken() != null;
@@ -26,11 +26,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.watcher.unsubscribe();
-  }
-
-  onToggleSidebar(): void {
+  onToggleSidebar($event: any): void {
     this.sidebar.toggle();
   }
 }

@@ -5,6 +5,7 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 import { SecureHttpClient } from './secure-http-client';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthenticationService } from './authentication.service';
@@ -30,7 +31,8 @@ import { VerificationService } from './verification/verification.service';
     AuthenticationService,
     AuthGuardService,
     RegisterService,
-    VerificationService
+    VerificationService,
+    LoginService
   ]
 })
 export class AuthenticationModule { }

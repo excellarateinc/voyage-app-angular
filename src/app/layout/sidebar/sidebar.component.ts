@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MdSidenav } from '@angular/material';
+import { UserService } from '../../core/user/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,10 +24,21 @@ export class SidebarComponent implements OnInit {
   isAuthenticated = false;
   @ViewChild('sidenav') sidenav: MdSidenav;
   mobile: boolean;
+  toggleTheme: false;
+  isAdmin = false;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    if (!this.isAuthenticated) {
+      return;
+    }
+
+    this.userService.getCurrentUser()
+      .subscribe(user => {
+        this.isAdmin = user.roles.indexOf('Administrator') !== -1;
+      });
+  }
 
   toggle(): void {
     this.sidenav.toggle();

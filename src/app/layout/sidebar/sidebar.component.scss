@@ -8,6 +8,11 @@ md-sidenav ul {
   padding: 0;
 }
 
+// When not authenticated, we don't show the toolbar, meaning we need the height to be 100%.
+.sidenav-height-full {
+  height: 100%;
+}
+
 /* Since we have the toolbar over the sidenav, we need to give it 100% height minus the toolbar's height. */
 .sidenav-height {
   height: calc(100% - 64px);

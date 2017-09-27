@@ -8,12 +8,14 @@ describe('AuthenticationService', () => {
 
     const routerStub: any = { };
     const locationStub: any = { };
+    const windowStub: any = { location: { } }
 
     TestBed.configureTestingModule({
       providers: [
         AuthenticationService,
         { provide: Router, useValue: routerStub },
-        { provide: Location, useValue: locationStub }
+        { provide: Location, useValue: locationStub },
+        { provide: 'Window', useValue: windowStub }
       ]
     });
   });

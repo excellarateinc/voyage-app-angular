@@ -9,11 +9,11 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$voyage-app-primary: mat-palette($mat-blue);
-$voyage-app-accent:  mat-palette($mat-grey, A200, A100, A400);
+$voyage-app-primary: mat-palette($mat-indigo);
+$voyage-app-accent: mat-palette($mat-grey, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$voyage-app-warn:    mat-palette($mat-red);
+$voyage-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $voyage-app-theme: mat-light-theme($voyage-app-primary, $voyage-app-accent, $voyage-app-warn);

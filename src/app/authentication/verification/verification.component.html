@@ -6,8 +6,8 @@
       Click the "Send Code" button to continue.
     </md-card-content>
     <md-card-actions>
-      <div fxLayout="row">
-        <button fxFlex.md="40" fxFlex.lg="30" fxFlex.xl="25" md-raised-button color="primary" (click)="sendCode()">
+      <div fxLayout="column" class="action-buttons">
+        <button md-raised-button color="primary" (click)="sendCode()">
           Send Code
         </button>
       </div>
@@ -27,12 +27,12 @@
             Code is required
           </md-error>
         </md-input-container>
-        <div fxLayout="row" style="margin-top:10px;">
-          <button fxFlex.md="40" fxFlex.lg="30" fxFlex.xl="25" md-raised-button color="primary" type="submit" [disabled]="verificationForm.invalid">
+        <div fxLayout="column" class="action-buttons">
+          <button md-raised-button color="primary" type="submit" [disabled]="verificationForm.invalid">
             Verify
           </button>
         </div>
-        <div fxLayout="row" *ngIf="verificationFailed" style="color:lightcoral; margin-top:20px;">
+        <div fxLayout="row" *ngIf="verificationFailed" style="color:#f44336; margin-top:20px;">
           Invalid code entered. Try again.
         </div>
       </div>
