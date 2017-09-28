@@ -25,7 +25,7 @@
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",
-        "../node_modules/chart.js/dist/chart.min.js",
+        "../node_modules/chart.js/dist/Chart.min.js",
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/signalr/jquery.signalR.js"
       ],
