@@ -20,6 +20,9 @@ export class ProfileIconComponent implements OnInit, OnDestroy {
     private broadcastService: BroadcastService) { }
 
   ngOnInit(): void {
+    this.userService.getCurrentUser()
+      .subscribe(user => this.currentUser = user);
+
     this.broadcastWatcher = this.broadcastService.profileUpdated$
       .subscribe(user => this.currentUser = user);
   }

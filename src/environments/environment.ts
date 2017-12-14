@@ -5,8 +5,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:4201',
-  API_NODE: 'http://localhost:4201',
+  API_URL: 'http://localhost:55850/api/v1',
   SIGNALR_URL: 'http://localhost:55850',
   SERVER_URL: 'http://localhost:52431',
   OAUTH_REDIRECT_URL: 'http://localhost:3000/dashboard',
