@@ -21,7 +21,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "themes/voyage-bank-theme.scss"
+        "themes/voyage-bank-theme.scss",
+        "../node_modules/@progress/kendo-theme-default/dist/all.css"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",

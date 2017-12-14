@@ -10,7 +10,8 @@ const exampleRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'banking/dashboard', component: AccountsDashboardComponent },
   { path: 'banking/create-account', component: CreateAccountComponent },
-  { path: 'banking/transfer', component: TransferComponent }
+  { path: 'banking/transfer', component: TransferComponent },
+  { path: 'bookshelf/user-profile', component: ProfileComponent }
 ];
 
 @NgModule({

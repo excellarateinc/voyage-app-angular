@@ -1,0 +1,74 @@
+<kendo-dialog title="Add Member" (close)="close()" [minWidth]="250" [width]="450">
+  <form novalidate [formGroup]="member">
+    <div class="form-group">
+      <label for="first_name" class="control-label">First Name<span class="fieldReq">*</span></label>
+      <input type="text" class="k-textbox" maxlength="45" formControlName="first_name"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.first_name.valid || member.controls.first_name.pristine">
+        Please enter FirstName
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="last_name" class="control-label">Last Name<span class="fieldReq">*</span></label>
+      <input type="text" class="k-textbox" maxlength="45" formControlName="last_name"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.last_name.valid || member.controls.last_name.pristine">
+        Please enter LastName
+      </div>
+    </div>
+    <div class="form-group">
+      <p>Gender<span class="fieldReq">*</span></p>
+      <input type="radio" name="gender" id="female" value="F" formControlName="gender" class="k-radio">
+      <label class="k-radio-label" for="female">Female</label>
+      <input type="radio" name="gender" id="male" class="k-radio" value="M" formControlName="gender" checked="checked">
+      <label class="k-radio-label" for="male">Male</label>
+    </div>
+    <div class="form-group">
+      <label for="date_of_birth" class="control-label">Date of Birth<span class="fieldReq">*</span></label>
+      <input type="date" class="k-textbox" formControlName="date_of_birth"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.date_of_birth.valid || member.controls.date_of_birth.pristine">
+        Please enter DOB
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mobile_no" class="control-label">Mobile<span class="fieldReq">*</span></label>
+      <input type="text" pattern="^[0-9]{10,10}" maxlength="12" class="k-textbox" formControlName="mobile_no"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.mobile_no.valid || member.controls.mobile_no.pristine">
+        Please enter Mobile No
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address" class="control-label">Address<span class="fieldReq">*</span></label>
+      <textarea rows="4" cols="50" class="k-textbox memAddress" maxlength="255" formControlName="address"> </textarea>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.address.valid || member.controls.address.pristine">
+        Please enter Address
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="control-label">Email<span class="fieldReq">*</span></label>
+      <input type="text" class="k-textbox" maxlength="100" formControlName="email"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.email.valid || member.controls.email.pristine">
+        Please enter valid Email Id
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="occupation" class="control-label">Occupation <span class="fieldReq">*</span></label>
+      <input type="text" class="k-textbox" maxlength="45" formControlName="occupation"/>
+      <div class="k-tooltip k-tooltip-validation"
+           [hidden]="member.controls.occupation.valid || member.controls.occupation.pristine">
+        Please enter Occupation
+      </div>
+    </div>
+    <div>
+      <a *ngIf="show" class="fieldReq">Adding member is failed</a>
+    </div>
+  </form>
+  <kendo-dialog-actions>
+    <button class="k-button" (click)="close()">Cancel</button>
+    <button class="k-button k-primary" [disabled]="!member.valid" (click)="save($event)">Save</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

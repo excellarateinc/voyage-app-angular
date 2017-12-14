@@ -1,2 +1,21 @@
-<h1>Dashboard Works!</h1>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="chart-wrapper">
+        <app-pie-chart [pieData]="booksByAuthor" chartTitle="Books By Author"></app-pie-chart>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="chart-wrapper">
+        <app-pie-chart [pieData]="booksByCategory" chartTitle="Books By Category"></app-pie-chart>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="chart-wrapper">
+        <app-donut-chart [donutData]="topSubscriptions" chartTitle="Top Subscribers"></app-donut-chart>
+      </div>
+    </div>
+  </div>
+</div>

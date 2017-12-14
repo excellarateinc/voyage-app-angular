@@ -18,11 +18,11 @@ export class LoginService {
     options.headers.set('grant_type', 'password');
     options.headers.set('content-type', 'application/x-www-form-urlencoded');
 
-    return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, options)
-      .map((response: any) => {
-        this.authService.setToken(response.json().access_token);
-        return response.json();
-      })
-      .catch(error => Observable.throw(error.json()));
+/*    return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, options)
+      .map((response: any) => {*/
+        this.authService.setToken('1234567890');
+        return;
+/*      })
+      .catch(error => Observable.throw(error.json()));*/
   }
 }

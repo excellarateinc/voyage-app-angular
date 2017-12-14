@@ -1,0 +1,16 @@
+<kendo-chart>
+  <kendo-chart-title [text]="chartTitle"></kendo-chart-title>
+  <kendo-chart-legend position="bottom"></kendo-chart-legend>
+  <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+  <kendo-chart-series>
+    <kendo-chart-series-item type="pie"
+                             [data]="pieData"
+                             field="value"
+                             categoryField="name">
+      <kendo-chart-series-item-labels
+        [content]="labelContent"
+        color="grey" background="none">
+      </kendo-chart-series-item-labels>
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+</kendo-chart>

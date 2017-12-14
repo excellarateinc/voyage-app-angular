@@ -14,6 +14,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SecureHttpClient } from './authentication/secure-http-client';
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { AuthenticationService } from './authentication/authentication.service';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { MembersModule } from "./members/members.module";
+import { ResponseObjectToJsonParserService } from "./services/response-object-to-json-parser.service";
 
 export function secureHttpClientFactory(
   xhrBackend: XHRBackend,
@@ -24,22 +27,26 @@ export function secureHttpClientFactory(
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
+    HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,
     CoreModule,
     LayoutModule,
-    AuthenticationModule
+    AuthenticationModule,
+    MembersModule
   ],
   providers: [
     { provide: Http, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] },
+    { provide: HttpClient, useFactory: secureHttpClientFactory, deps: [XHRBackend, RequestOptions, AuthenticationService] },
+    ResponseObjectToJsonParserService
   ],
   bootstrap: [AppComponent]
 })

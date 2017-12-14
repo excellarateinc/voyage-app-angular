@@ -1,0 +1,15 @@
+<kendo-chart>
+  <kendo-chart-title [text]="chartTitle"></kendo-chart-title>
+  <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+  <kendo-chart-series>
+    <kendo-chart-series-item
+      type="donut" [data]="donutData"
+      categoryField="name" field="value">
+      <kendo-chart-series-item-labels
+        [content]="labelContent"
+        color="grey" background="none">
+      </kendo-chart-series-item-labels>
+    </kendo-chart-series-item>
+  </kendo-chart-series>
+  <kendo-chart-legend [visible]="true" position="bottom" orientation="horizontal"></kendo-chart-legend>
+</kendo-chart>

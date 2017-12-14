@@ -1,0 +1,68 @@
+<kendo-grid
+  [kendoGridBinding]="members"
+  [pageSize]="10"
+  [pageable]="true"
+  [sortable]="true"
+  [filterable]="true"
+  [height]="520">
+  <ng-template kendoGridToolbarTemplate>
+    <button (click)="open()"><span class="glyphicon glyphicon-plus memberDetails"></span>Add</button>
+    <button type="button" class="k-button" (click)="excelexport.save()"><span class="glyphicon glyphicon-export memberDetails"></span>Export To Excel</button>
+  </ng-template>
+  <kendo-grid-column field="first_name" title="First Name" [width]="100"></kendo-grid-column>
+  <kendo-grid-column field="last_name" title="Last Name" [width]="100"></kendo-grid-column>
+  <kendo-grid-column field="gender" title="Gender" [width]="80">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span *ngIf="dataItem.gender == 'F'; else elseBlock">F</span>
+      <ng-template #elseBlock><span>M</span></ng-template>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="mobile_no" title="Mobile No" [width]="100"></kendo-grid-column>
+  <kendo-grid-column field="email" title="Email" [width]="200"></kendo-grid-column>
+  <kendo-grid-column field="isActive" title="Active" [width]="80" filter="boolean" [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span *ngIf="dataItem.isActive; else elseBlock" class="glyphicon glyphicon-user isActive"></span>
+      <ng-template #elseBlock><span class="glyphicon glyphicon-user isNotActive"></span></ng-template>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column title="Edit / Remove" [width]="80">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <span class="glyphicon glyphicon-edit mdEdit" (click)="editMember(dataItem)"></span>
+      <span (click)="removeMember(dataItem)" class="glyphicon glyphicon-remove-circle isNotActive"></span>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
+
+<kendo-excelexport [data]="members"  fileName="Members.xlsx" #excelexport>
+  <kendo-excelexport-column field="first_name"  title="First Name" [width]="100">
+  </kendo-excelexport-column>
+  <kendo-excelexport-column field="last_name" title="Last Name" [width]="100">
+  </kendo-excelexport-column>
+  <kendo-excelexport-column field="gender" title="Gender" [width]="100">
+  </kendo-excelexport-column>
+  <kendo-excelexport-column field="mobile_no" title="Mobile No" [width]="100">
+  </kendo-excelexport-column>
+  <kendo-excelexport-column field="email" title="Email" [width]="100">
+  </kendo-excelexport-column>
+  <kendo-excelexport-column field="isActive" title="Active" [width]="100">
+  </kendo-excelexport-column>
+</kendo-excelexport>
+
+
+<div *ngIf="opened">
+  <app-add-member (onSubmitOrCancel)="saveOrCancel($event)"></app-add-member>
+</div>
+
+<div *ngIf="openEdit">
+  <app-update-member (onUpdateOrCancel)="updateOrCancel($event)" [memberDetails]="memberEditData"></app-update-member>
+</div>
+
+<div class="confirm-dialog">
+  <kendo-dialog title="Please Confirm" *ngIf="confirmDelete" (close)="close()" [width]="450">
+    <p style="margin: 30px; text-align: center;">Are you sure you want to Delete?</p>
+    <kendo-dialog-actions>
+      <button kendoButton (click)="close()">No</button>
+      <button kendoButton (click)="deleteMember()" primary="true">Yes</button>
+    </kendo-dialog-actions>
+  </kendo-dialog>
+</div>

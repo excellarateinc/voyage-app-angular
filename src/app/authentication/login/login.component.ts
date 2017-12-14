@@ -41,10 +41,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
     const login = this.loginForm.value as Login;
-    this.loginService.login(login)
-      .subscribe(result => {
-        this.window.location.href = '/';
+    this.loginService.login(login);/*
+      .subscribe(result => {*/
+        this.window.location.href = '/dashboard';
+/*
       }, error => this.loginFailed = true);
+*/
   }
 
   private initializeForm(): void {
