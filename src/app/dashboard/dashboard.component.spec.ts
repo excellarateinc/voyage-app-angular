@@ -13,7 +13,7 @@ describe('DashboardComponent', () => {
       ],
       declarations: [ DashboardComponent ]
     })
-     .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
