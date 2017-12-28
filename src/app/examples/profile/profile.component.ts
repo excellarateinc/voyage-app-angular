@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { environment } from '../../../environments/environment';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private snackbar: MdSnackBar,
+    private snackbar: MatSnackBar,
     private broadcastService: BroadcastService) { }
 
   ngOnInit() {
@@ -69,11 +69,12 @@ export class ProfileComponent implements OnInit {
       phones: this.formBuilder.array([])
     });
 
-    for (let i = 0; i < user.phones.length; i++) {
+    user.phones.forEach(phone => {
       this.phones.push(this.formBuilder.group({
-        phoneNumber: [user.phones[i].phoneNumber, Validators.required],
-        phoneType: [user.phones[i].phoneType, Validators.required]
+        phoneNumber: [phone.phoneNumber, Validators.required],
+        phoneType: [phone.phoneType, Validators.required],
       }));
-    }
+    });
+
   }
 }

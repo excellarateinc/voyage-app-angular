@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayout.lt-lg="column">
-  <md-card fxFlex.gt-md="50">
+  <mat-card fxFlex.gt-md="50">
     <div fxLayout="row">
       <h4 class="card-title">Cash Accounts</h4>
     </div>
@@ -9,8 +9,7 @@
           <span class="activity-description">{{account.name}}</span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
-        <span fxFlex></span>
-        <span style="margin-right: 10px;" fxHide.xs>
+        <span fxHide.xs>
           <div *ngIf="lineChart.data.length > 0">
             <canvas baseChart
               [datasets]="lineChart.data"
@@ -18,17 +17,16 @@
               [options]="lineChart.options"
               [colors]="lineChart.colors"
               [legend]="lineChart.legend"
-              [chartType]="lineChart.type" style="width:150px; height:50px;"></canvas>
+              [chartType]="lineChart.type"></canvas>
           </div>
         </span>
-        <div fxLayout="column" style="text-align: end;">
+        <div fxLayout="column">
           <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
           <span class="activity-account">Available balance</span>
         </div>
       </div>
-      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
-        <span fxFlex></span>
-        <div fxLayout="column" style="text-align: end;">
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0">
+        <div fxLayout="column">
           <span class="activity-amount">
             <strong>{{totalBalance | currency:'USD':true}}</strong>
           </span>
@@ -36,9 +34,9 @@
         </div>
       </div>
     </div>
-  </md-card>
+  </mat-card>
 
-  <md-card fxFlex.gt-md="50">
+  <mat-card fxFlex.gt-md="50">
     <div fxLayout="row">
       <h4 class="card-title">Credit</h4>
     </div>
@@ -48,8 +46,7 @@
           <span class="activity-description">{{account.name}}</span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
-        <span fxFlex></span>
-        <span style="margin-right: 10px;" fxHide.xs>
+        <span fxHide.xs>
           <div *ngIf="lineChart2.data.length > 0">
             <canvas baseChart
               [datasets]="lineChart2.data"
@@ -57,17 +54,16 @@
               [options]="lineChart2.options"
               [colors]="lineChart2.colors"
               [legend]="lineChart2.legend"
-              [chartType]="lineChart2.type" style="width:150px; height:50px;"></canvas>
+              [chartType]="lineChart2.type"></canvas>
           </div>
         </span>
-        <div fxLayout="column" style="text-align: end;">
+        <div fxLayout="column">
           <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
           <span class="activity-account">Available balance</span>
         </div>
       </div>
-      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
-        <span fxFlex></span>
-        <div fxLayout="column" style="text-align: end;">
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0">
+        <div fxLayout="column">
           <span class="activity-amount">
             <strong>{{totalBalance | currency:'USD':true}}</strong>
           </span>
@@ -75,11 +71,11 @@
         </div>
       </div>
     </div>
-  </md-card>
+  </mat-card>
 </div>
 
 <div fxLayout="row">
-  <md-card fxFlex>
+  <mat-card fxFlex>
     <div fxLayout="row">
       <h4 class="card-title">Recent Activity</h4>
     </div>
@@ -88,16 +84,16 @@
         <span class="month">{{transaction.date | date:'MMM'}}</span>
         <span class="day">{{transaction.date | date:'d'}}</span>
       </div>
-      <div fxLayout="column" style="margin-left:10px;">
+      <div fxLayout="column">
         <span class="activity-description">{{transaction.description}}</span>
         <span class="activity-account">{{transaction.accountName}}</span>
       </div>
       <span fxFlex></span>
-      <div style="margin-right:10px;">
+      <div>
         <span class="activity-amount" [ngClass]="{'withdrawal-action': transaction.type == 0}">
           {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':true}}
         </span>
       </div>
     </div>
-  </md-card>
+  </mat-card>
 </div>

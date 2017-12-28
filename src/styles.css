@@ -2,17 +2,18 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
 
+
 html, body {
   margin: 0;
   width: 100%;
   height: 100%;
 }
 
-md-toolbar-row {
+mat-toolbar-row {
   justify-content: space-between;
 }
 
-md-card {
+mat-card {
   margin-bottom: 10px;
 }
 
@@ -28,7 +29,7 @@ md-card {
 }
 
 @media only screen and (min-width: 960px) {
-  md-card {
+  mat-card {
     margin: 5px;
   }
 
@@ -96,7 +97,7 @@ https://github.com/angular/material2/issues/998 */
 }
 
 .masthead {
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg);
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg);
   background-position: center top;
   background-size: cover;
   margin-left:-10px;
@@ -113,7 +114,7 @@ https://github.com/angular/material2/issues/998 */
   left: 0;
   max-width: 100% !important;
   margin: 0 !important;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg) top left no-repeat;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg) top left no-repeat;
   background-size: cover;
   overflow-y: auto;
 }

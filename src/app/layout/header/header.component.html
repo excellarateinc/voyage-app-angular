@@ -1,13 +1,12 @@
-<md-toolbar color="primary" *ngIf="isAuthenticated">
+<mat-toolbar color="primary" *ngIf="isAuthenticated">
   <button class="mat-button menu-button" (click)="toggleSidebar()" *ngIf="isMobile">
-    <md-icon class="clickable menu-icon">menu</md-icon>
+    <mat-icon class="clickable menu-icon">menu</mat-icon>
   </button>
   <span routerLink="/" class="clickable">
-    <span class="nav-item-container" style="color:white;">
+    <span class="nav-item-container">
       Voyage Bank
     </span>
   </span>
   <span class="fill-space"></span>
-  <app-notifications-icon></app-notifications-icon>
   <app-profile-icon></app-profile-icon>
-</md-toolbar>
+</mat-toolbar>

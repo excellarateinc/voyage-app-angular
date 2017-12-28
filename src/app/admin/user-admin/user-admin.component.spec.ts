@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { UserAdminComponent } from './user-admin.component';
@@ -8,6 +7,7 @@ import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { UserStatus } from '../../core/user/user-status.model';
 import { Observable } from 'rxjs/Observable';
+import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 
 describe('UserAdminComponent', () => {
   let component: UserAdminComponent;
@@ -22,7 +22,7 @@ describe('UserAdminComponent', () => {
       imports: [
         FormsModule,
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule
       ],
       declarations: [ UserAdminComponent ],

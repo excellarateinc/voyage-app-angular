@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidebarComponent } from './sidebar.component';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../core/user/user.service';
+import {AngularMaterialModule} from "../../angular-material/angular-material.module";
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -20,7 +20,7 @@ describe('SidebarComponent', () => {
       imports: [
         RouterTestingModule,
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule
       ],
       declarations: [ SidebarComponent ],

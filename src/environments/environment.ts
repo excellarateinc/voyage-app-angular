@@ -5,10 +5,11 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:55850/api/v1',
-  SIGNALR_URL: 'http://localhost:55850',
-  SERVER_URL: 'http://localhost:52431',
-  OAUTH_REDIRECT_URL: 'http://localhost:3000/dashboard',
-  OAUTH_CLIENT_ID: 'client-super',
-  OAUTH_CLIENT_SECRET: 'secret'
+  API_URL: 'https://qa.lighthousesoftware.com/voyage-api-ms/api/v1',
+  SIGNALR_URL: 'https://qa.lighthousesoftware.com/voyage-api-ms',
+  SERVER_URL: 'https://qa.lighthousesoftware.com/voyage-ms-web',
+  OAUTH_REDIRECT_URL: 'https://qa.lighthousesoftware.com/voyage-ms/',
+  OAUTH_CLIENT_ID: 'client-super-qa',
+  OAUTH_CLIENT_SECRET: 'secret',
+  APP_HOME: '/voyage-ms/'
 };

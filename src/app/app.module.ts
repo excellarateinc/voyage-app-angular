@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, Http, XHRBackend } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
@@ -14,6 +13,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SecureHttpClient } from './authentication/secure-http-client';
 import { AuthGuardService } from './authentication/auth-guard.service';
 import { AuthenticationService } from './authentication/authentication.service';
+import { AngularMaterialModule } from "./angular-material/angular-material.module";
 
 export function secureHttpClientFactory(
   xhrBackend: XHRBackend,
@@ -30,7 +30,7 @@ export function secureHttpClientFactory(
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule,
+    AngularMaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppRoutingModule,

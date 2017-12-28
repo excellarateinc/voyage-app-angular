@@ -1,42 +1,41 @@
 <!-- Tablet / Desktop -->
 <div fxLayout="row">
-  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
-    <md-card-title>New Transfer</md-card-title>
+  <mat-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>New Transfer</mat-card-title>
     <form [formGroup]="transferForm" (ngSubmit)="transfer()" novalidate>
       <div fxLayout="column">
         <div fxLayout="row">
-          <md-select placeholder="From Account" fxFlex formControlName="fromAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of myAccounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
-          </md-select>
+          <mat-select placeholder="From Account" fxFlex formControlName="fromAccountId" required>
+            <mat-option *ngFor="let account of myAccounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</mat-option>
+          </mat-select>
         </div>
         <div fxLayout="row">
-          <md-select placeholder="To Account" fxFlex formControlName="toAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
-          </md-select>
+          <mat-select placeholder="To Account" fxFlex formControlName="toAccountId" required>
+            <mat-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</mat-option>
+          </mat-select>
         </div>
         <div fxLayout="row">
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Amount" formControlName="amount" type="number" required>
-            <md-error *ngIf="transferForm.controls['amount'].hasError('required')">
+          <mat-input-container fxFlex>
+            <input matInput placeholder="Amount" formControlName="amount" type="number" required>
+            <mat-error *ngIf="transferForm.controls['amount'].hasError('required')">
               Amount is required
-            </md-error>
-          </md-input-container>
+            </mat-error>
+          </mat-input-container>
         </div>
         <div fxLayout="row">
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Memo" formControlName="memo">
-          </md-input-container>
+          <mat-input-container fxFlex>
+            <input matInput placeholder="Memo" formControlName="memo">
+          </mat-input-container>
         </div>
-        <div fxLayout="column" style="margin-top: 30px;">
-          <button md-raised-button color="primary" type="submit">
+        <div fxLayout="column">
+          <button mat-raised-button color="primary" type="submit">
             Transfer
           </button>
-          <span>&nbsp;</span>
-          <button routerLink="/examples/banking/dashboard" color="accent" md-raised-button type="button">
+          <button routerLink="/examples/banking/dashboard" color="accent" mat-raised-button type="button">
             Cancel
           </button>
         </div>
       </div>
     </form>
-  </md-card>
+  </mat-card>
 </div>

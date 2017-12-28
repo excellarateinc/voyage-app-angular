@@ -1,5 +1,5 @@
-<md-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
-  <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
+<mat-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
+  <mat-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav (click)="close()">
       <ul>
         <li>
@@ -41,7 +41,7 @@
         </li>
         <li>
           <a class="nav-item-container" routerLinkActive="active" (click)="toggleTheme = !toggleTheme; $event.stopPropagation();">
-            <i class="material-icons md-light">lightbulb_outline</i>
+            <i class="material-icons mat-light">lightbulb_outline</i>
             {{toggleTheme ? 'Go Light' : 'Go Dark'}}
           </a>
         </li>
@@ -49,12 +49,12 @@
       </ul>
     </nav>
     <div>
-      <img src="./favicon.ico" width="20px" style="padding-left:30px; position: absolute; margin: auto;" />
-      <span style="margin-left:55px;">Powered by Voyage</span>
+      <img src="./favicon.ico" width="20px"/>
+      <span>Powered by Voyage</span>
     </div>
-  </md-sidenav>
+  </mat-sidenav>
 
   <div class="main-content full-height">
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>
