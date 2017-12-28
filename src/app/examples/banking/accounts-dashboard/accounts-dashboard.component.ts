@@ -42,7 +42,7 @@ export class AccountsDashboardComponent implements OnInit {
 
     return this.accounts
       .map(account => account.balance)
-      .reduce((totalBalance, singleBalance) => totalBalance + singleBalance);
+      .reduce((runningTotal, singleBalance) => runningTotal + singleBalance);
   }
 
   private buildLineChart(): void {

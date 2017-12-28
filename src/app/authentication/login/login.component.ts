@@ -44,7 +44,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginService.login(login)
       .subscribe(result => {
         this.window.location.href = '/';
-      }, error => this.loginFailed = true);
+      }, error => {
+        console.log('login failed');
+        this.loginFailed = true
+      });
   }
 
   private initializeForm(): void {

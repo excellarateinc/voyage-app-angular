@@ -21,14 +21,14 @@
           </div>
         </span>
         <div fxLayout="column">
-          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-amount">{{account.balance | currency:'USD':'symbol'}}</span>
           <span class="activity-account">Available balance</span>
         </div>
       </div>
       <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0">
         <div fxLayout="column">
           <span class="activity-amount">
-            <strong>{{totalBalance | currency:'USD':true}}</strong>
+            <strong>{{totalBalance | currency:'USD':'symbol'}}</strong>
           </span>
           <span class="activity-account">Total available balance</span>
         </div>
@@ -58,14 +58,14 @@
           </div>
         </span>
         <div fxLayout="column">
-          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-amount">{{account.balance | currency:'USD':'symbol'}}</span>
           <span class="activity-account">Available balance</span>
         </div>
       </div>
       <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0">
         <div fxLayout="column">
           <span class="activity-amount">
-            <strong>{{totalBalance | currency:'USD':true}}</strong>
+            <strong>{{totalBalance | currency:'USD':'symbol'}}</strong>
           </span>
           <span class="activity-account">Total available balance</span>
         </div>
@@ -91,7 +91,7 @@
       <span fxFlex></span>
       <div>
         <span class="activity-amount" [ngClass]="{'withdrawal-action': transaction.type == 0}">
-          {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':true}}
+          {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':'symbol'}}
         </span>
       </div>
     </div>
