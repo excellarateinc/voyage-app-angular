@@ -1,17 +1,13 @@
 import { TestBed, inject, tick } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { HttpModule, Http, Response, ResponseOptions, XHRBackend } from '@angular/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { UserService } from './user.service';
 import { User } from './user.model';
 
 describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
-      providers: [
-        UserService,
-        { provide: XHRBackend, useClass: MockBackend }
-      ]
+      imports: [HttpClientTestingModule],
+      providers: [UserService]
     });
   });
 
@@ -19,11 +15,13 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   }));
 
-  describe('when calling sendCode()', () => {
-    it('should call the send code API endpoint',
-      inject([UserService, XHRBackend], (service: UserService, mockBackend: MockBackend) => {
+  describe('when calling getUsers()', () => {
+    it('should call the /users endpoint',
+      inject([UserService, HttpTestingController], (service: UserService, httpMock: HttpTestingController) => {
+        service.getUsers().subscribe();
 
-
+        const req = httpMock.expectOne(req => req.url.includes('/users'));
+        expect(req.request.method).toEqual('GET');
     }));
   });
 });

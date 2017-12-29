@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
+import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 
 @Component({
   template: '',
@@ -36,10 +37,10 @@ describe('ProfileComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
         FlexLayoutModule,
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AngularMaterialModule,
       ],
       declarations: [
         ProfileComponent,

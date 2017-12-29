@@ -6,19 +6,19 @@
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div fxLayout="column">
           <mat-form-field>
-            <input mdInput placeholder="Email" formControlName="email" required>
+            <input matInput placeholder="Email" formControlName="email" required>
             <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
               Email is required
             </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input mdInput placeholder="First Name" formControlName="firstName" required>
+            <input matInput placeholder="First Name" formControlName="firstName" required>
             <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
               First Name is required
             </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input mdInput placeholder="Last Name" formControlName="lastName" required>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
             <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
               Last Name is required
             </mat-error>
@@ -26,7 +26,7 @@
           <div formArrayName="phoneNumbers">
             <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
               <mat-form-field fxFlex="60">
-                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+                <input matInput placeholder="Phone" formControlName="phoneNumber" required>
                 <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
                   Phone and Type are required
                 </mat-error>
@@ -40,19 +40,19 @@
             </div>
           </div>
           <mat-form-field>
-            <input mdInput placeholder="Username" formControlName="username" required>
+            <input matInput placeholder="Username" formControlName="username" required>
             <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
               Username is required
             </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input mdInput placeholder="Password" formControlName="password" type="password" required>
+            <input matInput placeholder="Password" formControlName="password" type="password" required>
             <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
               Password is required
             </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
             <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
               Confirm Password is required
             </mat-error>
@@ -79,19 +79,19 @@
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
       <div fxLayout="column">
         <mat-form-field class="light-input">
-          <input mdInput placeholder="Email" formControlName="email" required>
+          <input matInput placeholder="Email" formControlName="email" required>
           <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
             Email is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="light-input">
-          <input mdInput placeholder="First Name" formControlName="firstName" required>
+          <input matInput placeholder="First Name" formControlName="firstName" required>
           <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
             First Name is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="light-input">
-          <input mdInput placeholder="Last Name" formControlName="lastName" required>
+          <input matInput placeholder="Last Name" formControlName="lastName" required>
           <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
             Last Name is required
           </mat-error>
@@ -99,7 +99,7 @@
         <div formArrayName="phoneNumbers">
           <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
             <mat-form-field fxFlex="60" class="light-input">
-              <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+              <input matInput placeholder="Phone" formControlName="phoneNumber" required>
               <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
                 Phone and Type are required
               </mat-error>
@@ -113,19 +113,19 @@
           </div>
         </div>
         <mat-form-field class="light-input">
-          <input mdInput placeholder="Username" formControlName="username" required>
+          <input matInput placeholder="Username" formControlName="username" required>
           <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
             Username is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="light-input">
-          <input mdInput placeholder="Password" formControlName="password" type="password" required>
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
           <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
             Password is required
           </mat-error>
         </mat-form-field>
         <mat-form-field class="light-input">
-          <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+          <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
           <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
             Confirm Password is required
           </mat-error>

@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { LoginComponent } from './login.component';
 import { LoginService } from './login.service';
+import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -19,9 +20,9 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
         FlexLayoutModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        AngularMaterialModule,
       ],
       declarations: [ LoginComponent ],
       providers: [
