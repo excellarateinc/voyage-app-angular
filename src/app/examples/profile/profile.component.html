@@ -8,38 +8,40 @@
         </div>
         <div fxFlex.gt-sm>
           <form *ngIf="profileForm" fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
-            <mat-input-container>
-              <input mdInput placeholder="Email" formControlName="email" required>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" required>
               <mat-error *ngIf="profileForm.controls['email'].hasError('required')">
                 Email is required
               </mat-error>
-            </mat-input-container>
-            <mat-input-container style="margin-top:10px;">
-              <input mdInput placeholder="First Name" formControlName="firstName" required>
+            </mat-form-field>
+            <mat-form-field style="margin-top:10px;">
+              <input matInput placeholder="First Name" formControlName="firstName" required>
               <mat-error *ngIf="profileForm.controls['firstName'].hasError('required')">
                 First Name is required
               </mat-error>
-            </mat-input-container>
-            <mat-input-container style="margin-top:10px;">
-              <input mdInput placeholder="Last Name" formControlName="lastName" required>
+            </mat-form-field>
+            <mat-form-field style="margin-top:10px;">
+              <input matInput placeholder="Last Name" formControlName="lastName" required>
               <mat-error *ngIf="profileForm.controls['lastName'].hasError('required')">
                 Last Name is required
               </mat-error>
-            </mat-input-container>
+            </mat-form-field>
             <div formArrayName="phones" style="margin-top:10px;">
-              <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
-                <mat-input-container fxFlex="60">
-                  <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+              <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex="60">
+                  <input matInput placeholder="Phone" formControlName="phoneNumber" required>
                   <mat-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
                     Phone and Type are required
                   </mat-error>
-                </mat-input-container>
-                <mat-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
-                  <mat-option value="Mobile">Mobile</mat-option>
-                  <mat-option value="Office">Office</mat-option>
-                  <mat-option value="Home">Home</mat-option>
-                  <mat-option value="Other">Other</mat-option>
-                </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex>
+                  <mat-select placeholder="Type" formControlName="phoneType" required>
+                    <mat-option value="Mobile">Mobile</mat-option>
+                    <mat-option value="Office">Office</mat-option>
+                    <mat-option value="Home">Home</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
             </div>
             <div *ngIf="profileErrors?.length > 0">
@@ -49,11 +51,11 @@
               </span>
             </div>
             <div fxLayout="column" style="margin-top:30px;">
-              <button type="submit" md-raised-button color="primary">
+              <button type="submit" mat-raised-button color="primary">
                 Save Changes
               </button>
               <span>&nbsp;</span>
-              <button type="button" routerLink="/examples/banking/dashboard" color="accent" md-raised-button>
+              <button type="button" routerLink="/examples/banking/dashboard" color="accent" mat-raised-button>
                 Cancel
               </button>
             </div>

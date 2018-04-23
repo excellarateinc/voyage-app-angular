@@ -8,11 +8,11 @@ html, body {
   height: 100%;
 }
 
-md-toolbar-row {
+mat-toolbar-row {
   justify-content: space-between;
 }
 
-md-card {
+mat-card {
   margin-bottom: 10px;
 }
 
@@ -28,7 +28,7 @@ md-card {
 }
 
 @media only screen and (min-width: 960px) {
-  md-card {
+  mat-card {
     margin: 5px;
   }
 

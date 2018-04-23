@@ -2,12 +2,14 @@
   <mat-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <mat-card-title>User Admin</mat-card-title>
     <div fxLayout="column">
-      <mat-select [(ngModel)]="selectedUser" placeholder="Choose a User" style="margin-top:15px; margin-bottom:30px;" >
-        <mat-option *ngFor="let user of users" [value]="user">{{user.username}}</mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedUser" placeholder="Choose a User">
+          <mat-option *ngFor="let user of users" [value]="user">{{user.username}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-list *ngIf="selectedUser != null">
         <mat-list-item>
-          <p md-line>
+          <p mat-line>
             <mat-checkbox color="primary" [(ngModel)]="selectedUser.isActive" (change)="onToggle()">
               Is Active
             </mat-checkbox>

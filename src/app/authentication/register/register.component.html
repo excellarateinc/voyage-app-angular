@@ -6,58 +6,60 @@
       <div>Create Account</div>
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div fxLayout="column">
-          <mat-input-container>
-            <input mdInput placeholder="Email" formControlName="email" required>
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email" required>
             <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
               Email is required
             </mat-error>
-          </mat-input-container>
-          <mat-input-container>
-            <input mdInput placeholder="First Name" formControlName="firstName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="First Name" formControlName="firstName" required>
             <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
               First Name is required
             </mat-error>
-          </mat-input-container>
-          <mat-input-container>
-            <input mdInput placeholder="Last Name" formControlName="lastName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
             <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
               Last Name is required
             </mat-error>
-          </mat-input-container>
+          </mat-form-field>
           <div formArrayName="phoneNumbers">
             <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-              <mat-input-container fxFlex="60">
-                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+              <mat-form-field fxFlex="60">
+                <input matInput placeholder="Phone" formControlName="phoneNumber" required>
                 <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
                   Phone and Type are required
                 </mat-error>
-              </mat-input-container>
-              <mat-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
-                <mat-option value="0">Mobile</mat-option>
-                <mat-option value="1">Office</mat-option>
-                <mat-option value="2">Home</mat-option>
-                <mat-option value="3">Other</mat-option>
-              </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required>
+                  <mat-option value="0">Mobile</mat-option>
+                  <mat-option value="1">Office</mat-option>
+                  <mat-option value="2">Home</mat-option>
+                  <mat-option value="3">Other</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
           </div>
-          <mat-input-container>
-            <input mdInput placeholder="Username" formControlName="username" required>
+          <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username" required>
             <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
               Username is required
             </mat-error>
-          </mat-input-container>
-          <mat-input-container>
-            <input mdInput placeholder="Password" formControlName="password" type="password" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Password" formControlName="password" type="password" required>
             <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
               Password is required
             </mat-error>
-          </mat-input-container>
-          <mat-input-container>
-            <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
             <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
               Confirm Password is required
             </mat-error>
-          </mat-input-container>
+          </mat-form-field>
           <div *ngIf="registrationErrors?.length > 0">
             <span *ngFor="let error of registrationErrors" style="color:#f44336">
               {{error.errorDescription}}
@@ -65,9 +67,9 @@
             </span>
           </div>
           <div fxLayout="column" style="margin-top: 20px;">
-            <button md-raised-button color="primary" type="submit">Register</button>
+            <button mat-raised-button color="primary" type="submit">Register</button>
             <span>&nbsp;</span>
-            <button type="button" routerLink="/authentication/login" color="accent" md-raised-button>Cancel</button>
+            <button type="button" routerLink="/authentication/login" color="accent" mat-raised-button>Cancel</button>
           </div>
         </div>
       </form>
@@ -83,58 +85,60 @@
     <div style="color:white">Create Account</div>
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
       <div fxLayout="column">
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="Email" formControlName="email" required>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="Email" formControlName="email" required>
           <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
             Email is required
           </mat-error>
-        </mat-input-container>
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="First Name" formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="First Name" formControlName="firstName" required>
           <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
             First Name is required
           </mat-error>
-        </mat-input-container>
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="Last Name" formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="Last Name" formControlName="lastName" required>
           <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
             Last Name is required
           </mat-error>
-        </mat-input-container>
+        </mat-form-field>
         <div formArrayName="phoneNumbers">
           <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-            <mat-input-container fxFlex="60" class="light-input">
-              <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
+            <mat-form-field fxFlex="60" class="light-input">
+              <input matInput placeholder="Phone" formControlName="phoneNumber" required>
               <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
                 Phone and Type are required
               </mat-error>
-            </mat-input-container>
-            <mat-select placeholder="Type" fxFlex formControlName="phoneType" required style="margin-top: 14px;" class="light-input">
-              <mat-option value="0">Mobile</mat-option>
-              <mat-option value="1">Office</mat-option>
-              <mat-option value="2">Home</mat-option>
-              <mat-option value="3">Other</mat-option>
-            </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Type" fxFlex formControlName="phoneType" required class="light-input">
+                <mat-option value="0">Mobile</mat-option>
+                <mat-option value="1">Office</mat-option>
+                <mat-option value="2">Home</mat-option>
+                <mat-option value="3">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="Username" formControlName="username" required>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="Username" formControlName="username" required>
           <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
             Username is required
           </mat-error>
-        </mat-input-container>
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="Password" formControlName="password" type="password" required>
+        </mat-form-field>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
           <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
             Password is required
           </mat-error>
-        </mat-input-container>
-        <mat-input-container class="light-input">
-          <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+        </mat-form-field>
+        <mat-form-field class="light-input">
+          <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
           <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
             Confirm Password is required
           </mat-error>
-        </mat-input-container>
+        </mat-form-field>
         <div *ngIf="registrationErrors?.length > 0">
           <span *ngFor="let error of registrationErrors" style="color:white">
             {{error.errorDescription}}
@@ -143,9 +147,9 @@
         </div>
         <span>&nbsp;</span>
         <div fxLayout="column" style="margin-top: 20px;">
-          <button md-raised-button color="primary" type="submit">Register</button>
+          <button mat-raised-button color="primary" type="submit">Register</button>
           <span>&nbsp;</span>
-          <button type="button" routerLink="/authentication/login" md-raised-button style="background-color:#ffa500; color:white;">
+          <button type="button" routerLink="/authentication/login" mat-raised-button style="background-color:#ffa500; color:white;">
             Cancel
           </button>
         </div>

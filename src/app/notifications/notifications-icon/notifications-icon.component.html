@@ -1,20 +1,20 @@
-<span [mdMenuTriggerFor]="notificationMenu" class="clickable">
+<span [matMenuTriggerFor]="notificationMenu" class="clickable">
   <mat-icon style="font-size: 32px; color: white;">notifications</mat-icon>
   <span class="badge badge-notification" *ngIf="notifications?.length">
     {{notifications.length > 99 ? '99+': notifications.length}}
   </span>
 </span>
-<mat-menu #notificationMenu="mdMenu" [overlapTrigger]="false">
+<mat-menu #notificationMenu="matMenu" [overlapTrigger]="false">
   <mat-list *ngIf="notifications?.length > 0" (click)="$event.stopPropagation()">
-    <div md-subheader>
+    <div mat-subheader>
       Notifications
       <mat-icon title="Mark All Read" class="clickable" (click)="markAllRead()" style="float:right; margin-top:-5px;">done_all</mat-icon>
     </div>
     <mat-divider></mat-divider>
     <ng-template ngFor let-last="last" let-notification [ngForOf]="notifications">
       <mat-list-item>
-        <h3 md-line>{{notification.subject}}</h3>
-        <p md-line>
+        <h3 mat-line>{{notification.subject}}</h3>
+        <p mat-line>
           <span>{{notification.description}}</span>
         </p>
         <mat-icon title="Mark Read" class="clickable" (click)="markNotificationRead(notification.id)">done</mat-icon>
@@ -22,5 +22,5 @@
       <mat-divider *ngIf="!last"></mat-divider>
     </ng-template>
   </mat-list>
-  <div md-menu-item *ngIf="notifications == null || notifications.length === 0">No New Notifications</div>
+  <div mat-menu-item *ngIf="notifications == null || notifications.length === 0">No New Notifications</div>
 </mat-menu>
