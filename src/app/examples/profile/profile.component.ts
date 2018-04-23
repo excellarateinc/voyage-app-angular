@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';

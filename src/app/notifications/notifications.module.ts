@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NotificationsService } from './notifications.service';
 import { NotificationsIconComponent } from './notifications-icon/notifications-icon.component';
-import { environment } from '../../environments/environment';
 import { WebNotificationsService } from './web-notifications.service';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 

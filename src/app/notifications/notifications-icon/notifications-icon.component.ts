@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { NotificationsService } from '../notifications.service';
 import { Notification } from '../notification.model';
 import { WebNotificationsService } from '../web-notifications.service';
@@ -10,12 +9,10 @@ import { WebNotificationsService } from '../web-notifications.service';
 })
 export class NotificationsIconComponent implements OnInit {
   notifications: Array<Notification> = [];
-  private readonly notificationMessage = 'newNotification';
 
   constructor(
     private notificationsService: NotificationsService,
-    private webNotificationsService: WebNotificationsService,
-    private snackBar: MatSnackBar) { }
+    private webNotificationsService: WebNotificationsService) { }
 
   ngOnInit() {
     this.getNotifications();

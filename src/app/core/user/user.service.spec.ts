@@ -1,8 +1,7 @@
-import { TestBed, inject, tick } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
-import { HttpModule, Http, Response, ResponseOptions, XHRBackend } from '@angular/http';
+import { HttpModule, XHRBackend } from '@angular/http';
 import { UserService } from './user.service';
-import { User } from './user.model';
 
 describe('UserService', () => {
   beforeEach(() => {
@@ -22,8 +21,6 @@ describe('UserService', () => {
   describe('when calling sendCode()', () => {
     it('should call the send code API endpoint',
       inject([UserService, XHRBackend], (service: UserService, mockBackend: MockBackend) => {
-
-
     }));
   });
 });

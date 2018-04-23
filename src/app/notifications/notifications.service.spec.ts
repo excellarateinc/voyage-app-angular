@@ -1,6 +1,6 @@
 import { TestBed, inject, tick } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
-import { HttpModule, Http, Response, ResponseOptions, XHRBackend } from '@angular/http';
+import { HttpModule, XHRBackend } from '@angular/http';
 
 import { NotificationsService } from './notifications.service';
 

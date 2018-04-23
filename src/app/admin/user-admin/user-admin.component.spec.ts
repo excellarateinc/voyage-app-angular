@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { UserAdminComponent } from './user-admin.component';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
-import { UserStatus } from '../../core/user/user-status.model';
 import { Observable } from 'rxjs/Observable';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 

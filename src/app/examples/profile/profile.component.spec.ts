@@ -7,8 +7,6 @@ import { ProfileComponent } from './profile.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
-import { User } from '../../core/user/user.model';
-import { BroadcastService } from '../../core/broadcast.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 @Component({
@@ -24,15 +22,12 @@ describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
   let userService: UserService;
-  let broadcastService: BroadcastService;
 
   beforeEach(async(() => {
 
     const userServiceStub: any = {
       getCurrentUser: () => { }
     };
-
-    const broadcastServiceStub: any = { };
 
     TestBed.configureTestingModule({
       imports: [
@@ -47,8 +42,7 @@ describe('ProfileComponent', () => {
         StubProfileImageComponent
       ],
       providers: [
-        { provide: UserService, useValue: userServiceStub },
-        { provide: BroadcastService, useValue: broadcastServiceStub }
+        { provide: UserService, useValue: userServiceStub }
       ]
     })
     .compileComponents();
@@ -56,7 +50,6 @@ describe('ProfileComponent', () => {
 
   beforeEach(() => {
     userService = TestBed.get(UserService);
-    broadcastService = TestBed.get(BroadcastService);
     spyOn(userService, 'getCurrentUser').and.returnValue(Observable.create(o => o.next({ phones: [] })));
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;

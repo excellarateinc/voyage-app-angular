@@ -1,6 +1,6 @@
-import { TestBed, inject, tick } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { HttpModule, Http, Response, ResponseOptions, XHRBackend, RequestMethod } from '@angular/http';
+import { HttpModule, XHRBackend, RequestMethod } from '@angular/http';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
 

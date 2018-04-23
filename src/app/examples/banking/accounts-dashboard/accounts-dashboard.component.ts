@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { AccountsService } from '../accounts.service';
-import { TransactionHistory } from '../transaction-history.model';
 import { Account } from '../account.model';
 import { Transaction } from '../transaction.model';
-import { TransactionType } from '../transaction-type.enum';
 
 @Component({
   selector: 'app-accounts-dashboard',
@@ -40,7 +37,7 @@ export class AccountsDashboardComponent implements OnInit {
       return 0;
     }
     let balance = 0;
-    for (let i = 0; i < this.accounts.length; i++){
+    for (let i = 0; i < this.accounts.length; i++) {
       balance += this.accounts[i].balance;
     }
     return balance;

@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { ProfileIconComponent } from './profile-icon.component';
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { UserService } from '../../../core/user/user.service';
-import { User } from '../../../core/user/user.model';
 import { BroadcastService } from '../../../core/broadcast.service';
 import { AngularMaterialModule } from '../../../angular-material/angular-material.module';
 
@@ -15,7 +14,6 @@ describe('ProfileIconComponent', () => {
   let fixture: ComponentFixture<ProfileIconComponent>;
   let userService: UserService;
   let broadcastService: BroadcastService;
-  let authService: AuthenticationService;
 
   beforeEach(async(() => {
 
@@ -49,7 +47,6 @@ describe('ProfileIconComponent', () => {
   beforeEach(() => {
     userService = TestBed.get(UserService);
     broadcastService = TestBed.get(BroadcastService);
-    authService = TestBed.get(AuthenticationService);
     spyOn(userService, 'getCurrentUser').and.returnValue(Observable.create(o => o.next({})));
     broadcastService.profileUpdated$ = Observable.create(o => o.next({}));
     fixture = TestBed.createComponent(ProfileIconComponent);

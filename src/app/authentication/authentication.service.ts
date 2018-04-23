@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 
 @Injectable()
