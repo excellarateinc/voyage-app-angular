@@ -12,6 +12,7 @@ import { RegisterService } from './register/register.service';
 import { VerificationComponent } from './verification/verification.component';
 import { VerificationService } from './verification/verification.service';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { PublicGuardService } from './public-guard.service';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
   providers: [
     AuthenticationService,
     AuthGuardService,
+    PublicGuardService,
     RegisterService,
     VerificationService,
     LoginService

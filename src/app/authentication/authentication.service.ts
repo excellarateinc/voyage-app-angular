@@ -42,7 +42,7 @@ export class AuthenticationService {
 
   logout(): void {
     sessionStorage.removeItem(this.sessionStorageTokenKey);
-    this.window.location.href = '/';
+    this.window.location.reload();
   }
 
   goToVerification(): void {
