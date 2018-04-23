@@ -69,7 +69,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
       <div fxLayout="column">
         <mat-form-field class="light-input">
-          <span mdPrefix style="margin-right:10px">
+          <span matPrefix style="margin-right:10px">
             <mat-icon style="color:white; font-size:26px;">person_outline</mat-icon>
           </span>
           <input matInput placeholder="Username" formControlName="username" required>
@@ -78,7 +78,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="light-input" style="margin-top:15px">
-          <span mdPrefix style="margin-right:10px">
+          <span matPrefix style="margin-right:10px">
             <mat-icon style="color:white; font-size:26px;">lock_outline</mat-icon>
           </span>
           <input matInput placeholder="Password" formControlName="password" type="password" required>

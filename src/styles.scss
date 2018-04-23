@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
 html, body {
   margin: 0;
@@ -131,7 +131,7 @@ https://github.com/angular/material2/issues/998 */
   background-color: white !important;
 }
 
-.light-input .mat-input-error {
+.light-input .mat-error {
   color: white !important;
 }
 
