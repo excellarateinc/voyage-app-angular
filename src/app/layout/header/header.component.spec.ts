@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './header.component';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 @Component({
   template: '',
@@ -25,7 +25,7 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule
       ],
       declarations: [

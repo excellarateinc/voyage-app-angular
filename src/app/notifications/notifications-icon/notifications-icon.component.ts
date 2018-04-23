@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { NotificationsService } from '../notifications.service';
 import { Notification } from '../notification.model';
-import { SignalR } from 'ng2-signalr';
 import { WebNotificationsService } from '../web-notifications.service';
 
 @Component({
@@ -16,12 +15,10 @@ export class NotificationsIconComponent implements OnInit {
   constructor(
     private notificationsService: NotificationsService,
     private webNotificationsService: WebNotificationsService,
-    private signalR: SignalR,
-    private snackBar: MdSnackBar) { }
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getNotifications();
-    this.listenForPushNotifications();
     this.webNotificationsService.requestPermission();
   }
 
@@ -40,19 +37,5 @@ export class NotificationsIconComponent implements OnInit {
   markAllRead(): void {
     this.notificationsService.markAllRead()
       .subscribe(() => this.notifications = []);
-  }
-
-  private listenForPushNotifications(): void {
-    this.signalR.connect().then(connection => {
-      connection.listenFor(this.notificationMessage)
-        .subscribe((notification: Notification) => {
-          this.onPushReceived(notification);
-      });
-    });
-  }
-
-  private onPushReceived(notification: Notification): void {
-    this.notifications.unshift(notification);
-    this.webNotificationsService.displayNotification(notification.subject, notification.description);
   }
 }

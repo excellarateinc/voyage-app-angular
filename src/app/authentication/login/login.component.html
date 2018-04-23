@@ -2,7 +2,7 @@
 <div class="masthead" *ngIf="!isMobile">
   <div fxLayout="row">
     <span fxFlex></span>
-    <md-card fxFlex.md="50" style="margin-top:100px;">
+    <mat-card fxFlex.md="50" style="margin-top:100px;">
       <div fxLayout="column">
         <div fxLayout="row" style="margin-top:25px;">
           <span fxFlex></span>
@@ -18,18 +18,18 @@
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
           <div fxLayout="column">
-            <md-input-container>
+            <mat-input-container>
               <input mdInput placeholder="Username" formControlName="username" required>
-              <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+              <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
                 Username is required
-              </md-error>
-            </md-input-container>
-            <md-input-container style="margin-top:20px">
+              </mat-error>
+            </mat-input-container>
+            <mat-input-container style="margin-top:20px">
               <input mdInput placeholder="Password" formControlName="password" type="password" required>
-              <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+              <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
                 Password is required
-              </md-error>
-            </md-input-container>
+              </mat-error>
+            </mat-input-container>
             <div *ngIf="loginFailed">
               <span style="color:#f44336">
                 Invalid username or password.
@@ -45,7 +45,7 @@
           </div>
         </form>
       </div>
-    </md-card>
+    </mat-card>
     <span fxFlex></span>
   </div>
 </div>
@@ -68,24 +68,24 @@
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
       <div fxLayout="column">
-        <md-input-container class="light-input">
+        <mat-input-container class="light-input">
           <span mdPrefix style="margin-right:10px">
-            <md-icon style="color:white; font-size:26px;">person_outline</md-icon>
+            <mat-icon style="color:white; font-size:26px;">person_outline</mat-icon>
           </span>
           <input mdInput placeholder="Username" formControlName="username" required>
-          <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+          <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
             Username is required
-          </md-error>
-        </md-input-container>
-        <md-input-container class="light-input" style="margin-top:15px">
+          </mat-error>
+        </mat-input-container>
+        <mat-input-container class="light-input" style="margin-top:15px">
           <span mdPrefix style="margin-right:10px">
-            <md-icon style="color:white; font-size:26px;">lock_outline</md-icon>
+            <mat-icon style="color:white; font-size:26px;">lock_outline</mat-icon>
           </span>
           <input mdInput placeholder="Password" formControlName="password" type="password" required>
-          <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
             Password is required
-          </md-error>
-        </md-input-container>
+          </mat-error>
+        </mat-input-container>
         <div *ngIf="loginFailed">
           <span style="color:white">
             Invalid username or password.

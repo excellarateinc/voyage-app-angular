@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
 import { Phone } from '../../core/user/phone.model';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private router: Router,
-    private snackBar: MdSnackBar) { }
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.initializeForm();

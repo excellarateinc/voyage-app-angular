@@ -1,21 +1,21 @@
 <div fxLayout="row">
-  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
-    <md-card-title>Create Account</md-card-title>
+  <mat-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-title>Create Account</mat-card-title>
     <form [formGroup]="accountForm" (ngSubmit)="createAccount()" novalidate>
       <div fxLayout="column">
         <div fxLayout="row">
-          <md-select placeholder="Account Type" fxFlex formControlName="type" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option [value]="0">Checking</md-option>
-            <md-option [value]="1">Savings</md-option>
-          </md-select>
+          <mat-select placeholder="Account Type" fxFlex formControlName="type" style="margin-top:15px; margin-bottom:30px;" required>
+            <mat-option [value]="0">Checking</mat-option>
+            <mat-option [value]="1">Savings</mat-option>
+          </mat-select>
         </div>
         <div fxLayout="row">
-          <md-input-container fxFlex>
+          <mat-input-container fxFlex>
             <input mdInput placeholder="Account Name" formControlName="name" required maxlength="20">
-            <md-error *ngIf="accountForm.controls['name'].hasError('required')">
+            <mat-error *ngIf="accountForm.controls['name'].hasError('required')">
               Account Name is required
-            </md-error>
-          </md-input-container>
+            </mat-error>
+          </mat-input-container>
         </div>
         <div fxLayout="column" style="margin-top: 30px;">
           <button md-raised-button color="primary" type="submit">
@@ -28,5 +28,5 @@
         </div>
       </div>
     </form>
-  </md-card>
+  </mat-card>
 </div>

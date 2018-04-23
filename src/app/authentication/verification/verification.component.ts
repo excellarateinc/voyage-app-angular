@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { VerificationService } from './verification.service';
 import { Verification } from './verification.model';
 
@@ -38,7 +37,7 @@ export class VerificationComponent implements OnInit {
     const verification = this.verificationForm.value as Verification;
     this.verificationService.verify(verification)
       .subscribe(result => {
-        this.window.location.href = '/';
+        this.window.location.reload();
       }, () => {
         this.verificationFailed = true;
       });

@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ProfileComponent } from './profile.component';
@@ -10,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 @Component({
   template: '',
@@ -37,7 +37,7 @@ describe('ProfileComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule,
         SharedModule,
         ReactiveFormsModule

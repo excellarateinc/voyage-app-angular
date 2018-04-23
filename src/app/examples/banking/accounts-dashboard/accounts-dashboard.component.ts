@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk';
 import { Observable } from 'rxjs/Observable';
 import { AccountsService } from '../accounts.service';
 import { TransactionHistory } from '../transaction-history.model';

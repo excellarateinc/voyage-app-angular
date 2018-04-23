@@ -1,5 +1,5 @@
-<md-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
-  <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
+<mat-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
+  <mat-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav (click)="close()">
       <ul>
         <li>
@@ -18,12 +18,6 @@
           <a class="nav-item-container" routerLink="/examples/banking/transfer" routerLinkActive="active">
             <i class="material-icons">attach_money</i>
             Transfer & Pay
-          </a>
-        </li>
-        <li>
-          <a class="nav-item-container" routerLink="/chat" routerLinkActive="active">
-            <i class="material-icons">chat</i>
-            Chat
           </a>
         </li>
         <li *ngIf="isAdmin">
@@ -52,9 +46,9 @@
       <img src="./favicon.ico" width="20px" style="padding-left:30px; position: absolute; margin: auto;" />
       <span style="margin-left:55px;">Powered by Voyage</span>
     </div>
-  </md-sidenav>
+  </mat-sidenav>
 
   <div class="main-content full-height">
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>

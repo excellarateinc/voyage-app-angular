@@ -25,9 +25,7 @@
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",
-        "../node_modules/chart.js/dist/Chart.min.js",
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/signalr/jquery.signalR.js"
+        "../node_modules/chart.js/dist/Chart.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

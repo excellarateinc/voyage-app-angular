@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { User } from '../../core/user/user.model';
 import { UserStatus } from '../../core/user/user-status.model';
 import { UserService } from '../../core/user/user.service';
@@ -13,7 +13,7 @@ export class UserAdminComponent implements OnInit {
   users: Array<User>;
   selectedUser: User;
 
-  constructor(private userService: UserService, private snackBar: MdSnackBar) { }
+  constructor(private userService: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.userService.getUsers()

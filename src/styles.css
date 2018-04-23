@@ -96,7 +96,7 @@ https://github.com/angular/material2/issues/998 */
 }
 
 .masthead {
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg);
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg);
   background-position: center top;
   background-size: cover;
   margin-left:-10px;
@@ -113,7 +113,7 @@ https://github.com/angular/material2/issues/998 */
   left: 0;
   max-width: 100% !important;
   margin: 0 !important;
-  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(~/assets/images/main-bg.jpg) top left no-repeat;
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg) top left no-repeat;
   background-size: cover;
   overflow-y: auto;
 }

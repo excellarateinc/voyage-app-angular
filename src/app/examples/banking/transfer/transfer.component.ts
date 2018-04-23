@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AccountsService } from '../accounts.service';
 import { Account } from '../account.model';
 import { Transfer } from './transfer.model';
@@ -19,7 +19,7 @@ export class TransferComponent implements OnInit {
     private accountsService: AccountsService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private snackBar: MdSnackBar) { }
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.accountsService.getAllAccounts()
