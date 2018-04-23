@@ -1,56 +1,42 @@
-import { TestBed, inject, tick } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { HttpModule, XHRBackend } from '@angular/http';
+import { TestBed, inject } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { NotificationsService } from './notifications.service';
 
 describe('NotificationsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpModule ],
+      imports: [ HttpClientTestingModule ],
       providers: [
-        NotificationsService,
-        { provide: XHRBackend, useClass: MockBackend }
+        NotificationsService
       ]
     });
   });
 
   describe('when calling getNotifications()', () => {
     it('should call the GET /notifications API endpoint',
-      inject([NotificationsService, XHRBackend], (service: NotificationsService, mockBackend: MockBackend) => {
-        let connection: any;
-        mockBackend.connections.subscribe((c) => {
-          connection = c;
-          service.getNotifications();
-          tick();
-          expect(connection.url).toContain('/notifications');
-        });
+      inject([NotificationsService, HttpTestingController], (service: NotificationsService, httpMock: HttpTestingController) => {
+        service.getNotifications().subscribe();
+        const req = httpMock.expectOne(request => request.url.includes('/notifications'));
+        expect(req.request.method).toEqual('GET');
     }));
   });
 
   describe('when calling markNotificationAsRead()', () => {
     it('should call the PUT /notifications/{id} API endpoint',
-      inject([NotificationsService, XHRBackend], (service: NotificationsService, mockBackend: MockBackend) => {
-        let connection: any;
-        mockBackend.connections.subscribe((c) => {
-          connection = c;
-          service.markNotificationAsRead(1);
-          tick();
-          expect(connection.url).toContain('/notifications/1');
-        });
+      inject([NotificationsService, HttpTestingController], (service: NotificationsService, httpMock: HttpTestingController) => {
+        service.markNotificationAsRead(1).subscribe();
+        const req = httpMock.expectOne(request => request.url.includes('/notifications/1'));
+        expect(req.request.method).toEqual('PUT');
     }));
   });
 
   describe('when calling markAllRead()', () => {
     it('should call the PUT /notifications API endpoint',
-      inject([NotificationsService, XHRBackend], (service: NotificationsService, mockBackend: MockBackend) => {
-        let connection: any;
-        mockBackend.connections.subscribe((c) => {
-          connection = c;
-          service.markAllRead();
-          tick();
-          expect(connection.url).toContain('/notifications');
-        });
+      inject([NotificationsService, HttpTestingController], (service: NotificationsService, httpMock: HttpTestingController) => {
+        service.markAllRead().subscribe();
+        const req = httpMock.expectOne(request => request.url.includes('/notifications'));
+        expect(req.request.method).toEqual('PUT');
     }));
   });
 });

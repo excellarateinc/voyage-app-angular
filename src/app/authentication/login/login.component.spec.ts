@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
 
     const loginServiceStub: any = { login: () => { } };
-    const windowStub: any = { location: { } };
+    const windowStub: any = { location: { reload: () => { } } };
 
     TestBed.configureTestingModule({
       imports: [

@@ -1,15 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { HttpModule, XHRBackend } from '@angular/http';
 import { UserService } from './user.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule],
+      imports: [HttpClientTestingModule],
       providers: [
-        UserService,
-        { provide: XHRBackend, useClass: MockBackend }
+        UserService
       ]
     });
   });
@@ -20,7 +18,7 @@ describe('UserService', () => {
 
   describe('when calling sendCode()', () => {
     it('should call the send code API endpoint',
-      inject([UserService, XHRBackend], (service: UserService, mockBackend: MockBackend) => {
+      inject([UserService, HttpTestingController], (service: UserService, httpMock: HttpTestingController) => {
     }));
   });
 });

@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { BroadcastService } from '../../core/broadcast.service';
 
 @Component({
   template: '',
@@ -29,6 +30,9 @@ describe('ProfileComponent', () => {
       getCurrentUser: () => { }
     };
 
+    const broadcastServiceStub: any = {
+    };
+
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
@@ -42,7 +46,8 @@ describe('ProfileComponent', () => {
         StubProfileImageComponent
       ],
       providers: [
-        { provide: UserService, useValue: userServiceStub }
+        { provide: UserService, useValue: userServiceStub },
+        { provide: BroadcastService, useValue: broadcastServiceStub }
       ]
     })
     .compileComponents();
