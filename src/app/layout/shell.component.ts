@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -8,7 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   selector: 'app-shell',
   templateUrl: './shell.component.html'
 })
-export class ShellComponent implements OnInit {
+export class ShellComponent implements OnInit, OnDestroy {
   isMobile: boolean;
   isAuthenticated: boolean;
   @ViewChild('sidebar') sidebar: SidebarComponent;
@@ -24,6 +24,10 @@ export class ShellComponent implements OnInit {
     this.watcher = this.media.subscribe((change: MediaChange) => {
       this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
     });
+  }
+
+  ngOnDestroy(): void {
+    this.watcher.unsubscribe();
   }
 
   onToggleSidebar($event: any): void {

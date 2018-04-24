@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ProfileComponent } from './profile.component';
 import { SharedModule } from '../../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
-import { User } from '../../core/user/user.model';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 import { BroadcastService } from '../../core/broadcast.service';
 
 @Component({
@@ -24,7 +23,6 @@ describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
   let userService: UserService;
-  let broadcastService: BroadcastService;
 
   beforeEach(async(() => {
 
@@ -32,12 +30,13 @@ describe('ProfileComponent', () => {
       getCurrentUser: () => { }
     };
 
-    const broadcastServiceStub: any = { };
+    const broadcastServiceStub: any = {
+    };
 
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule,
         SharedModule,
         ReactiveFormsModule
@@ -56,7 +55,6 @@ describe('ProfileComponent', () => {
 
   beforeEach(() => {
     userService = TestBed.get(UserService);
-    broadcastService = TestBed.get(BroadcastService);
     spyOn(userService, 'getCurrentUser').and.returnValue(Observable.create(o => o.next({ phones: [] })));
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;

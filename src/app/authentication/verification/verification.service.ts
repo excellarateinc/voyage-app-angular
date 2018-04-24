@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { Verification } from './verification.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class VerificationService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  sendCode(): Observable<void> {
-    return this.http.get(`${environment.API_URL}/verify/send`)
-      .map(response => response)
-      .catch(error => Observable.throw(error.json()));
+  sendCode(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/verify/send`);
   }
 
-  verify(verification: Verification): Observable<void> {
-    return this.http.post(`${environment.API_URL}/verify`, verification)
-      .map(response => response)
-      .catch(error => Observable.throw(error.json()));
+  verify(verification: Verification): Observable<any> {
+    return this.http.post(`${environment.API_URL}/verify`, verification);
   }
 }

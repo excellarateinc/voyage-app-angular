@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VerificationComponent } from './verification.component';
 import { VerificationService } from './verification.service';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 describe('VerificationComponent', () => {
   let component: VerificationComponent;
@@ -19,13 +19,13 @@ describe('VerificationComponent', () => {
       verify: () => { }
     };
 
-    const windowStub: any = { location: { } };
+    const windowStub: any = { location: { reload: () => { } } };
 
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule
       ],
       declarations: [ VerificationComponent ],

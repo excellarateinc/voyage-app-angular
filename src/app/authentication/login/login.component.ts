@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
 import { LoginService } from './login.service';
 import { Login } from './login.model';
 
@@ -43,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const login = this.loginForm.value as Login;
     this.loginService.login(login)
       .subscribe(result => {
-        this.window.location.href = '/';
+        this.window.location.reload();
       }, error => this.loginFailed = true);
   }
 

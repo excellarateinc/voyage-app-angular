@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { LoginComponent } from './login.component';
 import { LoginService } from './login.service';
+import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -15,12 +15,12 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
 
     const loginServiceStub: any = { login: () => { } };
-    const windowStub: any = { location: { } };
+    const windowStub: any = { location: { reload: () => { } } };
 
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule,
         ReactiveFormsModule
       ],

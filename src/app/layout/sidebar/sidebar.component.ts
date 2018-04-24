@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MdSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   }
   @Input()
   isAuthenticated = false;
-  @ViewChild('sidenav') sidenav: MdSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
   mobile: boolean;
   toggleTheme: false;
   isAdmin = false;

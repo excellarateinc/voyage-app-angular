@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -42,7 +41,7 @@ export class AuthenticationService {
 
   logout(): void {
     sessionStorage.removeItem(this.sessionStorageTokenKey);
-    this.window.location.href = '/';
+    this.window.location.reload();
   }
 
   goToVerification(): void {

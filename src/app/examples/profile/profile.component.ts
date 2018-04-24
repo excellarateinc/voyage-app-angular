@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { environment } from '../../../environments/environment';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
@@ -21,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private snackbar: MdSnackBar,
+    private snackbar: MatSnackBar,
     private broadcastService: BroadcastService) { }
 
   ngOnInit() {

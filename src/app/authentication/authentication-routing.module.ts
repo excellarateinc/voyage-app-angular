@@ -4,10 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VerificationComponent } from './verification/verification.component';
+import { PublicGuardService } from './public-guard.service';
 
 const authRoutes: Routes = [
-  { path: 'authentication/login', component: LoginComponent },
-  { path: 'authentication/register', component: RegisterComponent },
+  { path: 'authentication/login', component: LoginComponent, canActivate: [PublicGuardService] },
+  { path: 'authentication/register', component: RegisterComponent, canActivate: [PublicGuardService] },
   { path: 'authentication/verification', component: VerificationComponent }
 ];
 

@@ -1,12 +1,12 @@
-  <button md-icon-button [mdMenuTriggerFor]="profileMenu" class="profile-icon" appProfileImage [image]="currentUser?.profileImage"></button>
-  <md-menu #profileMenu="mdMenu" [overlapTrigger]="false">
-    <button md-menu-item routerLink="/examples/profile">
-      <md-icon>account_circle</md-icon>
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-icon" appProfileImage [image]="currentUser?.profileImage"></button>
+  <mat-menu #profileMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item routerLink="/examples/profile">
+      <mat-icon>account_circle</mat-icon>
       <span>Profile</span>
     </button>
     <div class="divider"></div>
-    <button md-menu-item (click)="logout()">
-      <md-icon>exit_to_app</md-icon>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
       <span>Logout</span>
     </button>
-  </md-menu>
+  </mat-menu>

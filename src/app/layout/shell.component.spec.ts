@@ -2,11 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ShellComponent } from './shell.component';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 @Component({
   template: '',
@@ -47,7 +47,7 @@ describe('ShellComponent', () => {
       imports: [
         RouterTestingModule,
         BrowserAnimationsModule,
-        MaterialModule,
+        AngularMaterialModule,
         FlexLayoutModule
       ],
       declarations: [
