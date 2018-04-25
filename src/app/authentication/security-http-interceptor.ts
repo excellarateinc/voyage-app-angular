@@ -10,7 +10,8 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const accessToken = this.authenticationService.getToken();
-    const authRequest = request.clone({setHeaders: {Authorization: `Bearer ${accessToken}`}});
+    // TODO: I think it would be better is authenticationService had an isLoggedIn method to determine if we add the auth token
+    const authRequest = accessToken ? request.clone({setHeaders: {Authorization: `Bearer ${accessToken}`}}) : request;
     return next.handle(authRequest)
       .catch(errorResponse => {
         if (errorResponse.status === 401) {
