@@ -8,8 +8,8 @@ export class PublicGuardService implements CanActivate, CanActivateChild, CanLoa
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   canActivate(): boolean {
-    const token = this.authenticationService.getToken();
-    if (token) {
+    const authenticated = this.authenticationService.isAuthenticated()
+    if (authenticated) {
       this.router.navigate(['dashboard']);
       return false;
     }

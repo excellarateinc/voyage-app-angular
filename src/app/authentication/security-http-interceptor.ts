@@ -9,9 +9,12 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const accessToken = this.authenticationService.getToken();
-    const authRequest = request.clone({setHeaders: {Authorization: `Bearer ${accessToken}`}});
-    return next.handle(authRequest)
+    if (this.authenticationService.isAuthenticated()) {
+      const accessToken = this.authenticationService.getToken();
+      request = request.clone({ setHeaders: { Authorization: `Bearer ${accessToken}` } });
+    }
+
+    return next.handle(request)
       .catch(errorResponse => {
         if (errorResponse.status === 401) {
           this.authenticationService.logout();
