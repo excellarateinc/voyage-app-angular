@@ -30,6 +30,10 @@ export class AuthenticationService {
     sessionStorage.setItem(this.sessionStorageTokenKey, token);
   }
 
+  isAuthenticated(): boolean {
+    return this.getToken() != null;
+  }
+
   goToOauthLogin(): void {
     const RESPONSE_TYPE = 'token';
     const oauthUrl = `${environment.SERVER_URL}/oauth/authorize?client_id=${environment.OAUTH_CLIENT_ID}

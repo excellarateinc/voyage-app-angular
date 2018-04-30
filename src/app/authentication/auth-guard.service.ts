@@ -8,8 +8,8 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   canActivate(): boolean {
-    const token = this.authenticationService.getToken();
-    if (!token) {
+    const authenticated = this.authenticationService.isAuthenticated()
+    if (!authenticated) {
       this.router.navigate(['authentication/login']);
       return false;
     }

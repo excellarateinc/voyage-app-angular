@@ -6,7 +6,7 @@ import { AuthenticationService } from './authentication.service';
 describe('AuthGuardService', () => {
   beforeEach(() => {
 
-    const authenticationServiceStub: any = { getToken: () => { } };
+    const authenticationServiceStub: any = { isAuthenticated: () => { } };
     const routerStub: any = { navigate: (url: Array<string>) => { } };
 
     TestBed.configureTestingModule({
@@ -27,7 +27,7 @@ describe('AuthGuardService', () => {
       inject([AuthGuardService, Router, AuthenticationService],
         (service: AuthGuardService, router: Router, authService: AuthenticationService) => {
           spyOn(router, 'navigate');
-          spyOn(authService, 'getToken').and.callFake(() => null);
+          spyOn(authService, 'isAuthenticated').and.callFake(() => false);
           const canActivate = service.canActivate();
           expect(canActivate).toBe(false);
           expect(router.navigate).toHaveBeenCalledWith(['authentication/login']);
@@ -37,7 +37,7 @@ describe('AuthGuardService', () => {
       inject([AuthGuardService, Router, AuthenticationService],
         (service: AuthGuardService, router: Router, authService: AuthenticationService) => {
           spyOn(router, 'navigate');
-          spyOn(authService, 'getToken').and.callFake(() => 'valid_token');
+          spyOn(authService, 'isAuthenticated').and.callFake(() => true);
           const canActivate = service.canActivate();
           expect(canActivate).toBe(true);
           expect(router.navigate).not.toHaveBeenCalled();

@@ -40,7 +40,7 @@ describe('ShellComponent', () => {
   beforeEach(async(() => {
 
     const authenticationServiceStub: any = {
-      getToken: () => { }
+      isAuthenticated: () => { }
     };
 
     TestBed.configureTestingModule({
