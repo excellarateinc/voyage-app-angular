@@ -26,7 +26,7 @@ __App Features__
 * Integrates with the Voyage API for all data
 
 __Technology Stack__
-* Angular 4.x
+* Angular 5.x
 * Angular Material
 * Angular Flex Layout
 * TypeScript
@@ -44,10 +44,10 @@ __Technology Stack__
 
 ```bash
 # clone repo
-$ git clone https://github.com/lssinc/voyage-app-angular.git
+$ git clone https://github.com/lssinc/precisionbi-angular-client.git
 
 # change directory to your app
-$ cd voyage-app-angular
+$ cd precisionbi-angular-client
 
 # install development dependencies with npm
 $ npm install
