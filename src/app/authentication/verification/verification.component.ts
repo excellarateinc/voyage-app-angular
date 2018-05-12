@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VerificationService } from './verification.service';
 import { Verification } from './verification.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verification',
@@ -16,7 +17,7 @@ export class VerificationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private verificationService: VerificationService,
-    @Inject('Window') private window: any) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -37,7 +38,7 @@ export class VerificationComponent implements OnInit {
     const verification = this.verificationForm.value as Verification;
     this.verificationService.verify(verification)
       .subscribe(result => {
-        this.window.location.reload();
+        this.router.navigate(['/dashboard']);
       }, () => {
         this.verificationFailed = true;
       });

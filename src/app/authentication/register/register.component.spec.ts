@@ -7,6 +7,7 @@ import { RegisterComponent } from './register.component';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { MobileService } from '../../core/mobile.service';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -17,6 +18,7 @@ describe('RegisterComponent', () => {
 
     const registerServiceStub: any = { register: () => { } };
     const routerStub: any = { navigate: (url: Array<string>) => { } };
+    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
 
     TestBed.configureTestingModule({
       imports: [
@@ -28,7 +30,8 @@ describe('RegisterComponent', () => {
       declarations: [ RegisterComponent ],
       providers: [
         { provide: RegisterService, useValue: registerServiceStub },
-        { provide: Router, useValue: routerStub }
+        { provide: Router, useValue: routerStub },
+        { provide: MobileService, useValue: mobileServiceStub }
       ]
     })
     .compileComponents();
@@ -60,7 +63,7 @@ describe('RegisterComponent', () => {
       component.registerForm.controls['username'].setValue('user');
       component.registerForm.controls['password'].setValue('pass');
       component.registerForm.controls['confirmPassword'].setValue('pass');
-      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      component.registerForm.controls['phones'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
       component.register();
       expect(registerService.register).toHaveBeenCalled();
     });
@@ -68,8 +71,8 @@ describe('RegisterComponent', () => {
 
   describe('when calling the phoneNumbers() getter', () => {
     it('should retrieve the phone numbers out of the form', () => {
-      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
-      const phoneNumbers = component.phoneNumbers;
+      component.registerForm.controls['phones'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      const phoneNumbers = component.phones;
       expect(phoneNumbers.length).toBe(1);
     });
   });

@@ -7,5 +7,5 @@ export class Register {
   username: string;
   password: string;
   confirmPassword: string;
-  phoneNumbers: Array<Phone>;
+  phones: Array<Phone>;
 }
