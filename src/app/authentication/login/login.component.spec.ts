@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { LoginComponent } from './login.component';
 import { LoginService } from './login.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { MobileService } from '../../core/mobile.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -16,6 +17,7 @@ describe('LoginComponent', () => {
 
     const loginServiceStub: any = { login: () => { } };
     const windowStub: any = { location: { reload: () => { } } };
+    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
 
     TestBed.configureTestingModule({
       imports: [
@@ -27,7 +29,8 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ],
       providers: [
         { provide: LoginService, useValue: loginServiceStub },
-        { provide: 'Window', useValue: windowStub }
+        { provide: 'Window', useValue: windowStub },
+        { provide: MobileService, useValue: mobileServiceStub }
       ]
     })
     .compileComponents();

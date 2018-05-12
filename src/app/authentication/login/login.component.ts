@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { LoginService } from './login.service';
 import { Login } from './login.model';
+import { MobileService } from '../../core/mobile.service';
 
 @Component({
   selector: 'app-login',
@@ -19,18 +19,18 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private loginService: LoginService,
     private formBuilder: FormBuilder,
-    private media: ObservableMedia,
-    @Inject('Window') private window: any) { }
+    @Inject('Window') private window: any,
+    private mobileService: MobileService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initializeForm();
-    this.isMobile = this.media.isActive('xs') || this.media.isActive('sm');
-    this.watcher = this.media.subscribe((change: MediaChange) => {
-      this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+    this.isMobile = this.mobileService.isMobile();
+    this.watcher = this.mobileService.mobileChanged$.subscribe((isMobile: boolean) => {
+      this.isMobile = isMobile;
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.watcher.unsubscribe();
   }
 

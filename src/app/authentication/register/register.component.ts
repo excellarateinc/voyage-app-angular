@@ -1,26 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
+import { Subscription } from 'rxjs/Subscription';
+import { MobileService } from '../../core/mobile.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
   registrationErrors: Array<any>;
+  isMobile = false;
+  private watcher: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private mobileService: MobileService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initializeForm();
+    this.isMobile = this.mobileService.isMobile();
+    this.watcher = this.mobileService.mobileChanged$.subscribe((isMobile: boolean) => {
+      this.isMobile = isMobile;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.watcher.unsubscribe();
   }
 
   register(): void {
