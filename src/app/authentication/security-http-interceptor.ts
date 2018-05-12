@@ -16,11 +16,21 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
 
     return next.handle(request)
       .catch(errorResponse => {
-        if (errorResponse.status === 401) {
-          this.authenticationService.logout();
+        if (errorResponse.status !== 401) {
+          return Observable.throw(errorResponse);
         }
 
-        return Observable.throw(errorResponse.error);
+        const errors = errorResponse.error;
+        if (errors && errors instanceof Array) {
+          const error = errors[0];
+          if (error.error === 'RequireVerification') {
+            this.authenticationService.goToVerification();
+            return Observable.throw(errorResponse);
+          }
+        }
+
+        this.authenticationService.logout();
+        return Observable.throw(errorResponse);
       });
   }
 }

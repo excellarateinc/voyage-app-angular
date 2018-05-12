@@ -10,7 +10,7 @@ export class RegisterService {
   constructor(private http: HttpClient) { }
 
   register(register: Register): Observable<any> {
-    return this.http.post(`${environment.API_URL}/accounts`, register);
+    return this.http.post(`${environment.API_URL}/profiles/register`, register);
   }
 
 }

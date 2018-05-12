@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VerificationComponent } from './verification.component';
 import { VerificationService } from './verification.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('VerificationComponent', () => {
   let component: VerificationComponent;
@@ -26,7 +27,8 @@ describe('VerificationComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        RouterTestingModule
       ],
       declarations: [ VerificationComponent ],
       providers: [

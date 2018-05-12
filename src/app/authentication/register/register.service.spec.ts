@@ -27,11 +27,11 @@ describe('RegisterService', () => {
       register.lastName = 'last';
       register.password = 'password';
       register.confirmPassword = 'password';
-      register.phoneNumbers = [];
+      register.phones = [];
       register.username = 'user';
       service.register(register).subscribe();
 
-      const req = httpMock.expectOne(request => request.url.includes('/accounts'));
+      const req = httpMock.expectOne(request => request.url.includes('/profiles/register'));
       expect(req.request.method).toEqual('POST');
     }));
   });

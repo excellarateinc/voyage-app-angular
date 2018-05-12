@@ -37,8 +37,8 @@ export class RegisterComponent implements OnInit {
       }, errors => this.registrationErrors = errors);
   }
 
-  get phoneNumbers(): FormArray {
-    return this.registerForm.get('phoneNumbers') as FormArray;
+  get phones(): FormArray {
+    return this.registerForm.get('phones') as FormArray;
   };
 
   private initializeForm(): void {
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      phoneNumbers: this.formBuilder.array([
+      phones: this.formBuilder.array([
         this.formBuilder.group({
           phoneNumber: ['', Validators.required],
           phoneType: [null, Validators.required]

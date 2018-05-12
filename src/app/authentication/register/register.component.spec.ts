@@ -60,7 +60,7 @@ describe('RegisterComponent', () => {
       component.registerForm.controls['username'].setValue('user');
       component.registerForm.controls['password'].setValue('pass');
       component.registerForm.controls['confirmPassword'].setValue('pass');
-      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      component.registerForm.controls['phones'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
       component.register();
       expect(registerService.register).toHaveBeenCalled();
     });
@@ -68,8 +68,8 @@ describe('RegisterComponent', () => {
 
   describe('when calling the phoneNumbers() getter', () => {
     it('should retrieve the phone numbers out of the form', () => {
-      component.registerForm.controls['phoneNumbers'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
-      const phoneNumbers = component.phoneNumbers;
+      component.registerForm.controls['phones'].setValue([{ phoneNumber: '1231231234', phoneType: 'mobile' }]);
+      const phoneNumbers = component.phones;
       expect(phoneNumbers.length).toBe(1);
     });
   });

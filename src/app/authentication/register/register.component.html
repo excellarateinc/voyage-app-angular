@@ -24,20 +24,20 @@
               Last Name is required
             </mat-error>
           </mat-form-field>
-          <div formArrayName="phoneNumbers">
-            <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
+          <div formArrayName="phones">
+            <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
               <mat-form-field fxFlex="60">
                 <input matInput placeholder="Phone" formControlName="phoneNumber" required>
-                <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
+                <mat-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
                   Phone and Type are required
                 </mat-error>
               </mat-form-field>
               <mat-form-field>
                 <mat-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required>
-                  <mat-option value="0">Mobile</mat-option>
-                  <mat-option value="1">Office</mat-option>
-                  <mat-option value="2">Home</mat-option>
-                  <mat-option value="3">Other</mat-option>
+                  <mat-option value="Mobile">Mobile</mat-option>
+                  <mat-option value="Office">Office</mat-option>
+                  <mat-option value="Home">Home</mat-option>
+                  <mat-option value="Other">Other</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -103,20 +103,20 @@
             Last Name is required
           </mat-error>
         </mat-form-field>
-        <div formArrayName="phoneNumbers">
-          <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
+        <div formArrayName="phones">
+          <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row">
             <mat-form-field fxFlex="60" class="light-input">
               <input matInput placeholder="Phone" formControlName="phoneNumber" required>
-              <mat-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
+              <mat-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
                 Phone and Type are required
               </mat-error>
             </mat-form-field>
             <mat-form-field class="light-input">
               <mat-select placeholder="Type" fxFlex formControlName="phoneType" required>
-                <mat-option value="0">Mobile</mat-option>
-                <mat-option value="1">Office</mat-option>
-                <mat-option value="2">Home</mat-option>
-                <mat-option value="3">Other</mat-option>
+                <mat-option value="Mobile">Mobile</mat-option>
+                <mat-option value="Office">Office</mat-option>
+                <mat-option value="Home">Home</mat-option>
+                <mat-option value="Other">Other</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
