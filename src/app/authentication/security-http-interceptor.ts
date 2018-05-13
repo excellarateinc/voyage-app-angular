@@ -16,14 +16,14 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
 
     return next.handle(request)
       .catch(errorResponse => {
-        if (errorResponse.status !== 403) {
+        if (errorResponse.status !== 401) {
           return Observable.throw(errorResponse);
         }
 
         const errors = errorResponse.error;
         if (errors && errors instanceof Array) {
           const error = errors[0];
-          if (error.error === '403_verify_user') {
+          if (error.error === '401_verify_user') {
             this.authenticationService.goToVerification();
             return Observable.throw(errorResponse);
           }
