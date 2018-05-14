@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import { UserService } from '../../core/user/user.service';
-import { User } from '../../core/user/user.model';
-import { BroadcastService } from '../../core/broadcast.service';
+import { UserService } from '../core/user/user.service';
+import { User } from '../core/user/user.model';
+import { BroadcastService } from '../core/broadcast.service';
 
 @Component({
   selector: 'app-profile',
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
           this.broadcastService.emitProfileUpdated(this.user);
           this.snackbar.open('Profile updated successfully', null, { duration: 5000 });
         },
-        errors => this.profileErrors = errors);
+        response => this.profileErrors = response.error);
   }
 
   onProfileImageChanged(image: any): void {
@@ -68,11 +68,11 @@ export class ProfileComponent implements OnInit {
       phones: this.formBuilder.array([])
     });
 
-    for (let i = 0; i < user.phones.length; i++) {
+    user.phones.forEach(phone => {
       this.phones.push(this.formBuilder.group({
-        phoneNumber: [user.phones[i].phoneNumber, Validators.required],
-        phoneType: [user.phones[i].phoneType, Validators.required]
+        phoneNumber: [phone.phoneNumber, Validators.required],
+        phoneType: 'Mobile'
       }));
-    }
+    });
   }
 }

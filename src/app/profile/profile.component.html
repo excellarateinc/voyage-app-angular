@@ -7,40 +7,32 @@
           <app-profile-image [currentImage]="user?.profileImage" (imageChanged)="onProfileImageChanged($event)"></app-profile-image>
         </div>
         <div fxFlex.gt-sm>
-          <form *ngIf="profileForm" fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
+          <form *ngIf="profileForm" fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate fxLayoutGap="10px">
             <mat-form-field>
               <input matInput placeholder="Email" formControlName="email" required>
               <mat-error *ngIf="profileForm.controls['email'].hasError('required')">
                 Email is required
               </mat-error>
             </mat-form-field>
-            <mat-form-field style="margin-top:10px;">
+            <mat-form-field>
               <input matInput placeholder="First Name" formControlName="firstName" required>
               <mat-error *ngIf="profileForm.controls['firstName'].hasError('required')">
                 First Name is required
               </mat-error>
             </mat-form-field>
-            <mat-form-field style="margin-top:10px;">
+            <mat-form-field>
               <input matInput placeholder="Last Name" formControlName="lastName" required>
               <mat-error *ngIf="profileForm.controls['lastName'].hasError('required')">
                 Last Name is required
               </mat-error>
             </mat-form-field>
-            <div formArrayName="phones" style="margin-top:10px;">
+            <div formArrayName="phones">
               <div *ngFor="let phone of phones.controls; let i=index" [formGroupName]="i" fxLayout="row" fxLayoutGap="10px">
-                <mat-form-field fxFlex="60">
-                  <input matInput placeholder="Phone" formControlName="phoneNumber" required>
-                  <mat-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
-                    Phone and Type are required
-                  </mat-error>
-                </mat-form-field>
                 <mat-form-field fxFlex>
-                  <mat-select placeholder="Type" formControlName="phoneType" required>
-                    <mat-option value="Mobile">Mobile</mat-option>
-                    <mat-option value="Office">Office</mat-option>
-                    <mat-option value="Home">Home</mat-option>
-                    <mat-option value="Other">Other</mat-option>
-                  </mat-select>
+                  <input matInput placeholder="Mobile Phone" formControlName="phoneNumber" required>
+                  <mat-error *ngIf="phones.controls[i].controls['phoneNumber'].hasError('required')">
+                    Mobile Phone is required
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -50,12 +42,12 @@
                 <br />
               </span>
             </div>
-            <div fxLayout="column" style="margin-top:30px;">
+            <div fxLayout="column" style="margin-top:20px;">
               <button type="submit" mat-raised-button color="primary">
                 Save Changes
               </button>
               <span>&nbsp;</span>
-              <button type="button" routerLink="/examples/banking/dashboard" color="accent" mat-raised-button>
+              <button type="button" routerLink="/dashboard" color="accent" mat-raised-button>
                 Cancel
               </button>
             </div>
