@@ -4,11 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ProfileComponent } from './profile.component';
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../core/user/user.service';
-import { AngularMaterialModule } from '../../angular-material/angular-material.module';
-import { BroadcastService } from '../../core/broadcast.service';
+import { UserService } from '../core/user/user.service';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { BroadcastService } from '../core/broadcast.service';
 
 @Component({
   template: '',
