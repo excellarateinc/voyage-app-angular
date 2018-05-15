@@ -36,6 +36,28 @@
                 </mat-form-field>
               </div>
             </div>
+            <mat-form-field>
+              <input matInput placeholder="Username" readonly="readonly" value="{{user.username}}">
+            </mat-form-field>
+            <strong>Change Password</strong>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Current Password" formControlName="currentPassword">
+              <mat-error *ngIf="profileForm.controls['currentPassword'].hasError('required')">
+                Current Password is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="New Password" formControlName="newPassword">
+              <mat-error *ngIf="profileForm.controls['newPassword'].hasError('required')">
+                New Password is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Confirm New Password" formControlName="confirmNewPassword">
+              <mat-error *ngIf="profileForm.controls['confirmNewPassword'].hasError('required')">
+                Confirm New Password is required
+              </mat-error>
+            </mat-form-field>
             <div *ngIf="profileErrors?.length > 0">
               <span *ngFor="let error of profileErrors" style="color:#f44336">
                 {{error.errorDescription}}
