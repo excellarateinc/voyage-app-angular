@@ -12,7 +12,7 @@ import { BroadcastService } from '../core/broadcast.service';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  profileErrors: Array<any>;
+  profileErrors: any[] = [];
   user: User;
   profileImage: string;
   loading = false;
