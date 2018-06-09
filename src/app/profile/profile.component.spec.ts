@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../core/user/user.service';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { BroadcastService } from '../core/broadcast.service';
+import 'rxjs/add/observable/throw';
 
 @Component({
   template: '',
@@ -27,10 +28,12 @@ describe('ProfileComponent', () => {
   beforeEach(async(() => {
 
     const userServiceStub: any = {
-      getCurrentUser: () => { }
+      getCurrentUser: () => { },
+      updateProfile: () => { }
     };
 
     const broadcastServiceStub: any = {
+      emitProfileUpdated: () => { }
     };
 
     TestBed.configureTestingModule({
@@ -64,4 +67,33 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('when saving a profile', () => {
+    it('should return if the form is invalid', () => {
+      spyOn(userService, 'updateProfile').and.callFake(() => new Observable(o => o.next()));
+      component.profileForm.controls['firstName'].setValue('');
+      component.saveProfile();
+      expect(userService.updateProfile).not.toHaveBeenCalled();
+    });
+
+    it('should call the user service to update the profile if form is valid', () => {
+      spyOn(userService, 'updateProfile').and.callFake(() => new Observable(o => o.next()));
+      component.profileForm.controls['firstName'].setValue('test');
+      component.profileForm.controls['lastName'].setValue('tester');
+      component.profileForm.controls['email'].setValue('test@test.com');
+      component.saveProfile();
+      expect(userService.updateProfile).toHaveBeenCalled();
+    });
+
+    it('should populate profileErrors array if an error occurs during update', () => {
+      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      component.profileForm.controls['firstName'].setValue('test');
+      component.profileForm.controls['lastName'].setValue('tester');
+      component.profileForm.controls['email'].setValue('test@test.com');
+      component.saveProfile();
+      expect(userService.updateProfile).toHaveBeenCalled();
+      expect(component.profileErrors.length).toBe(1);
+    });
+  });
+
 });

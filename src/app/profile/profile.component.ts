@@ -12,7 +12,7 @@ import { BroadcastService } from '../core/broadcast.service';
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
-  profileErrors: Array<any>;
+  profileErrors: any[] = [];
   user: User;
   profileImage: string;
   loading = false;
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
           this.user = user;
           this.broadcastService.emitProfileUpdated(this.user);
           this.snackbar.open('Profile updated successfully', null, { duration: 5000 });
+          this.resetPasswordFields();
         },
         response => this.profileErrors = response.error);
   }
@@ -65,6 +66,9 @@ export class ProfileComponent implements OnInit {
       firstName: [user.firstName, Validators.required],
       lastName: [user.lastName, Validators.required],
       email: [user.email, Validators.required],
+      currentPassword: [''],
+      newPassword: [''],
+      confirmNewPassword: [''],
       phones: this.formBuilder.array([])
     });
 
@@ -74,5 +78,28 @@ export class ProfileComponent implements OnInit {
         phoneType: 'Mobile'
       }));
     });
+
+    this.profileForm.get('newPassword').valueChanges.subscribe(value => {
+      if (value) {
+        this.profileForm.get('currentPassword').setValidators([Validators.required]);
+        this.profileForm.get('confirmNewPassword').setValidators([Validators.required]);
+        this.profileForm.get('currentPassword').updateValueAndValidity();
+        this.profileForm.get('confirmNewPassword').updateValueAndValidity();
+      } else {
+        this.profileForm.get('currentPassword').clearValidators();
+        this.profileForm.get('confirmNewPassword').clearValidators();
+        this.profileForm.get('currentPassword').updateValueAndValidity();
+        this.profileForm.get('confirmNewPassword').updateValueAndValidity();
+      }
+    });
+  }
+
+  private resetPasswordFields(): void {
+    this.profileForm.get('currentPassword').setValue(null);
+    this.profileForm.get('newPassword').setValue(null);
+    this.profileForm.get('confirmNewPassword').setValue(null);
+    this.profileForm.get('currentPassword').clearValidators();
+    this.profileForm.get('newPassword').clearValidators();
+    this.profileForm.get('confirmNewPassword').clearValidators();
   }
 }
