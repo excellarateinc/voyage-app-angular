@@ -1,10 +1,10 @@
 import { AbstractControl, ValidationErrors, FormGroup } from '@angular/forms';
 
 export class ConfirmPasswordValidator {
-  static MatchPassword(control: AbstractControl): ValidationErrors | null {
-    const form = control.parent as FormGroup;
+  static MatchPassword(confirmNewPasswordControl: AbstractControl): ValidationErrors | null {
+    const form = confirmNewPasswordControl.parent as FormGroup;
     const newPassword = form.get('newPassword').value;
-    const confirmPassword = form.get('confirmNewPassword').value;
+    const confirmPassword = confirmNewPasswordControl.value;
     if (!confirmPassword || newPassword !== confirmPassword) {
       return { matchPassword: true };
     } else {
