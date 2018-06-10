@@ -94,6 +94,23 @@ describe('ProfileComponent', () => {
       expect(userService.updateProfile).toHaveBeenCalled();
       expect(component.profileErrors.length).toBe(1);
     });
-  });
 
+    it('should throw an error if changing password and confirm does not match', () => {
+      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      component.profileForm.controls['newPassword'].setValue('password');
+      component.profileForm.controls['confirmNewPassword'].setValue('password1');
+      component.saveProfile();
+      expect(userService.updateProfile).not.toHaveBeenCalled();
+      expect(component.profileForm.controls['confirmNewPassword'].errors).toEqual({ matchPassword: true });
+    });
+
+    it('should not throw an error if changing password and confirm password match', () => {
+      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      component.profileForm.controls['newPassword'].setValue('password');
+      component.profileForm.controls['confirmNewPassword'].setValue('password');
+      component.saveProfile();
+      expect(userService.updateProfile).not.toHaveBeenCalled();
+      expect(component.profileForm.controls['confirmNewPassword'].errors).toBeNull();
+    });
+  });
 });

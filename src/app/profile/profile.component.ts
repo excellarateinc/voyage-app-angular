@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { UserService } from '../core/user/user.service';
 import { User } from '../core/user/user.model';
 import { BroadcastService } from '../core/broadcast.service';
+import { ConfirmPasswordValidator } from './confirm-password.validator';
 
 @Component({
   selector: 'app-profile',
@@ -82,7 +83,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.get('newPassword').valueChanges.subscribe(value => {
       if (value) {
         this.profileForm.get('currentPassword').setValidators([Validators.required]);
-        this.profileForm.get('confirmNewPassword').setValidators([Validators.required]);
+        this.profileForm.get('confirmNewPassword').setValidators([ConfirmPasswordValidator.MatchPassword]);
         this.profileForm.get('currentPassword').updateValueAndValidity();
         this.profileForm.get('confirmNewPassword').updateValueAndValidity();
       } else {
