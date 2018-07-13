@@ -56,10 +56,10 @@ $ npm install
 $ npm install -g @angular/cli
 
 # start the server
-$ ng serve
+$ ng serve -o
 ```
 
-Open your browser and go to the url shown in the console. For example, "http://localhost:3000/"
+The app will open in your browser.
 
 # Table of Contents
 
