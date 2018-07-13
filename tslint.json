@@ -70,9 +70,7 @@
       "single"
     ],
     "radix": true,
-    "semicolon": [
-      "always"
-    ],
+    "semicolon": true,
     "triple-equals": [
       true,
       "allow-null-check"
@@ -87,7 +85,6 @@
         "variable-declaration": "nospace"
       }
     ],
-    "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [

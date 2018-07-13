@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   get phones(): FormArray {
     return this.registerForm.get('phones') as FormArray;
-  };
+  }
 
   private initializeForm(): void {
     this.registerForm = this.formBuilder.group({
