@@ -119,15 +119,15 @@ https://github.com/angular/material2/issues/998 */
 }
 
 /* Override material colors for login/registration */
-.light-input .mat-input-placeholder {
+.light-input .mat-form-field-label {
   color:white !important;
 }
 
-.light-input .mat-input-underline {
+.light-input .mat-form-field-underline {
   background-color: white !important;
 }
 
-.light-input .mat-input-ripple {
+.light-input .mat-form-field-ripple {
   background-color: white !important;
 }
 

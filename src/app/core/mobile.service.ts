@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { Subject ,  Observable } from 'rxjs';
 
 @Injectable()
 export class MobileService {

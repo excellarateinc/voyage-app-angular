@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SidebarComponent } from './sidebar.component';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserService } from '../../core/user/user.service';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { Router } from '@angular/router';

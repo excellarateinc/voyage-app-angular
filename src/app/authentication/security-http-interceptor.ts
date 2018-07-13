@@ -1,12 +1,14 @@
-import {Injectable} from '@angular/core';
+
+import { throwError as observableThrowError, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
+import { catchError } from 'rxjs/operators';
+
 import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class SecurityHttpInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.authenticationService.isAuthenticated()) {
@@ -15,22 +17,24 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request)
-      .catch(errorResponse => {
-        if (errorResponse.status !== 401) {
-          return Observable.throw(errorResponse);
-        }
-
-        const errors = errorResponse.error;
-        if (errors && errors instanceof Array) {
-          const error = errors[0];
-          if (error.error === '401_verify_user') {
-            this.authenticationService.goToVerification();
-            return Observable.throw(errorResponse);
+      .pipe(
+        catchError(errorResponse => {
+          if (errorResponse.status !== 401) {
+            return observableThrowError(errorResponse);
           }
-        }
 
-        this.authenticationService.logout();
-        return Observable.throw(errorResponse);
-      });
+          const errors = errorResponse.error;
+          if (errors && errors instanceof Array) {
+            const error = errors[0];
+            if (error.error === '401_verify_user') {
+              this.authenticationService.goToVerification();
+              return observableThrowError(errorResponse);
+            }
+          }
+
+          this.authenticationService.logout();
+          return observableThrowError(errorResponse);
+        })
+      );
   }
 }
