@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { UserAdminComponent } from './user-admin.component';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AngularMaterialModule } from '../../angular-material/angular-material.module';
 
 describe('UserAdminComponent', () => {

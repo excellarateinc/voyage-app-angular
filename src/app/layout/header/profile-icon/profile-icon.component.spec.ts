@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../../../shared/shared.module';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ProfileIconComponent } from './profile-icon.component';
 import { AuthenticationService } from '../../../authentication/authentication.service';
 import { UserService } from '../../../core/user/user.service';

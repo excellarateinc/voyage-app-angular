@@ -3,7 +3,7 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
 import { ProfileImageComponent } from './profile-image.component';
 import { BroadcastService } from '../../core/broadcast.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 describe('ProfileImageComponent', () => {
   let component: ProfileImageComponent;

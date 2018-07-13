@@ -2,14 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ProfileComponent } from './profile.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../core/user/user.service';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { BroadcastService } from '../core/broadcast.service';
-import 'rxjs/add/observable/throw';
+import { throwError } from 'rxjs';
 
 @Component({
   template: '',
@@ -86,7 +86,7 @@ describe('ProfileComponent', () => {
     });
 
     it('should populate profileErrors array if an error occurs during update', () => {
-      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      spyOn(userService, 'updateProfile').and.callFake(() => throwError({ error: [{}] }));
       component.profileForm.controls['firstName'].setValue('test');
       component.profileForm.controls['lastName'].setValue('tester');
       component.profileForm.controls['email'].setValue('test@test.com');
@@ -96,7 +96,7 @@ describe('ProfileComponent', () => {
     });
 
     it('should throw an error if changing password and confirm does not match', () => {
-      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      spyOn(userService, 'updateProfile').and.callFake(() => throwError({ error: [{}] }));
       component.profileForm.controls['newPassword'].setValue('password');
       component.profileForm.controls['confirmNewPassword'].setValue('password1');
       component.saveProfile();
@@ -105,7 +105,7 @@ describe('ProfileComponent', () => {
     });
 
     it('should not throw an error if changing password and confirm password match', () => {
-      spyOn(userService, 'updateProfile').and.callFake(() => Observable.throw({ error: [{}] }));
+      spyOn(userService, 'updateProfile').and.callFake(() => throwError({ error: [{}] }));
       component.profileForm.controls['newPassword'].setValue('password');
       component.profileForm.controls['confirmNewPassword'].setValue('password');
       component.saveProfile();
