@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { MobileService } from '../../core/mobile.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { AuthenticationService } from '../../../authentication/authentication.se
 import { UserService } from '../../../core/user/user.service';
 import { User } from '../../../core/user/user.model';
 import { BroadcastService } from '../../../core/broadcast.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile-icon',

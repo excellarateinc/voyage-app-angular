@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptionsArgs, Headers } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../authentication.service';
 import { Login } from './login.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {
@@ -21,9 +22,11 @@ export class LoginService {
     headers = headers.set('Authorization', 'Basic ' + btoa(clientCreds));
 
     return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, { headers: headers })
-      .map((response: any) => {
-        this.authService.setToken(response.access_token);
-        return response;
-      });
+      .pipe(
+        map((response: any) => {
+          this.authService.setToken(response.access_token);
+          return response;
+        })
+      );
   }
 }
