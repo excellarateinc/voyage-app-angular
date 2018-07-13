@@ -44,10 +44,10 @@ __Technology Stack__
 
 ```bash
 # clone repo
-$ git clone https://github.com/lssinc/precisionbi-angular-client.git
+$ git clone https://github.com/lssinc/voyage-app-angular.git
 
 # change directory to your app
-$ cd precisionbi-angular-client
+$ cd voyage-app-angular
 
 # install development dependencies with npm
 $ npm install
@@ -56,7 +56,7 @@ $ npm install
 $ npm install -g @angular/cli
 
 # start the server
-$ ng serve
+$ ng serve -o
 ```
 
 The app will open in your browser.
