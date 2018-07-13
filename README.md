@@ -26,7 +26,7 @@ __App Features__
 * Integrates with the Voyage API for all data
 
 __Technology Stack__
-* Angular 5.x
+* Angular 6.x
 * Angular Material
 * Angular Flex Layout
 * TypeScript
