@@ -1,6 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpModule, XHRBackend, RequestMethod } from '@angular/http';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
 

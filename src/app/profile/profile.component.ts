@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
 
   get phones(): FormArray {
     return this.profileForm.get('phones') as FormArray;
-  };
+  }
 
   private initializeForm(user: User): void {
     this.profileForm = this.formBuilder.group({
