@@ -11,7 +11,8 @@ export class MobileService {
   constructor(private media: ObservableMedia) {
     this.mobile = this.media.isActive('xs') || this.media.isActive('sm');
     this.media.subscribe((change: MediaChange) => {
-      this.mobileChanged.next(change.mqAlias === 'xs' || change.mqAlias === 'sm');
+      this.mobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+      this.mobileChanged.next(this.mobile);
     });
   }
 
