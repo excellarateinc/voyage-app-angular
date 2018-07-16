@@ -11,8 +11,8 @@ describe('ProfileImageComponent', () => {
   let broadcastService: BroadcastService;
 
   beforeEach(async(() => {
-
     const broadcastServiceStub: any = {
+      profileUpdated$: Observable.create(o => o.next({}))
     };
 
     TestBed.configureTestingModule({
