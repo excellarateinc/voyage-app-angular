@@ -15,10 +15,12 @@ describe('RegisterComponent', () => {
   let registerService: RegisterService;
 
   beforeEach(async(() => {
-
     const registerServiceStub: any = { register: () => { } };
     const routerStub: any = { navigate: (url: Array<string>) => { } };
-    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
+    const mobileServiceStub: any = {
+      isMobile: () => false,
+      mobileChanged$: Observable.create(o => o.next(false))
+    };
 
     TestBed.configureTestingModule({
       imports: [

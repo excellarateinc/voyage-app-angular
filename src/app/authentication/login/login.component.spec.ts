@@ -14,10 +14,12 @@ describe('LoginComponent', () => {
   let loginService: LoginService;
 
   beforeEach(async(() => {
-
     const loginServiceStub: any = { login: () => { } };
     const windowStub: any = { location: { reload: () => { } } };
-    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
+    const mobileServiceStub: any = {
+      isMobile: () => false,
+      mobileChanged$: Observable.create(o => o.next(false))
+    };
 
     TestBed.configureTestingModule({
       imports: [

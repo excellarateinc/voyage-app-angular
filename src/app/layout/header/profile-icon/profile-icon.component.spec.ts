@@ -22,6 +22,7 @@ describe('ProfileIconComponent', () => {
     };
 
     const broadcastServiceStub: any = {
+      profileUpdated$: Observable.create(o => o.next({}))
     };
 
     const authServiceStub: any = {
