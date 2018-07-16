@@ -55,7 +55,7 @@ $ npm install -g @angular/cli
 $ npm install
 
 # Start the server.
-$ ng serve -o
+$ npm start
 ```
 
 The app will open in your browser.
@@ -86,9 +86,13 @@ What you need to run this app:
 
 ## Running the app
 
-After you have installed all dependencies you can now run the app with:
+After you have installed all dependencies you can now run the app with the npm start script
 ```bash
-ng serve
+npm start
+```
+Which is just a shortcut to running the Angular CLI with the `-o` flag to automatically open a browser tab and display the app
+```bash
+ng serve -o
 ```
 
 This will start a local server which will watch for file changes and reload for you. The port will be displayed to you as `http://localhost:3000`.
@@ -97,8 +101,13 @@ This will start a local server which will watch for file changes and reload for 
 
 ### Build files
 
-* single run: `ng build`
-* build and serve files: `ng serve`
+While you can always run Angular CLI commands directly, our package.json scripts section has common Angular CLI build commands. 
+
+* build and serve files: `npm start`
+* single run: `npm run build`
+* qa build: `npm run build:qa`
+* prod build: 'npm run build:prod'
+
 
 ## Testing
 
