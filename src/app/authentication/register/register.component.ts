@@ -48,7 +48,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
           duration: 2000,
         });
         this.router.navigate(['/authentication/login']);
-      }, errors => this.registrationErrors = errors);
+      }, errorResponse => {
+        this.registrationErrors = errorResponse.error;
+      });
   }
 
   get phones(): FormArray {
