@@ -40,8 +40,6 @@ __Technology Stack__
 
 ### Quick start
 
-> Clone/Download the repo from git
-
 ```bash
 # Clone repository.
 $ git clone https://github.com/lssinc/voyage-app-angular.git
