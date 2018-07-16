@@ -106,7 +106,6 @@ https://github.com/angular/material2/issues/998 */
 }
 
 .masthead-mobile {
-  text-align: center;
   position: absolute !important;
   top: 0;
   right: 0;
@@ -117,6 +116,7 @@ https://github.com/angular/material2/issues/998 */
   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg) top left no-repeat;
   background-size: cover;
   overflow-y: auto;
+  height:100%;
 }
 
 /* Override material colors for login/registration */
