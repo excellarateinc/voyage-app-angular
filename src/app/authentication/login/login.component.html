@@ -1,52 +1,40 @@
 <!-- Tablet / Desktop -->
 <div class="masthead" *ngIf="!isMobile">
-  <div fxLayout="row">
-    <span fxFlex></span>
-    <mat-card fxFlex.md="50" style="margin-top:100px;">
-      <div fxLayout="column">
-        <div fxLayout="row" style="margin-top:25px;">
-          <span fxFlex></span>
-          <i class="material-icons" style="font-size:100px; color: #2b3d53;">account_balance</i>
-          <span fxFlex></span>
-        </div>
-        <div fxLayout="row" style="margin-top:20px;">
-          <span fxFlex></span>
-          <div style="font-size: 60px; color: #2b3d53">
-            Sample App
-          </div>
-          <span fxFlex></span>
-        </div>
-        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
-          <div fxLayout="column">
-            <mat-form-field>
-              <input matInput placeholder="Username" formControlName="username" required>
-              <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-                Username is required
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field style="margin-top:20px">
-              <input matInput placeholder="Password" formControlName="password" type="password" required>
-              <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                Password is required
-              </mat-error>
-            </mat-form-field>
-            <div *ngIf="loginFailed">
-              <span style="color:#f44336">
-                Invalid username or password.
-              </span>
-            </div>
-          </div>
-          <div fxLayout="column" style="margin-top:60px;">
-            <button (click)="login()" color="primary" mat-raised-button type="submit">LOGIN</button>
-            <span>&nbsp;</span>
-            <div fxLayout="row">
-              <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
-            </div>
-          </div>
-        </form>
+  <div fxLayout="row" fxLayoutAlign="center center" class="full-height">
+    <mat-card fxFlex="50" fxLayout="column" fxLayoutGap="30px">
+
+      <div fxLayout="row" fxFlexAlign="center">
+        <h1>Sample App</h1>
       </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutGap="10px" novalidate>
+
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+        <div *ngIf="loginFailed">
+          <span style="color:#f44336">
+            Invalid username or password.
+          </span>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="20px">
+          <button (click)="login()" color="primary" mat-raised-button type="submit">LOGIN</button>
+          <div fxLayout="row" fxFlexAlign="center">
+            <span>Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
+          </div>
+        </div>
+      </form>
+
     </mat-card>
-    <span fxFlex></span>
   </div>
 </div>
 
@@ -54,11 +42,6 @@
 <div class="masthead-mobile" *ngIf="isMobile">
   <div fxLayout="column" fxFlexFill style="margin-left:10px; margin-right:10px;">
     <span style="margin-top: auto;">&nbsp;</span>
-    <div fxLayout="row" style="min-height:55px;">
-      <span fxFlex></span>
-      <i class="material-icons" style="font-size:60px; color: white;">account_balance</i>
-      <span fxFlex></span>
-    </div>
     <div fxLayout="row" style="margin-top:10px;min-height:40px;">
       <span fxFlex></span>
       <div style="font-size: 40px; color: white;">
