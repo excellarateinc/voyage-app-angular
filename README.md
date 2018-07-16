@@ -23,6 +23,7 @@ __App Features__
 * User Settings
 * Alerts & Notifications
 * Responsive UI for Desktop, Tablet, Mobile
+* Lazy loaded modules and AOT support to ensure high performance.
 * Integrates with the Voyage API for all data
 
 __Technology Stack__
