@@ -43,19 +43,19 @@ __Technology Stack__
 > Clone/Download the repo from git
 
 ```bash
-# clone repo
+# Clone repository.
 $ git clone https://github.com/lssinc/voyage-app-angular.git
 
-# change directory to your app
+# Change directory to your app.
 $ cd voyage-app-angular
 
-# install development dependencies with npm
-$ npm install
-
-# install angular cli globally.
+# Install angular cli globally.
 $ npm install -g @angular/cli
 
-# start the server
+# Install development dependencies with npm.
+$ npm install
+
+# Start the server.
 $ ng serve -o
 ```
 
@@ -64,7 +64,7 @@ The app will open in your browser.
 # Table of Contents
 
 * [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
+    * [Prerequisites](#prerequisites)
     * [Installing](#installing)
     * [Running the app](#running-the-app)
     * [Developing](#developing)
@@ -73,16 +73,17 @@ The app will open in your browser.
 
 # Getting Started
 
-## Dependencies
+## Prerequisites
 
 What you need to run this app:
-* `node`, `npm` and `angular cli`
-* Ensure you're running Node (`v6.11.x`+) and NPM (`3.10.x`+)
+* [Node and NPM](https://nodejs.org)
+* [Angular CLI](https://cli.angular.io/) (`npm install -g @angular/cli`)
 
 ## Installing
 
-* `clone` this repo
-* `npm install` to install npm dependencies
+* `clone` this repository
+* `cd voyage-app-angular` to navigate to the root directory of the app.
+* `npm install` to install npm dependencies.
 
 ## Running the app
 
@@ -91,7 +92,7 @@ After you have installed all dependencies you can now run the app with:
 ng serve
 ```
 
-It will start a local server which will watch and reload for you. The port will be displayed to you as `http://localhost:3000`.
+This will start a local server which will watch for file changes and reload for you. The port will be displayed to you as `http://localhost:3000`.
 
 ## Developing
 
