@@ -1,110 +1,79 @@
 <!-- Tablet / Desktop -->
 <div class="masthead" *ngIf="!isMobile">
-  <div fxLayout="row">
-    <span fxFlex></span>
-    <mat-card fxFlex.md="50" style="margin-top:100px;">
-      <div fxLayout="column">
-        <div fxLayout="row" style="margin-top:25px;">
-          <span fxFlex></span>
-          <i class="material-icons" style="font-size:100px; color: #2b3d53;">account_balance</i>
-          <span fxFlex></span>
-        </div>
-        <div fxLayout="row" style="margin-top:20px;">
-          <span fxFlex></span>
-          <div style="font-size: 60px; color: #2b3d53">
-            Sample App
-          </div>
-          <span fxFlex></span>
-        </div>
-        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
-          <div fxLayout="column">
-            <mat-form-field>
-              <input matInput placeholder="Username" formControlName="username" required>
-              <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-                Username is required
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field style="margin-top:20px">
-              <input matInput placeholder="Password" formControlName="password" type="password" required>
-              <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                Password is required
-              </mat-error>
-            </mat-form-field>
-            <div *ngIf="loginFailed">
-              <span style="color:#f44336">
-                Invalid username or password.
-              </span>
-            </div>
-          </div>
-          <div fxLayout="column" style="margin-top:60px;">
-            <button (click)="login()" color="primary" mat-raised-button type="submit">LOGIN</button>
-            <span>&nbsp;</span>
-            <div fxLayout="row">
-              <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
-            </div>
-          </div>
-        </form>
+  <div fxLayout="row" fxLayoutAlign="center center" class="full-height">
+    <mat-card fxFlex="50" fxFlex.gt-md="40" fxLayout="column" fxLayoutGap="30px">
+      <div fxLayout="row" fxFlexAlign="center">
+        <h1>Sample App</h1>
       </div>
-    </mat-card>
-    <span fxFlex></span>
-  </div>
-</div>
-
-<!-- Mobile -->
-<div class="masthead-mobile" *ngIf="isMobile">
-  <div fxLayout="column" fxFlexFill style="margin-left:10px; margin-right:10px;">
-    <span style="margin-top: auto;">&nbsp;</span>
-    <div fxLayout="row" style="min-height:55px;">
-      <span fxFlex></span>
-      <i class="material-icons" style="font-size:60px; color: white;">account_balance</i>
-      <span fxFlex></span>
-    </div>
-    <div fxLayout="row" style="margin-top:10px;min-height:40px;">
-      <span fxFlex></span>
-      <div style="font-size: 40px; color: white;">
-        Sample App
-      </div>
-      <span fxFlex></span>
-    </div>
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
-      <div fxLayout="column">
-        <mat-form-field class="light-input">
-          <span matPrefix style="margin-right:10px">
-            <mat-icon style="color:white; font-size:26px;">person_outline</mat-icon>
-          </span>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutGap="10px" novalidate>
+        <mat-form-field>
           <input matInput placeholder="Username" formControlName="username" required>
           <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
             Username is required
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="light-input" style="margin-top:15px">
-          <span matPrefix style="margin-right:10px">
-            <mat-icon style="color:white; font-size:26px;">lock_outline</mat-icon>
-          </span>
+        <mat-form-field>
           <input matInput placeholder="Password" formControlName="password" type="password" required>
           <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
             Password is required
           </mat-error>
         </mat-form-field>
         <div *ngIf="loginFailed">
-          <span style="color:white">
+          <span class="error">
             Invalid username or password.
           </span>
         </div>
-        <span>&nbsp;</span>
-        <span>&nbsp;</span>
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="20px">
           <button (click)="login()" color="primary" mat-raised-button type="submit">LOGIN</button>
-          <span>&nbsp;</span>
-          <div fxLayout="row">
-            <span style="font-size:16px;margin: 0 auto; color:white;">
-              Don't have an account? <a style="color:white;" routerLink="/authentication/register">Sign Up</a>
-            </span>
+          <div fxLayout="row" fxFlexAlign="center">
+            <span>Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
           </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
+
+<!-- Mobile -->
+<div class="masthead-mobile" *ngIf="isMobile" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutGap="30px" class="form-container">
+    <div fxLayout="row" fxFlexAlign="center">
+      <div class="app-title">
+        Sample App
+      </div>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate fxLayout="column" fxLayoutGap="10px">
+      <mat-form-field class="light-input">
+        <span matPrefix>
+          <mat-icon class="icon-prefix">person_outline</mat-icon>
+        </span>
+        <input matInput placeholder="Username" formControlName="username" required>
+        <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="light-input">
+        <span matPrefix>
+          <mat-icon class="icon-prefix">lock_outline</mat-icon>
+        </span>
+        <input matInput placeholder="Password" formControlName="password" type="password" required>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="loginFailed">
+        <span class="white">
+          Invalid username or password.
+        </span>
+      </div>
+      <div fxLayout="column" fxLayoutGap="20px">
+        <button color="primary" mat-raised-button type="submit">LOGIN</button>
+        <div fxLayout="row" fxFlexAlign="center">
+          <span class="sign-up-message">
+            Don't have an account? <a class="white" routerLink="/authentication/register">Sign Up</a>
+          </span>
         </div>
       </div>
     </form>
-    <span>&nbsp;</span>
-    <span>&nbsp;</span>
   </div>
 </div>
