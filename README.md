@@ -68,7 +68,8 @@ The app will open in your browser.
     * [Running the app](#running-the-app)
     * [Developing](#developing)
     * [Testing](#testing)
-* [Angular Best Practices](https://angular.io/guide/styleguide)
+* [Angular Style Guide](https://angular.io/guide/styleguide)
+* [Voyage Best Practices](readme_docs/VOYAGE_STYLE_GUIDE.md)
 
 # Getting Started
 
