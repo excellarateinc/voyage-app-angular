@@ -99,8 +99,8 @@ https://github.com/angular/material2/issues/998 */
   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg);
   background-position: center top;
   background-size: cover;
-  margin-left:-10px;
-  margin-right:-10px;
+  margin-left: -10px;
+  margin-right: -10px;
   min-height: 100%;
   height: 100%;
 }
@@ -116,12 +116,12 @@ https://github.com/angular/material2/issues/998 */
   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(assets/images/main-bg.jpg) top left no-repeat;
   background-size: cover;
   overflow-y: auto;
-  height:100%;
+  height: 100%;
 }
 
 /* Override material colors for login/registration */
 .light-input .mat-form-field-label {
-  color:white !important;
+  color: white !important;
 }
 
 .light-input .mat-form-field-underline {
@@ -158,4 +158,56 @@ https://github.com/angular/material2/issues/998 */
 
 .light-input .mat-select-value-text {
   color: white !important;
+}
+
+/* Pure CSS spinner, used on page load when Angular Material hasn't loaded yet. */
+.loading-spinner {
+  /* Overrides the margins on the masthead stye if showing the Loading spinner */
+  .masthead {
+    margin: 0;
+  }
+
+  .lds-ring {
+    display: inline-block;
+    position: absolute;
+    left: calc(50% - 64px);
+    top: calc(50% - 64px);
+    width: 128px;
+    height: 128px;
+  }
+
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 102px;
+    height: 102px;
+    margin: 12px;
+    border: 12px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
