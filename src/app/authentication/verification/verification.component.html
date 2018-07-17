@@ -1,41 +1,43 @@
-<div fxLayout="row">
-  <mat-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="!codeSent">
-    <mat-card-title>Two-Factor Authentication</mat-card-title>
-    <mat-card-content>
-      Your account requires verification. A message with a verification code will be sent to your phone.
-      Click the "Send Code" button to continue.
-    </mat-card-content>
-    <mat-card-actions>
-      <div fxLayout="column" class="action-buttons">
-        <button mat-raised-button color="primary" (click)="sendCode()">
-          Send Code
-        </button>
-      </div>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100" *ngIf="codeSent">
-    <mat-card-title>Two-Factor Authentication</mat-card-title>
-    <mat-card-content>
-      A message with a verification code has been sent to your phone. Enter the code to continue.
-    </mat-card-content>
-    <form [formGroup]="verificationForm" (ngSubmit)="verify()" novalidate>
-      <div fxLayout="column">
-        <mat-form-field fxFlex>
-          <input matInput placeholder="Code" formControlName="code" required>
-          <mat-error *ngIf="verificationForm.controls['code'].hasError('required')">
-            Code is required
-          </mat-error>
-        </mat-form-field>
+<div class="masthead">
+  <div fxLayout="row" fxLayoutAlign="center center" class="full-height">
+    <mat-card fxFlex="50" fxFlex.md="60" fxFlex.sm="95" fxFlex.xs="100" *ngIf="!codeSent">
+      <mat-card-title>Two-Factor Authentication</mat-card-title>
+      <mat-card-content>
+        Your account requires verification. A message with a verification code will be sent to your phone.
+        Click the "Send Code" button to continue.
+      </mat-card-content>
+      <mat-card-actions>
         <div fxLayout="column" class="action-buttons">
-          <button mat-raised-button color="primary" type="submit" [disabled]="verificationForm.invalid">
-            Verify
+          <button mat-raised-button color="primary" (click)="sendCode()">
+            Send Code
           </button>
         </div>
-        <div fxLayout="row" *ngIf="verificationFailed" class="error">
-          Invalid code entered. Try again.
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex="50" fxFlex.md="60" fxFlex.sm="95" fxFlex.xs="100" *ngIf="codeSent">
+      <mat-card-title>Two-Factor Authentication</mat-card-title>
+      <mat-card-content>
+        A message with a verification code has been sent to your phone. Enter the code to continue.
+      </mat-card-content>
+      <form [formGroup]="verificationForm" (ngSubmit)="verify()" novalidate>
+        <div fxLayout="column">
+          <mat-form-field fxFlex>
+            <input matInput placeholder="Code" formControlName="code" required>
+            <mat-error *ngIf="verificationForm.controls['code'].hasError('required')">
+              Code is required
+            </mat-error>
+          </mat-form-field>
+          <div fxLayout="column" class="action-buttons">
+            <button mat-raised-button color="primary" type="submit" [disabled]="verificationForm.invalid">
+              Verify
+            </button>
+          </div>
+          <div fxLayout="row" *ngIf="verificationFailed" class="error">
+            Invalid code entered. Try again.
+          </div>
         </div>
-      </div>
-    </form>
-  </mat-card>
+      </form>
+    </mat-card>
+  </div>
 </div>
