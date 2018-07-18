@@ -170,7 +170,18 @@ class MyClass {
   private myName;
 }
 
-// good
+// good, our private property has getters and setters with the same name
+class MyClass {
+  private _myName;
+  
+  get myName() {
+    return this._myName;
+  }
+  
+  set myName(newName) {
+    this._myName = newName;
+  }
+}
 ```
 
 #### Don't preface interfaces
