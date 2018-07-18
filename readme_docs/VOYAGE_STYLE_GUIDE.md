@@ -116,7 +116,9 @@ Wherever possible these best practices are enforced with ESLint.  Violations tha
   * [Use camelCase when naming objects, functions, and instances](#use-camelcase-when-naming-objects-functions-and-instances)
   * [Do not use trailing or leading underscores](#do-not-use-trailing-or-leading-underscores)
   * [Acronyms should always be all capitalized, or all lowercased](#acronyms-should-always-be-all-capitalized-or-all-lowercased)
-  
+* [Asynchronous](#asynchronous)
+  * [Prefer promises for basic http calls](#prefer-promises-for-basic-http-calls)
+  * [Prefer async await over promise chaining](#prefer-async-await-over-promise-chaining)
   
 ## Typescript Specific Guidelines
 #### Always provide a type if it can't be inferred
@@ -2138,3 +2140,87 @@ class MyClass {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## Asynchronous
+
+#### Prefer promises for basic http calls
+
+> Why? Promises are part of the regular JavaScript / Typescript language which means there behavior is more likely to remain stable (no breaking changes). Promises also allow the use of async/await, which is nicer to read.
+
+This rule does not mean you should not use Observables, its simply about using the right tool for the job. Observables have many great features, and if you need them use an Observable, it's very easy to convert between Observables and Promises.
+Many project however can easily just use Angular event handling and Promises for easier to read and more stable code (for instance RXJS 5 -> 6 introduced breaking changes).
+
+```typescript
+// bad
+const source = Rx.Observable.of('Hello');
+const second = val => Rx.Observable.of(`${val} World`);
+const error = val => Rx.Observable.throw('Error!');
+
+function printHelloWorld() {
+  const example = source
+    .mergeMap(second)
+    .mergeMap(error)
+    .catch(val => Rx.Observable.of(`I caught: ${val}`));
+  
+  const subscribe = example.subscribe(val => console.log(val));
+}
+
+// good
+const getHello = () => new Promise(resolve => resolve('Hello'));
+const getWorld = val => new Promise(resolve => resolve(`${val} World`));
+const error = () => new Promise((resolve, reject) => reject('Error!'));
+
+async function printHelloWorld() {
+  try {
+    const hello = await getHello();
+    const helloWorld = await getWorld(hello);
+    await error();
+    
+    console.log(helloWorld);
+  } catch(error) {
+    console.log(`I caught: ${error}`)
+  }
+}
+```
+
+#### Prefer async await over promise chaining
+
+> Why? Async await is easy to read and allows synchronous and asynchronous code and error handling to work seamlessly together.
+
+```typescript
+const getUsers = () => new Promise(resolve => resolve(['rob', 'jon', 'adam']));
+const getArticles = () => new Promise(resolve => resolve(['angular', '.net', 'java']));
+const save = favorites => new Promise(resolve => resolve('Saved!'));
+
+// bad
+function setFavorites() {
+  Promise.all([getUsers(), getArticles()])
+    .then(([users, articles]) => {
+      return users.map(user => {
+        return {
+          user,
+          favoriteArticles: articles
+        }
+      });
+    })
+    .then(save)
+    .catch(error => console.log(error));
+}
+
+// good
+async function setFavorites() {
+  try {
+    const [users, articles] = await Promise.all([getUsers(), getArticles()]);
+    const favorites = users.map(user => {
+      return {
+        user,
+        favoriteArticles: articles
+      }
+    });
+    
+    await save(favorites);
+  } catch(error) {
+    console.log(error);
+  }
+}
+```
