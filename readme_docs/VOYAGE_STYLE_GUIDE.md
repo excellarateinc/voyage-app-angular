@@ -2156,7 +2156,7 @@ class MyClass {
 
 #### Prefer promises for basic http calls
 
-> Why? Promises are part of the regular JavaScript / Typescript language which means there behavior is more likely to remain stable (no breaking changes). Promises also allow the use of async/await, which is nicer to read.
+> Why? Promises are part of the regular JavaScript / Typescript language which means their behavior is more likely to remain stable (no breaking changes). Promises also allow the use of async/await, which is nicer to read.
 
 This rule does not mean you should not use Observables, its simply about using the right tool for the job. Observables have many great features, and if you need them use an Observable, it's very easy to convert between Observables and Promises.
 Many project however can easily just use Angular event handling and Promises for easier to read and more stable code (for instance RXJS 5 -> 6 introduced breaking changes).
