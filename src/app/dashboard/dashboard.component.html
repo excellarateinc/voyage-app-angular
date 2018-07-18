@@ -1,2 +1,8 @@
-<h1>Dashboard Works!</h1>
-
+<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFlex>
+    <mat-card fxFlex="50">
+        <app-graph [chartType]="'line'"></app-graph>
+    </mat-card>
+    <mat-card fxFlex="50">
+        <app-graph [chartType]="'bar'"></app-graph>
+    </mat-card>
+</div>
