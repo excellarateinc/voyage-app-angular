@@ -25,6 +25,6 @@ import { SamplePageComponent } from './sample-page/sample-page.component';
     GraphComponent,
     SamplePageComponent
   ],
-  exports: [ GraphComponent ]
+  exports: [GraphComponent]
 })
 export class ExamplesModule { }
