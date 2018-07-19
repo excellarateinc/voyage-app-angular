@@ -2025,7 +2025,7 @@ createHero(
 }());
 ```
 
-    [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
+[Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214%237365214).
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -2124,15 +2124,15 @@ function thisIsMyFunction() {}
 
   > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won't count as breaking, or that tests aren't needed. tl;dr: if you want something to be “private”, it must not be observably present.
 
-    ```typescript
-    // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
-    this._firstName = 'Panda';
+  ```typescript
+  // bad
+  this.__firstName__ = 'Panda';
+  this.firstName_ = 'Panda';
+  this._firstName = 'Panda';
 
-    // good
-    this.firstName = 'Panda';
-    ```
+  // good
+  this.firstName = 'Panda';
+  ```
     
 The exception to this rule when you have a private property in your class but want identically named getters and setters for it
 
