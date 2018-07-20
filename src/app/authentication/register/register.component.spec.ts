@@ -18,21 +18,21 @@ describe('RegisterComponent', () => {
 
     const registerServiceStub: any = { register: () => { } };
     const routerStub: any = { navigate: (url: Array<string>) => { } };
-    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
+    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next()) } };
 
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
       ],
-      declarations: [ RegisterComponent ],
+      declarations: [RegisterComponent],
       providers: [
         { provide: RegisterService, useValue: registerServiceStub },
         { provide: Router, useValue: routerStub },
-        { provide: MobileService, useValue: mobileServiceStub }
-      ]
+        { provide: MobileService, useValue: mobileServiceStub },
+      ],
     })
     .compileComponents();
   }));

@@ -9,7 +9,7 @@ import { ConfirmPasswordValidator } from './confirm-password.validator';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
@@ -70,13 +70,13 @@ export class ProfileComponent implements OnInit {
       currentPassword: [''],
       newPassword: [''],
       confirmNewPassword: [''],
-      phones: this.formBuilder.array([])
+      phones: this.formBuilder.array([]),
     });
 
     user.phones.forEach(phone => {
       this.phones.push(this.formBuilder.group({
         phoneNumber: [phone.phoneNumber, Validators.required],
-        phoneType: 'Mobile'
+        phoneType: 'Mobile',
       }));
     });
 

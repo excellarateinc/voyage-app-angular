@@ -5,7 +5,7 @@ import { BroadcastService } from './broadcast.service';
 describe('BroadcastService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BroadcastService]
+      providers: [BroadcastService],
     });
   });
 

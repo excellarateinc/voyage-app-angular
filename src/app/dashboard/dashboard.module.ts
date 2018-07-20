@@ -8,8 +8,8 @@ import { ExamplesModule } from '../examples/examples.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    ExamplesModule
+    ExamplesModule,
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent],
 })
 export class DashboardModule { }

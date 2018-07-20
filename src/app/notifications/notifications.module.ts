@@ -8,15 +8,15 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 @NgModule({
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
   ],
   declarations: [NotificationsIconComponent],
   providers: [
     NotificationsService,
-    WebNotificationsService
+    WebNotificationsService,
   ],
   exports: [
-    NotificationsIconComponent
-  ]
+    NotificationsIconComponent,
+  ],
 })
 export class NotificationsModule { }

@@ -21,14 +21,14 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     ChartsModule,
     ExamplesRoutingModule,
     ImageCropperModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     AccountsDashboardComponent,
     TransferComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
   ],
-  exports: [ AccountsDashboardComponent ],
-  providers: [ AccountsService ]
+  exports: [AccountsDashboardComponent],
+  providers: [AccountsService],
 })
 export class ExamplesModule { }

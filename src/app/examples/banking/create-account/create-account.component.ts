@@ -8,7 +8,7 @@ import { Account } from '../account.model';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
-  styleUrls: ['./create-account.component.scss']
+  styleUrls: ['./create-account.component.scss'],
 })
 export class CreateAccountComponent implements OnInit {
   accountForm: FormGroup;
@@ -41,7 +41,7 @@ export class CreateAccountComponent implements OnInit {
   private initializeForm(): void {
     this.accountForm = this.formBuilder.group({
       type: [null, Validators.required],
-      name: [null, Validators.required]
+      name: [null, Validators.required],
     });
   }
 }

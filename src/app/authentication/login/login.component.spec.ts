@@ -17,21 +17,21 @@ describe('LoginComponent', () => {
 
     const loginServiceStub: any = { login: () => { } };
     const windowStub: any = { location: { reload: () => { } } };
-    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next())}};
+    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next()) } };
 
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
         AngularMaterialModule,
         FlexLayoutModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       providers: [
         { provide: LoginService, useValue: loginServiceStub },
         { provide: 'Window', useValue: windowStub },
-        { provide: MobileService, useValue: mobileServiceStub }
-      ]
+        { provide: MobileService, useValue: mobileServiceStub },
+      ],
     })
     .compileComponents();
   }));

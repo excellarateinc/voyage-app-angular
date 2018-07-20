@@ -22,12 +22,12 @@ describe('UserAdminComponent', () => {
         FormsModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
       ],
-      declarations: [ UserAdminComponent ],
+      declarations: [UserAdminComponent],
       providers: [
-        { provide: UserService, useValue: userServiceStub }
-      ]
+        { provide: UserService, useValue: userServiceStub },
+      ],
     })
     .compileComponents();
   }));

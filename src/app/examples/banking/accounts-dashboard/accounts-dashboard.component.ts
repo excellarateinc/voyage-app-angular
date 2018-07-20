@@ -6,7 +6,7 @@ import { Transaction } from '../transaction.model';
 @Component({
   selector: 'app-accounts-dashboard',
   templateUrl: './accounts-dashboard.component.html',
-  styleUrls: ['./accounts-dashboard.component.scss']
+  styleUrls: ['./accounts-dashboard.component.scss'],
 })
 export class AccountsDashboardComponent implements OnInit {
   transactions: Array<Transaction>;
@@ -58,11 +58,11 @@ export class AccountsDashboardComponent implements OnInit {
       colors: [
         {
           backgroundColor: 'rgba(0, 134, 222, 0.2)',
-          borderColor: 'rgba(0, 134, 222, 1)'
-        }
+          borderColor: 'rgba(0, 134, 222, 1)',
+        },
       ],
       legend: false,
-      type: 'line'
+      type: 'line',
     };
 
     this.lineChart2 = {
@@ -72,11 +72,11 @@ export class AccountsDashboardComponent implements OnInit {
       colors: [
         {
           backgroundColor: 'rgba(255, 134, 5, 0.2)',
-          borderColor: 'rgba(255, 134, 5, 1)'
-        }
+          borderColor: 'rgba(255, 134, 5, 1)',
+        },
       ],
       legend: false,
-      type: 'line'
+      type: 'line',
     };
 
     const scales = {
@@ -84,16 +84,16 @@ export class AccountsDashboardComponent implements OnInit {
         display: false,
         gridLines: {
           display: false,
-          drawBorder: false
-        }
+          drawBorder: false,
+        },
       }],
       yAxes: [{
         display: false,
         gridLines: {
           display: false,
-          drawBorder: false
-        }
-      }]
+          drawBorder: false,
+        },
+      }],
     };
 
     this.lineChart.options.scales = scales;

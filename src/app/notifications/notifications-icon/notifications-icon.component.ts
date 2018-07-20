@@ -5,7 +5,7 @@ import { WebNotificationsService } from '../web-notifications.service';
 
 @Component({
   selector: 'app-notifications-icon',
-  templateUrl: './notifications-icon.component.html'
+  templateUrl: './notifications-icon.component.html',
 })
 export class NotificationsIconComponent implements OnInit {
   notifications: Array<Notification> = [];

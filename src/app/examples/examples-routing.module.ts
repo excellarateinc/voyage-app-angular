@@ -8,15 +8,15 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
 const exampleRoutes: Routes = [
   { path: 'banking/dashboard', component: AccountsDashboardComponent },
   { path: 'banking/create-account', component: CreateAccountComponent },
-  { path: 'banking/transfer', component: TransferComponent }
+  { path: 'banking/transfer', component: TransferComponent },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(exampleRoutes)
+    RouterModule.forChild(exampleRoutes),
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [RouterModule],
 })
 export class ExamplesRoutingModule { }

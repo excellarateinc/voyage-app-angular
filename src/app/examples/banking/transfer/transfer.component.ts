@@ -9,7 +9,7 @@ import { Transfer } from './transfer.model';
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.scss']
+  styleUrls: ['./transfer.component.scss'],
 })
 export class TransferComponent implements OnInit {
   accounts: Array<Account>;
@@ -55,7 +55,7 @@ export class TransferComponent implements OnInit {
       fromAccountId: [null, Validators.required],
       toAccountId: [null, Validators.required],
       amount: [null, Validators.required],
-      memo: ['']
+      memo: [''],
     });
   }
 }

@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
-  { path: '', component: ProfileComponent }
+  { path: '', component: ProfileComponent },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [RouterModule],
 })
 export class ProfileRoutingModule { }
