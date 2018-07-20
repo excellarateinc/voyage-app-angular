@@ -11,11 +11,11 @@ import { AngularMaterialModule } from '../../angular-material/angular-material.m
 const notificationsServiceStub: any = {
   getNotifications: () => { },
   markNotificationAsRead: () => { },
-  markAllRead: () => { }
+  markAllRead: () => { },
 };
 
 const webNotificationsServiceStub: any = {
-  requestPermission: () => { }
+  requestPermission: () => { },
 };
 
 describe('NotificationsIconComponent', () => {
@@ -28,13 +28,13 @@ describe('NotificationsIconComponent', () => {
       imports: [
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
       ],
-      declarations: [ NotificationsIconComponent ],
+      declarations: [NotificationsIconComponent],
       providers: [
         { provide: NotificationsService, useValue: notificationsServiceStub },
-        { provide: WebNotificationsService, useValue: webNotificationsServiceStub }
-      ]
+        { provide: WebNotificationsService, useValue: webNotificationsServiceStub },
+      ],
     })
     .compileComponents();
   }));

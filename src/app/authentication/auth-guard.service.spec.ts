@@ -13,8 +13,8 @@ describe('AuthGuardService', () => {
       providers: [
         AuthGuardService,
         { provide: AuthenticationService, useValue: authenticationServiceStub },
-        { provide: Router, useValue: routerStub }
-      ]
+        { provide: Router, useValue: routerStub },
+      ],
     });
   });
 

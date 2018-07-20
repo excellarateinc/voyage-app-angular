@@ -7,8 +7,8 @@ describe('UserService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        UserService
-      ]
+        UserService,
+      ],
     });
   });
 

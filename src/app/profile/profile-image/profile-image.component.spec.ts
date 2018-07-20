@@ -18,12 +18,12 @@ describe('ProfileImageComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         SharedModule,
-        ImageCropperModule
+        ImageCropperModule,
       ],
-      declarations: [ ProfileImageComponent ],
+      declarations: [ProfileImageComponent],
       providers: [
         { provide: BroadcastService, useValue: broadcastServiceStub },
-      ]
+      ],
     })
     .compileComponents();
   }));

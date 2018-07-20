@@ -4,10 +4,10 @@ import { ProfileImageDirective } from './profile-image.directive';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
-  declarations: [ ProfileImageDirective ],
+  declarations: [ProfileImageDirective],
   providers: [],
-  exports: [ ProfileImageDirective ]
+  exports: [ProfileImageDirective],
 })
 export class SharedModule { }

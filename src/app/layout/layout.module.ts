@@ -17,14 +17,14 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AngularMaterialModule,
     AuthenticationModule,
     SharedModule,
-    NotificationsModule
+    NotificationsModule,
   ],
   declarations: [
     HeaderComponent,
     SidebarComponent,
     ShellComponent,
-    ProfileIconComponent
+    ProfileIconComponent,
   ],
-  exports: [ShellComponent]
+  exports: [ShellComponent],
 })
 export class LayoutModule { }

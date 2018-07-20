@@ -6,7 +6,7 @@ describe('ConfirmPasswordValidator', () => {
   const builder = new FormBuilder();
   const form = builder.group({
     newPassword: [''],
-    confirmNewPassword: ['', ConfirmPasswordValidator.MatchPassword]
+    confirmNewPassword: ['', ConfirmPasswordValidator.MatchPassword],
   });
 
   it('should return an error if confirm password does not match', () => {

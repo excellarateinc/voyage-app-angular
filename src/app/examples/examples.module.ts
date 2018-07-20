@@ -6,9 +6,11 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../shared/shared.module';
+import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
+import { TransferComponent } from './banking/transfer/transfer.component';
+import { AccountsService } from './banking/accounts.service';
+import { CreateAccountComponent } from './banking/create-account/create-account.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-import { GraphComponent } from './graph/graph.component';
-import { SamplePageComponent } from './sample-page/sample-page.component';
 
 @NgModule({
   imports: [
@@ -19,12 +21,14 @@ import { SamplePageComponent } from './sample-page/sample-page.component';
     ChartsModule,
     ExamplesRoutingModule,
     ImageCropperModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
-    GraphComponent,
-    SamplePageComponent
+    AccountsDashboardComponent,
+    TransferComponent,
+    CreateAccountComponent,
   ],
-  exports: [GraphComponent]
+  exports: [AccountsDashboardComponent],
+  providers: [AccountsService],
 })
 export class ExamplesModule { }

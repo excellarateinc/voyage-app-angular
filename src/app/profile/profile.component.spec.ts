@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 
 @Component({
   template: '',
-  selector: 'app-profile-image'
+  selector: 'app-profile-image',
 })
 class StubProfileImageComponent {
   @Input() currentImage: any;
@@ -29,11 +29,11 @@ describe('ProfileComponent', () => {
 
     const userServiceStub: any = {
       getCurrentUser: () => { },
-      updateProfile: () => { }
+      updateProfile: () => { },
     };
 
     const broadcastServiceStub: any = {
-      emitProfileUpdated: () => { }
+      emitProfileUpdated: () => { },
     };
 
     TestBed.configureTestingModule({
@@ -42,16 +42,16 @@ describe('ProfileComponent', () => {
         AngularMaterialModule,
         FlexLayoutModule,
         SharedModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
       declarations: [
         ProfileComponent,
-        StubProfileImageComponent
+        StubProfileImageComponent,
       ],
       providers: [
         { provide: UserService, useValue: userServiceStub },
-        { provide: BroadcastService, useValue: broadcastServiceStub }
-      ]
+        { provide: BroadcastService, useValue: broadcastServiceStub },
+      ],
     })
     .compileComponents();
   }));
