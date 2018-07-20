@@ -4,7 +4,7 @@ import { Chart } from 'chart.js';
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
+  styleUrls: ['./graph.component.scss'],
 })
 export class GraphComponent implements OnInit, AfterViewInit {
   chart = null;
@@ -15,7 +15,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
     green: 'rgb(75, 192, 192)',
     blue: 'rgb(54, 162, 235)',
     purple: 'rgb(153, 102, 255)',
-    grey: 'rgb(201, 203, 207)'
+    grey: 'rgb(201, 203, 207)',
   };
 
   @Input() chartType: string;
@@ -46,7 +46,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
           'April',
           'May',
           'June',
-          'July'
+          'July',
         ],
         datasets: [
           {
@@ -61,8 +61,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
               this.randomScalingFactor(),
               this.randomScalingFactor(),
               this.randomScalingFactor(),
-              this.randomScalingFactor()
-            ]
+              this.randomScalingFactor(),
+            ],
           },
           {
             label: 'Dashed',
@@ -77,8 +77,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
               this.randomScalingFactor(),
               this.randomScalingFactor(),
               this.randomScalingFactor(),
-              this.randomScalingFactor()
-            ]
+              this.randomScalingFactor(),
+            ],
           },
           {
             label: 'Filled',
@@ -91,25 +91,25 @@ export class GraphComponent implements OnInit, AfterViewInit {
               this.randomScalingFactor(),
               this.randomScalingFactor(),
               this.randomScalingFactor(),
-              this.randomScalingFactor()
+              this.randomScalingFactor(),
             ],
-            fill: true
-          }
-        ]
+            fill: true,
+          },
+        ],
       },
       options: {
         responsive: true,
         title: {
           display: true,
-          text: 'Example Chart'
+          text: 'Example Chart',
         },
         tooltips: {
           mode: 'index',
-          intersect: false
+          intersect: false,
         },
         hover: {
           mode: 'nearest',
-          intersect: true
+          intersect: true,
         },
         scales: {
           xAxes: [
@@ -117,21 +117,21 @@ export class GraphComponent implements OnInit, AfterViewInit {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Month'
-              }
-            }
+                labelString: 'Month',
+              },
+            },
           ],
           yAxes: [
             {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Value'
-              }
-            }
-          ]
-        }
-      }
+                labelString: 'Value',
+              },
+            },
+          ],
+        },
+      },
     };
   }
 }
