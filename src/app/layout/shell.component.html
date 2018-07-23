@@ -2,12 +2,12 @@
   [isMobile]="isMobile"
   [isAuthenticated]="isAuthenticated"
   (onToggleSidebar)="onToggleSidebar($event)"
-  [ngClass]="{ 'voyage-theme-dark': sidebar.toggleTheme }">
+  [ngClass]="{ 'voyage-theme-dark': sidebar.darkTheme }">
 </app-header>
 
 <app-sidebar
   #sidebar
   [isMobile]="isMobile"
   [isAuthenticated]="isAuthenticated"
-  [ngClass]="{ 'voyage-theme-dark': sidebar.toggleTheme }">
+  [ngClass]="{ 'voyage-theme-dark': sidebar.darkTheme }">
 </app-sidebar>

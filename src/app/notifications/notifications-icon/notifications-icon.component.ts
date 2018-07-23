@@ -26,7 +26,7 @@ export class NotificationsIconComponent implements OnInit {
 
   markNotificationRead(id: number): void {
     this.notificationsService.markNotificationAsRead(id)
-      .subscribe(result => {
+      .subscribe(() => {
         this.notifications = this.notifications.filter((item: Notification) => item.id !== id);
       });
   }
