@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ExamplesModule } from '../examples/examples.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { FlexLayoutModule } from '../../../node_modules/@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AngularMaterialModule,
     DashboardRoutingModule,
     ExamplesModule,
+    FlexLayoutModule
   ],
   declarations: [DashboardComponent]
 })
