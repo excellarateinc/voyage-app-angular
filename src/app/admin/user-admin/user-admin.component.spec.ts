@@ -24,7 +24,7 @@ describe('UserAdminComponent', () => {
         AngularMaterialModule,
         FlexLayoutModule
       ],
-      declarations: [ UserAdminComponent ],
+      declarations: [UserAdminComponent],
       providers: [
         { provide: UserService, useValue: userServiceStub }
       ]

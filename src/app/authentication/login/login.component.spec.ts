@@ -14,12 +14,10 @@ describe('LoginComponent', () => {
   let loginService: LoginService;
 
   beforeEach(async(() => {
+
     const loginServiceStub: any = { login: () => { } };
     const windowStub: any = { location: { reload: () => { } } };
-    const mobileServiceStub: any = {
-      isMobile: () => false,
-      mobileChanged$: Observable.create(o => o.next(false))
-    };
+    const mobileServiceStub: any = { isMobile: () => false, mobileChanged$: { subscribe: () => Observable.create(o => o.next()) } };
 
     TestBed.configureTestingModule({
       imports: [
@@ -28,7 +26,7 @@ describe('LoginComponent', () => {
         FlexLayoutModule,
         ReactiveFormsModule
       ],
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       providers: [
         { provide: LoginService, useValue: loginServiceStub },
         { provide: 'Window', useValue: windowStub },

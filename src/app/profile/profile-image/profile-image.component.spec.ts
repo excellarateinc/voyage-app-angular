@@ -20,9 +20,9 @@ describe('ProfileImageComponent', () => {
         SharedModule,
         ImageCropperModule
       ],
-      declarations: [ ProfileImageComponent ],
+      declarations: [ProfileImageComponent],
       providers: [
-        { provide: BroadcastService, useValue: broadcastServiceStub },
+        { provide: BroadcastService, useValue: broadcastServiceStub }
       ]
     })
     .compileComponents();

@@ -6,8 +6,8 @@ import { ProfileImageDirective } from './profile-image.directive';
   imports: [
     CommonModule
   ],
-  declarations: [ ProfileImageDirective ],
+  declarations: [ProfileImageDirective],
   providers: [],
-  exports: [ ProfileImageDirective ]
+  exports: [ProfileImageDirective]
 })
 export class SharedModule { }

@@ -10,7 +10,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 
 @Component({
   template: '',
-  selector: 'app-header',
+  selector: 'app-header'
 })
 class StubHeaderComponent {
   @Input()

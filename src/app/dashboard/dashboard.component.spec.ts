@@ -13,7 +13,7 @@ describe('DashboardComponent', () => {
         ExamplesModule,
         AngularMaterialModule
       ],
-      declarations: [ DashboardComponent ]
+      declarations: [DashboardComponent]
     })
     .compileComponents();
   }));

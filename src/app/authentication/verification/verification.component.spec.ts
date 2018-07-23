@@ -30,7 +30,7 @@ describe('VerificationComponent', () => {
         FlexLayoutModule,
         RouterTestingModule
       ],
-      declarations: [ VerificationComponent ],
+      declarations: [VerificationComponent],
       providers: [
         { provide: VerificationService, useValue: verificationServiceStub },
         { provide: 'Window', useValue: windowStub }

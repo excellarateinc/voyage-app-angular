@@ -15,7 +15,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         StubShellComponent
-      ],
+      ]
     }).compileComponents();
   }));
 

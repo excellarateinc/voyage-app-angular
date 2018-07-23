@@ -30,7 +30,7 @@ describe('NotificationsIconComponent', () => {
         AngularMaterialModule,
         FlexLayoutModule
       ],
-      declarations: [ NotificationsIconComponent ],
+      declarations: [NotificationsIconComponent],
       providers: [
         { provide: NotificationsService, useValue: notificationsServiceStub },
         { provide: WebNotificationsService, useValue: webNotificationsServiceStub }
