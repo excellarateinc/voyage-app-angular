@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { GraphComponent } from '../graph/graph.component';
 import { SamplePageComponent } from './sample-page.component';
 
 describe('SamplePageComponent', () => {
@@ -8,7 +9,7 @@ describe('SamplePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SamplePageComponent ]
+      declarations: [ SamplePageComponent, GraphComponent ]
     })
     .compileComponents();
   }));
