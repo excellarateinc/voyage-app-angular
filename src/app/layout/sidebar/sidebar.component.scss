@@ -27,7 +27,6 @@ mat-sidenav ul {
 
 .nav-item-container {
   align-items: center;
-  color: #666;
   cursor: pointer;
   display: flex;
   font-size: 16px;
@@ -58,4 +57,8 @@ mat-sidenav ul {
 
 .active {
   background-color: #ddd;
+}
+
+a, a:visited, a:hover, a:active {
+  color: inherit;
 }

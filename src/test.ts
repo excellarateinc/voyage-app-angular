@@ -13,7 +13,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 // Import our Angular Material theme to avoid Material warnings during Karma test runs.
-import './themes/voyage-bank-theme.scss';
+import './themes/voyage-theme.scss';
 
 // Unfortunately there's no typing for the `__karma__` variable. Just declare it as any.
 declare var __karma__: any;

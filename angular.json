@@ -23,7 +23,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/themes/voyage-bank-theme.scss"
+              "src/themes/voyage-theme.scss"
             ],
             "scripts": [
               "node_modules/hammerjs/hammer.min.js",
@@ -103,7 +103,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/themes/voyage-bank-theme.scss"
+              "src/themes/voyage-theme.scss"
             ],
             "assets": [
               "src/assets",
