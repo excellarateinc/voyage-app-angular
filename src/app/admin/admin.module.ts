@@ -12,8 +12,8 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AdminRoutingModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    FormsModule,
+    FormsModule
   ],
-  declarations: [UserAdminComponent],
+  declarations: [UserAdminComponent]
 })
 export class AdminModule { }

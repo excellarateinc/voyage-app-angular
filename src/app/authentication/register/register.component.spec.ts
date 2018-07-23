@@ -25,14 +25,14 @@ describe('RegisterComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule,
+        FlexLayoutModule
       ],
       declarations: [RegisterComponent],
       providers: [
         { provide: RegisterService, useValue: registerServiceStub },
         { provide: Router, useValue: routerStub },
-        { provide: MobileService, useValue: mobileServiceStub },
-      ],
+        { provide: MobileService, useValue: mobileServiceStub }
+      ]
     })
     .compileComponents();
   }));

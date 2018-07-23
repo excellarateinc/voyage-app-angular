@@ -20,12 +20,12 @@ import { PublicGuardService } from './public-guard.service';
     ReactiveFormsModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    AuthenticationRoutingModule,
+    AuthenticationRoutingModule
   ],
   declarations: [
     LoginComponent,
     RegisterComponent,
-    VerificationComponent,
+    VerificationComponent
   ],
   providers: [
     AuthenticationService,
@@ -33,7 +33,7 @@ import { PublicGuardService } from './public-guard.service';
     PublicGuardService,
     RegisterService,
     VerificationService,
-    LoginService,
-  ],
+    LoginService
+  ]
 })
 export class AuthenticationModule { }

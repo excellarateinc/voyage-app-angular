@@ -6,15 +6,15 @@ import { AuthenticationModule } from '../authentication/authentication.module';
 import { AuthGuardService } from '../authentication/auth-guard.service';
 
 const dashboardRoutes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuardService] },
+  { path: '', component: DashboardComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     AuthenticationModule,
-    RouterModule.forChild(dashboardRoutes),
+    RouterModule.forChild(dashboardRoutes)
   ],
-  declarations: [],
+  declarations: []
 })
 export class DashboardRoutingModule { }

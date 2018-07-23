@@ -15,8 +15,8 @@ describe('AuthenticationService', () => {
         AuthenticationService,
         { provide: Router, useValue: routerStub },
         { provide: Location, useValue: locationStub },
-        { provide: 'Window', useValue: windowStub },
-      ],
+        { provide: 'Window', useValue: windowStub }
+      ]
     });
   });
 

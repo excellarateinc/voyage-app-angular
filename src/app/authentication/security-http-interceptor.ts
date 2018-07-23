@@ -34,7 +34,7 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
 
           this.authenticationService.logout();
           return observableThrowError(errorResponse);
-        }),
+        })
       );
   }
 }

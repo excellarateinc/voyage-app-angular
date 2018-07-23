@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, Output, OnChanges, SimpleChanges, EventEmitter } from '@angular/core';
 
 @Directive({
-  selector: '[appProfileImage]',
+  selector: '[appProfileImage]'
 })
 export class ProfileImageDirective implements OnChanges {
   @Input() image: any;

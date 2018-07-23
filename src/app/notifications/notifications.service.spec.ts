@@ -8,8 +8,8 @@ describe('NotificationsService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        NotificationsService,
-      ],
+        NotificationsService
+      ]
     });
   });
 

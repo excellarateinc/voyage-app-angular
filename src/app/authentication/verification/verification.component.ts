@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
-  styleUrls: ['./verification.component.scss'],
+  styleUrls: ['./verification.component.scss']
 })
 export class VerificationComponent implements OnInit {
   verificationForm: FormGroup;
@@ -46,7 +46,7 @@ export class VerificationComponent implements OnInit {
 
   private initializeForm(): void {
     this.verificationForm = this.formBuilder.group({
-      code: ['', Validators.required],
+      code: ['', Validators.required]
     });
   }
 }

@@ -10,13 +10,13 @@ export function windowFactory() {
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule
   ],
   providers: [
     UserService,
     BroadcastService,
     { provide: 'Window', useFactory: windowFactory },
-    MobileService,
-  ],
+    MobileService
+  ]
 })
 export class CoreModule { }

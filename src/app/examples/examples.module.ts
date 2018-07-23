@@ -19,12 +19,12 @@ import { SamplePageComponent } from './sample-page/sample-page.component';
     ChartsModule,
     ExamplesRoutingModule,
     ImageCropperModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     GraphComponent,
-    SamplePageComponent,
+    SamplePageComponent
   ],
-  exports: [GraphComponent],
+  exports: [GraphComponent]
 })
 export class ExamplesModule { }

@@ -17,7 +17,7 @@ describe('VerificationComponent', () => {
 
     const verificationServiceStub: any = {
       sendCode: () => { },
-      verify: () => { },
+      verify: () => { }
     };
 
     const windowStub: any = { location: { reload: () => { } } };
@@ -28,13 +28,13 @@ describe('VerificationComponent', () => {
         BrowserAnimationsModule,
         AngularMaterialModule,
         FlexLayoutModule,
-        RouterTestingModule,
+        RouterTestingModule
       ],
       declarations: [VerificationComponent],
       providers: [
         { provide: VerificationService, useValue: verificationServiceStub },
-        { provide: 'Window', useValue: windowStub },
-      ],
+        { provide: 'Window', useValue: windowStub }
+      ]
     })
     .compileComponents();
   }));

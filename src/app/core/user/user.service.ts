@@ -27,7 +27,7 @@ export class UserService {
           const currentUser = response;
           this.currentUser = currentUser;
           return currentUser;
-        }),
+        })
       );
   }
 

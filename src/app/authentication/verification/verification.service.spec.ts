@@ -7,8 +7,8 @@ describe('VerificationService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        VerificationService,
-      ],
+        VerificationService
+      ]
     });
   });
 

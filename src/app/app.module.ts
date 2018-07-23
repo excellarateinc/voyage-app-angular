@@ -14,7 +14,7 @@ import { SecurityHttpInterceptor } from './authentication/security-http-intercep
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,15 +26,15 @@ import { SecurityHttpInterceptor } from './authentication/security-http-intercep
     AppRoutingModule,
     CoreModule,
     LayoutModule,
-    AuthenticationModule,
+    AuthenticationModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SecurityHttpInterceptor,
-      multi: true,
-    },
+      multi: true
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

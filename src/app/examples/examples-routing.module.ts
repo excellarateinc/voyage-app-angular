@@ -4,15 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { SamplePageComponent } from './sample-page/sample-page.component';
 
 const exampleRoutes: Routes = [
-  { path: 'samplepage', component: SamplePageComponent },
+  { path: 'samplepage', component: SamplePageComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(exampleRoutes),
+    RouterModule.forChild(exampleRoutes)
   ],
   declarations: [],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ExamplesRoutingModule { }

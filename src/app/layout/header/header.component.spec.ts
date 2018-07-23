@@ -7,13 +7,13 @@ import { AngularMaterialModule } from '../../angular-material/angular-material.m
 
 @Component({
   template: '',
-  selector: 'app-notifications-icon',
+  selector: 'app-notifications-icon'
 })
 class StubNotificationsIconComponent { }
 
 @Component({
   template: '',
-  selector: 'app-profile-icon',
+  selector: 'app-profile-icon'
 })
 class StubProfileIconComponent { }
 
@@ -26,13 +26,13 @@ describe('HeaderComponent', () => {
       imports: [
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule,
+        FlexLayoutModule
       ],
       declarations: [
         HeaderComponent,
         StubNotificationsIconComponent,
-        StubProfileIconComponent,
-      ],
+        StubProfileIconComponent
+      ]
     })
     .compileComponents();
   }));

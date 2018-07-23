@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 @Component({
   template: '',
-  selector: 'app-shell',
+  selector: 'app-shell'
 })
 class StubShellComponent { }
 
@@ -14,8 +14,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        StubShellComponent,
-      ],
+        StubShellComponent
+      ]
     }).compileComponents();
   }));
 

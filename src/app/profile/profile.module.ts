@@ -17,13 +17,13 @@ import { ProfileImageComponent } from './profile-image/profile-image.component';
     FlexLayoutModule,
     ProfileRoutingModule,
     ImageCropperModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     ProfileComponent,
-    ProfileImageComponent,
+    ProfileImageComponent
   ],
   exports: [],
-  providers: [],
+  providers: []
 })
 export class ProfileModule { }

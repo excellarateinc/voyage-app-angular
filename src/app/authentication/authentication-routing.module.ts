@@ -9,15 +9,15 @@ import { PublicGuardService } from './public-guard.service';
 const authRoutes: Routes = [
   { path: 'authentication/login', component: LoginComponent, canActivate: [PublicGuardService] },
   { path: 'authentication/register', component: RegisterComponent, canActivate: [PublicGuardService] },
-  { path: 'authentication/verification', component: VerificationComponent },
+  { path: 'authentication/verification', component: VerificationComponent }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(authRoutes),
+    RouterModule.forChild(authRoutes)
   ],
   declarations: [],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AuthenticationRoutingModule { }

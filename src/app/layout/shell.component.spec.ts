@@ -10,7 +10,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 
 @Component({
   template: '',
-  selector: 'app-header',
+  selector: 'app-header'
 })
 class StubHeaderComponent {
   @Input()
@@ -22,7 +22,7 @@ class StubHeaderComponent {
 
 @Component({
   template: '',
-  selector: 'app-sidebar',
+  selector: 'app-sidebar'
 })
 class StubSidebarComponent {
   @Input()
@@ -40,7 +40,7 @@ describe('ShellComponent', () => {
   beforeEach(async(() => {
 
     const authenticationServiceStub: any = {
-      isAuthenticated: () => { },
+      isAuthenticated: () => { }
     };
 
     TestBed.configureTestingModule({
@@ -48,16 +48,16 @@ describe('ShellComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule,
+        FlexLayoutModule
       ],
       declarations: [
         ShellComponent,
         StubHeaderComponent,
-        StubSidebarComponent,
+        StubSidebarComponent
       ],
       providers: [
-        { provide: AuthenticationService, useValue: authenticationServiceStub },
-      ],
+        { provide: AuthenticationService, useValue: authenticationServiceStub }
+      ]
     })
     .compileComponents();
   }));

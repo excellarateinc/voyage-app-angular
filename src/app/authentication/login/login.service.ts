@@ -25,7 +25,7 @@ export class LoginService {
         map((response: any) => {
           this.authService.setToken(response.access_token);
           return response;
-        }),
+        })
       );
   }
 }

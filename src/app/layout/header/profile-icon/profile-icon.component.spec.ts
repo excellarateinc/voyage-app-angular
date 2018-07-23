@@ -18,11 +18,11 @@ describe('ProfileIconComponent', () => {
   beforeEach(async(() => {
 
     const userServiceStub: any = {
-      getCurrentUser: () => { },
+      getCurrentUser: () => { }
     };
 
     const broadcastServiceStub: any = {
-      profileUpdated$: Observable.create(o => o.next({})),
+      profileUpdated$: Observable.create(o => o.next({}))
     };
 
     const authServiceStub: any = {
@@ -33,14 +33,14 @@ describe('ProfileIconComponent', () => {
         BrowserAnimationsModule,
         AngularMaterialModule,
         FlexLayoutModule,
-        SharedModule,
+        SharedModule
       ],
       declarations: [ProfileIconComponent],
       providers: [
         { provide: UserService, useValue: userServiceStub },
         { provide: BroadcastService, useValue: broadcastServiceStub },
-        { provide: AuthenticationService, useValue: authServiceStub },
-      ],
+        { provide: AuthenticationService, useValue: authServiceStub }
+      ]
     })
     .compileComponents();
   }));

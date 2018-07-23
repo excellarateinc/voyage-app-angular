@@ -8,8 +8,8 @@ describe('RegisterService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        RegisterService,
-      ],
+        RegisterService
+      ]
     });
   });
 

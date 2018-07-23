@@ -21,12 +21,12 @@ describe('SidebarComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         AngularMaterialModule,
-        FlexLayoutModule,
+        FlexLayoutModule
       ],
       declarations: [SidebarComponent],
       providers: [
-        { provide: UserService, useValue: userServiceStub },
-      ],
+        { provide: UserService, useValue: userServiceStub }
+      ]
     })
     .compileComponents();
   }));

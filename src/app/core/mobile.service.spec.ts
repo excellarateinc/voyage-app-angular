@@ -7,7 +7,7 @@ describe('MobileService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FlexLayoutModule],
-      providers: [MobileService],
+      providers: [MobileService]
     });
   });
 

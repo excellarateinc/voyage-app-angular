@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-profile-image',
   templateUrl: './profile-image.component.html',
-  styleUrls: ['./profile-image.component.scss'],
+  styleUrls: ['./profile-image.component.scss']
 })
 export class ProfileImageComponent implements OnInit, OnDestroy {
   @Input() currentImage: any;
