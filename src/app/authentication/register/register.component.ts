@@ -9,8 +9,7 @@ import { MobileService } from '../../core/mobile.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   registerForm: FormGroup;
@@ -43,14 +42,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
-      .subscribe(() => {
+      .subscribe(result => {
         this.snackBar.open('Registration successful', null, {
-          duration: 2000,
+          duration: 2000
         });
         this.router.navigate(['/authentication/login']);
-      }, errorResponse => {
-        this.registrationErrors = errorResponse.error;
-      });
+      }, errors => this.registrationErrors = errors);
   }
 
   get phones(): FormArray {

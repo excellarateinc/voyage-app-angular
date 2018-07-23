@@ -2,6 +2,9 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "extends": [
+    "tslint-eslint-rules"
+  ],
   "rules": {
     "callable-types": true,
     "class-name": true,
@@ -56,7 +59,13 @@
     "no-unused-variable": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
+    "object-literal-shorthand": true,
     "object-literal-sort-keys": false,
+    "space-before-function-paren": false,
+    "ter-prefer-arrow-callback": true,
+    "array-bracket-spacing": [true, "never"],
+    "object-curly-spacing": [true, "always"],
+    "no-consecutive-blank-lines": true,
     "one-line": [
       true,
       "check-open-brace",

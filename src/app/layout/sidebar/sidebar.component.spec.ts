@@ -23,9 +23,9 @@ describe('SidebarComponent', () => {
         AngularMaterialModule,
         FlexLayoutModule
       ],
-      declarations: [ SidebarComponent ],
+      declarations: [SidebarComponent],
       providers: [
-        { provide: UserService, useValue: userServiceStub },
+        { provide: UserService, useValue: userServiceStub }
       ]
     })
     .compileComponents();

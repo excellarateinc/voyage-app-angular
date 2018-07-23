@@ -35,7 +35,7 @@ describe('ProfileIconComponent', () => {
         FlexLayoutModule,
         SharedModule
       ],
-      declarations: [ ProfileIconComponent ],
+      declarations: [ProfileIconComponent],
       providers: [
         { provide: UserService, useValue: userServiceStub },
         { provide: BroadcastService, useValue: broadcastServiceStub },

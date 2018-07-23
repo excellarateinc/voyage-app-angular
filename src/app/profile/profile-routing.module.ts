@@ -13,6 +13,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class ProfileRoutingModule { }

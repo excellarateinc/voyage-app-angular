@@ -20,7 +20,7 @@ export class LoginService {
     headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
     headers = headers.set('Authorization', 'Basic ' + btoa(clientCreds));
 
-    return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, { headers: headers })
+    return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, { headers })
       .pipe(
         map((response: any) => {
           this.authService.setToken(response.access_token);
