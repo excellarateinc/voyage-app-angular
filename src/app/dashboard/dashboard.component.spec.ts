@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { ExamplesModule } from '../examples/examples.module';
+import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -9,7 +10,8 @@ describe('DashboardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ExamplesModule
+        ExamplesModule,
+        AngularMaterialModule
       ],
       declarations: [DashboardComponent]
     })
