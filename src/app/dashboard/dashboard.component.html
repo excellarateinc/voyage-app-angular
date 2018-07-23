@@ -1,8 +1,8 @@
-<div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFlex>
-  <mat-card fxFlex="50">
+<div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="10px">
+  <mat-card fxFlex>
     <app-graph [chartType]="'line'"></app-graph>
   </mat-card>
-  <mat-card fxFlex="50">
+  <mat-card fxFlex>
     <app-graph [chartType]="'bar'"></app-graph>
   </mat-card>
 </div>
