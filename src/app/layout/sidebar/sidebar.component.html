@@ -3,34 +3,34 @@
     <nav (click)="close()">
       <ul>
         <li>
-          <a class="nav-item-container" routerLink="/dashboard" routerLinkActive="active" [ngClass]="{'dark': darkTheme}">
+          <a class="nav-item-container" routerLink="/dashboard" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
             <i class="material-icons">show_chart</i>
             Dashboard
           </a>
         </li>
         <li>
-          <a class="nav-item-container" routerLink="/examples/samplepage" routerLinkActive="active" [ngClass]="{'dark': darkTheme}">
+          <a class="nav-item-container" routerLink="/examples/samplepage" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
             <i class="material-icons">pie_chart</i>
             Sample Page
           </a>
         </li>
         <li *ngIf="isAdmin">
-          <a class="nav-item-container" routerLink="/admin/users" routerLinkActive="active" [ngClass]="{'dark': darkTheme}">
+          <a class="nav-item-container" routerLink="/admin/users" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
             <i class="material-icons">supervisor_account</i>
             User Admin
           </a>
         </li>
         <div class="nav-section-divider"></div>
         <li>
-          <a class="nav-item-container" routerLinkActive="active" [ngClass]="{'dark': darkTheme}">
+          <a class="nav-item-container" routerLinkActive="active" [ngClass]="{'dark': themeService.darkTheme}">
             <i class="material-icons">help</i>
             Help & Feedback
           </a>
         </li>
         <li>
-          <a class="nav-item-container" routerLinkActive="active" (click)="toggleDarkTheme(); $event.stopPropagation();" [ngClass]="{'dark': darkTheme}">
+          <a class="nav-item-container" routerLinkActive="active" (click)="themeService.toggleDarkTheme(); $event.stopPropagation();" [ngClass]="{'dark': themeService.darkTheme}">
             <i class="material-icons mat-light">lightbulb_outline</i>
-            {{darkTheme ? 'Go Light' : 'Go Dark'}}
+            {{themeService.darkTheme ? 'Go Light' : 'Go Dark'}}
           </a>
         </li>
         <mat-divider></mat-divider>

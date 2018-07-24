@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from './user/user.service';
 import { BroadcastService } from './broadcast.service';
 import { MobileService } from './mobile.service';
+import { ThemeService } from './theme.service';
 
 export function windowFactory() {
   return window;
@@ -16,7 +17,8 @@ export function windowFactory() {
     UserService,
     BroadcastService,
     { provide: 'Window', useFactory: windowFactory },
-    MobileService
+    MobileService,
+    ThemeService
   ]
 })
 export class CoreModule { }

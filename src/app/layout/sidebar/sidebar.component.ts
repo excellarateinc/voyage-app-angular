@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
-import { OverlayContainer } from '@angular/cdk/overlay';
+import { ThemeService } from '../../core/theme.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,10 +25,9 @@ export class SidebarComponent implements OnInit {
   isAuthenticated = false;
   @ViewChild('sidenav') sidenav: MatSidenav;
   mobile: boolean;
-  darkTheme = false;
   isAdmin = false;
 
-  constructor(private userService: UserService, private overlayContainer: OverlayContainer) { }
+  constructor(private userService: UserService, public themeService: ThemeService) { }
 
   ngOnInit(): void {
     if (!this.isAuthenticated) {
@@ -38,15 +37,6 @@ export class SidebarComponent implements OnInit {
       .subscribe(user => {
         this.isAdmin = user.roles.indexOf('Administrator') !== -1;
       });
-  }
-
-  toggleDarkTheme(): void {
-    this.darkTheme = !this.darkTheme;
-    if (this.darkTheme) {
-      this.overlayContainer.getContainerElement().classList.add('voyage-theme-dark');
-    } else {
-      this.overlayContainer.getContainerElement().classList.remove('voyage-theme-dark');
-    }
   }
 
   toggle(): void {

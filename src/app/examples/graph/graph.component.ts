@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { ThemeService } from '../../core/theme.service';
 
 @Component({
   selector: 'app-graph',
@@ -21,9 +22,14 @@ export class GraphComponent implements OnInit, AfterViewInit {
   @Input() chartType: string;
   @ViewChild('myCanvas') canvasRef: ElementRef;
 
-  constructor() { }
+  constructor(private themeService: ThemeService) { }
 
   ngOnInit() {
+    Chart.defaults.global.defaultFontColor = this.themeService.darkTheme ? '#FFF' : '#000';
+    this.themeService.themeChanged$.subscribe(isDarkTheme => {
+      Chart.defaults.global.defaultFontColor = isDarkTheme ? '#FFF' : '#000';
+      this.chart.update();
+    });
   }
 
   ngAfterViewInit() {
@@ -52,8 +58,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
           {
             label: 'Unfilled',
             fill: false,
-            backgroundColor: this.chartColors.blue,
-            borderColor: this.chartColors.blue,
+            backgroundColor: this.chartColors.grey,
+            borderColor: this.chartColors.grey,
             data: [
               this.randomScalingFactor(),
               this.randomScalingFactor(),
@@ -82,8 +88,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
           },
           {
             label: 'Filled',
-            backgroundColor: this.chartColors.red,
-            borderColor: this.chartColors.red,
+            backgroundColor: this.chartColors.purple,
+            borderColor: this.chartColors.purple,
             data: [
               this.randomScalingFactor(),
               this.randomScalingFactor(),
@@ -99,6 +105,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         title: {
           display: true,
           text: 'Example Chart'
