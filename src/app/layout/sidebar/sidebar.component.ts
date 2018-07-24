@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { UserService } from '../../core/user/user.service';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { ThemeService } from '../../core/theme.service';
 
 @Component({
