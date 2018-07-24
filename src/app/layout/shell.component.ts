@@ -3,6 +3,7 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ThemeService } from '../core/theme.service';
 
 @Component({
   selector: 'app-shell',
@@ -16,7 +17,8 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthenticationService,
-    private media: ObservableMedia) { }
+    private media: ObservableMedia,
+    public themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.isAuthenticated();
