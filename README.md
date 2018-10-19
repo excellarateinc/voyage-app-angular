@@ -1,26 +1,13 @@
 ## Overview
 A business web application platform that implements a modern user experience and many common base features that are expected by business consumers. Integrates with the Voyage API to provide multi-factor authentication/authorization, user profile, basic messaging, and more. Built using Javascript and the Google Angular framework. 
 
-__App Features__
-* User Login w/ Password Recovery
-* User Account Management
-* User Admin Console
-* User Settings
-* Alerts & Notifications
-* Responsive UI for Desktop, Tablet, Mobile
-* Lazy loaded modules and AOT support to ensure high performance.
-* Integrates with the Voyage API for all data
-
 ## Topics
 * [5 Minute Test](#5-minute-test)
+* [Features](#features)
 * [Getting Started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
-    * [Developing](#developing)
-    * [Testing](#testing)
 * [Angular Style Guide](https://angular.io/guide/styleguide)
 * [Voyage Best Practices](readme_docs/VOYAGE_STYLE_GUIDE.md)
+* [Development](readme_docs/DEVELOPMENT.md)
 
 ## 5 Minute Test
 ```bash
@@ -41,6 +28,16 @@ $ npm start
 ```
 
 The app will open in your browser.
+
+## Features
+* User Login w/ Password Recovery
+* User Account Management
+* User Admin Console
+* User Settings
+* Alerts & Notifications
+* Responsive UI for Desktop, Tablet, Mobile
+* Lazy loaded modules and AOT support to ensure high performance.
+* Integrates with the Voyage API for all data
 
 # Getting Started
 
