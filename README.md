@@ -1,6 +1,8 @@
 ## Overview
 A business web application platform that implements a modern user experience and many common base features that are expected by business consumers. Integrates with the Voyage API to provide multi-factor authentication/authorization, user profile, basic messaging, and more. Built using Javascript and the Google Angular framework. 
 
+Created and supported by Lighthouse Software @ https://LighthouseSoftware.com
+
 ## Topics
 * [5 Minute Test](#5-minute-test)
 * [Features](#features)
