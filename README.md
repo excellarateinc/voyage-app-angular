@@ -1,5 +1,3 @@
-![Voyage Logo](https://github.com/lssinc/voyage-app-angular1/blob/master/readme_docs/voyage-logo-horiz-color.png)
-
 ## Overview
 A Google Angular app that implements the fundamental features found in most business applications.
 
