@@ -6,9 +6,6 @@ Created and supported by Lighthouse Software @ https://LighthouseSoftware.com
 ## Topics
 * [5 Minute Test](#5-minute-test)
 * [Features](#features)
-* [Getting Started](#getting-started)
-* [Angular Style Guide](https://angular.io/guide/styleguide)
-* [Voyage Best Practices](readme_docs/VOYAGE_STYLE_GUIDE.md)
 * [Development](readme_docs/DEVELOPMENT.md)
 
 ## 5 Minute Test
@@ -41,43 +38,6 @@ The app will open in your browser.
 * Lazy loaded modules and AOT support to ensure high performance.
 * Integrates with the Voyage API for all data
 
-# Getting Started
-
-## Prerequisites
-
-What you need to run this app:
-* [Node and NPM](https://nodejs.org)
-* [Angular CLI](https://cli.angular.io/) (`npm install -g @angular/cli`)
-
-## Installing
-
-* `clone` this repository
-* `cd voyage-app-angular` to navigate to the root directory of the app.
-* `npm install` to install npm dependencies.
-
-## Running the app
-
-After you have installed all dependencies you can now run the app with the npm start script
-```bash
-npm start
-```
-Which is just a shortcut to running the Angular CLI with the `-o` flag to automatically open a browser tab and display the app
-```bash
-ng serve -o
-```
-
-This will start a local server which will watch for file changes and reload for you. The port will be displayed to you as `http://localhost:3000`.
-
-## Developing
-
-### Build files
-
-While you can always run Angular CLI commands directly, our package.json scripts section has common Angular CLI build commands. 
-
-* build and serve files: `npm start`
-* single run: `npm run build`
-* qa build: `npm run build:qa`
-* prod build: 'npm run build:prod'
 
 
 ## Testing

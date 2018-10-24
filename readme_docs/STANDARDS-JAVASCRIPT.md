@@ -1,4 +1,4 @@
-## Voyage Style Guide
+## Javascript / TypeScript Style Guide
 This guide represents coding styles used when writing ES2017+ and TypeScript, specifically when working with Angular 5+.  This guide takes heavily from AirBnb's ES Style Guide, but with some parts removed or modified, generally when they conflicted with the Official Angular Style Guide, which takes priority.  
 
 Wherever possible these best practices are enforced with ESLint.  Violations that are likely to result in bugs are marked as **errors**, and code style / consistency violations are marked as **warnings**.
