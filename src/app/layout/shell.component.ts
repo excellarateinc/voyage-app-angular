@@ -12,7 +12,7 @@ import { ThemeService } from '../core/theme.service';
 export class ShellComponent implements OnInit, OnDestroy {
   isMobile: boolean;
   isAuthenticated: boolean;
-  @ViewChild('sidebar') sidebar: SidebarComponent;
+  @ViewChild('sidebar', { static: true }) sidebar: SidebarComponent;
   private watcher: Subscription;
 
   constructor(

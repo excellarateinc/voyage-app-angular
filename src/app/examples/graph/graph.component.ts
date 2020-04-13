@@ -20,7 +20,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   };
 
   @Input() chartType: string;
-  @ViewChild('myCanvas') canvasRef: ElementRef;
+  @ViewChild('myCanvas', {static: true}) canvasRef: ElementRef;
 
   constructor(private themeService: ThemeService) { }
 
