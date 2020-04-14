@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 import { UserService } from '../../core/user/user.service';
 import { ThemeService } from '../../core/theme.service';
 

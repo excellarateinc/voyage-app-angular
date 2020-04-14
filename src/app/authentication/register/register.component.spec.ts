@@ -41,7 +41,7 @@ describe('RegisterComponent', () => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    registerService = TestBed.get(RegisterService);
+    registerService = TestBed.inject(RegisterService);
   });
 
   it('should create', () => {

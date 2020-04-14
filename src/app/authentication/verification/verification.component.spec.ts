@@ -43,7 +43,7 @@ describe('VerificationComponent', () => {
     fixture = TestBed.createComponent(VerificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    verificationService = TestBed.get(VerificationService);
+    verificationService = TestBed.inject(VerificationService);
   });
 
   it('should create', () => {

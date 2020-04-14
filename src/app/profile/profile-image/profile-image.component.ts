@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
+import { ImageCropperComponent, CropperSettings, Bounds } from 'ngx-img-cropper';
 import { BroadcastService } from '../../core/broadcast.service';
 import { Subscription } from 'rxjs';
 

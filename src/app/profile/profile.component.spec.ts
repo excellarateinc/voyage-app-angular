@@ -57,7 +57,7 @@ describe('ProfileComponent', () => {
   }));
 
   beforeEach(() => {
-    userService = TestBed.get(UserService);
+    userService = TestBed.inject(UserService);
     spyOn(userService, 'getCurrentUser').and.returnValue(Observable.create(o => o.next({ phones: [] })));
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;

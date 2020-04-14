@@ -40,7 +40,7 @@ describe('NotificationsIconComponent', () => {
   }));
 
   beforeEach(() => {
-    notificationsService = TestBed.get(NotificationsService);
+    notificationsService = TestBed.inject(NotificationsService);
     spyOn(notificationsService, 'getNotifications').and.callFake(() => new Observable(observer => observer.next()));
     fixture = TestBed.createComponent(NotificationsIconComponent);
     component = fixture.componentInstance;

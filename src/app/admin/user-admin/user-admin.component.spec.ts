@@ -33,7 +33,7 @@ describe('UserAdminComponent', () => {
   }));
 
   beforeEach(() => {
-    userService = TestBed.get(UserService);
+    userService = TestBed.inject(UserService);
     spyOn(userService, 'getUsers').and.callFake(() => new Observable(observer => observer.next()));
     fixture = TestBed.createComponent(UserAdminComponent);
     component = fixture.componentInstance;

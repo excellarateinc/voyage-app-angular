@@ -32,7 +32,7 @@ describe('SidebarComponent', () => {
   }));
 
   beforeEach(() => {
-    userService = TestBed.get(UserService);
+    userService = TestBed.inject(UserService);
     spyOn(userService, 'getCurrentUser').and.callFake(() => new Observable(o => o.next()));
     fixture = TestBed.createComponent(SidebarComponent);
     component = fixture.componentInstance;

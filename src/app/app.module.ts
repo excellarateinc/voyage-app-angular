@@ -11,6 +11,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { SecurityHttpInterceptor } from './authentication/security-http-interceptor';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SecurityHttpInterceptor } from './authentication/security-http-intercep
     AppRoutingModule,
     CoreModule,
     LayoutModule,
-    AuthenticationModule
+    AuthenticationModule,
+    ChartsModule
   ],
   providers: [
     {
