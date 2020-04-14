@@ -39,7 +39,7 @@
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/cli": "^9.1.1",
     "@angular/compiler-cli": "^9.1.1",
-    "@types/chart.js": "^2.7.28",
+    "@types/chart.js": "^2.9.19",
     "@types/jasmine": "^3.5.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",

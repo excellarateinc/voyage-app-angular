@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -28,7 +28,8 @@ import { ChartsModule } from 'ng2-charts';
     CoreModule,
     LayoutModule,
     AuthenticationModule,
-    ChartsModule
+    ChartsModule,
+    HammerModule
   ],
   providers: [
     {
