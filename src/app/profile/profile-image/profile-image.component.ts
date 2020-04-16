@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
+import { ImageCropperComponent, CropperSettings, Bounds } from 'ngx-img-cropper';
 import { BroadcastService } from '../../core/broadcast.service';
 import { Subscription } from 'rxjs';
 
@@ -11,8 +11,8 @@ import { Subscription } from 'rxjs';
 export class ProfileImageComponent implements OnInit, OnDestroy {
   @Input() currentImage: any;
   @Output() imageChanged = new EventEmitter<any>();
-  @ViewChild('uploaderInput') uploaderInput: any;
-  @ViewChild('cropper') cropper: ImageCropperComponent;
+  @ViewChild('uploaderInput', { static: true }) uploaderInput: any;
+  @ViewChild('cropper', { static: true }) cropper: ImageCropperComponent;
   cropperSettings: CropperSettings;
   data: any;
   private broadcastWatcher: Subscription;

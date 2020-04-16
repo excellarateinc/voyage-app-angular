@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ImageCropperModule } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ngx-img-cropper';
 import { SharedModule } from '../../shared/shared.module';
 import { ProfileImageComponent } from './profile-image.component';
 import { BroadcastService } from '../../core/broadcast.service';
@@ -29,7 +29,7 @@ describe('ProfileImageComponent', () => {
   }));
 
   beforeEach(() => {
-    broadcastService = TestBed.get(BroadcastService);
+    broadcastService = TestBed.inject(BroadcastService);
     broadcastService.profileUpdated$ = Observable.create(o => o.next({}));
     fixture = TestBed.createComponent(ProfileImageComponent);
     component = fixture.componentInstance;

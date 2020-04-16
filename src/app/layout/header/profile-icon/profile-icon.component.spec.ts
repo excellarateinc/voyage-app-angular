@@ -46,8 +46,8 @@ describe('ProfileIconComponent', () => {
   }));
 
   beforeEach(() => {
-    userService = TestBed.get(UserService);
-    broadcastService = TestBed.get(BroadcastService);
+    userService = TestBed.inject(UserService);
+    broadcastService = TestBed.inject(BroadcastService);
     spyOn(userService, 'getCurrentUser').and.returnValue(Observable.create(o => o.next({})));
     broadcastService.profileUpdated$ = Observable.create(o => o.next({}));
     fixture = TestBed.createComponent(ProfileIconComponent);

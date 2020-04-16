@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subject ,  Observable } from 'rxjs';
 
 @Injectable()
@@ -8,9 +8,9 @@ export class MobileService {
   private mobileChanged = new Subject<boolean>();
   mobileChanged$: Observable<boolean> = this.mobileChanged.asObservable();
 
-  constructor(private media: ObservableMedia) {
+  constructor(private media: MediaObserver) {
     this.mobile = this.media.isActive('xs') || this.media.isActive('sm');
-    this.media.subscribe((change: MediaChange) => {
+    this.media.media$.subscribe((change: MediaChange) => {
       this.mobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
       this.mobileChanged.next(this.mobile);
     });

@@ -23,14 +23,14 @@ describe('WebNotificationsService', () => {
 
     it('should call Notification.requestPermission if permission not denied',
       inject([WebNotificationsService], (service: WebNotificationsService) => {
-        window['Notification'] = { requestPermission: (fn) => fn('allowed') };
+        spyOn(window['Notification'], 'requestPermission');
+        service['permission'] = 'granted';
         service.requestPermission();
-        expect(service['permission']).toBe('allowed');
+        expect(service['permission']).toBe('granted');
       }));
 
     it('should call not Notification.requestPermission if permission denied',
       inject([WebNotificationsService], (service: WebNotificationsService) => {
-        window['Notification'] = { requestPermission: (fn) => fn('denied') };
         spyOn(window['Notification'], 'requestPermission');
         service['permission'] = 'denied';
         service.requestPermission();
@@ -43,7 +43,7 @@ describe('WebNotificationsService', () => {
       inject([WebNotificationsService], (service: WebNotificationsService) => {
         let mockReg = { showNotification: () => { } };
         spyOn(mockReg, 'showNotification');
-        spyOn(window.navigator.serviceWorker, 'register').and.returnValue({ then: (fn) => { fn(mockReg) } });
+        spyOn<any>(window.navigator.serviceWorker, 'register').and.returnValue({ then: (fn) => { fn(mockReg) } });
         service['permission'] = 'allowed';
         service.displayNotification('', '');
         expect(window.navigator.serviceWorker.register).toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe('WebNotificationsService', () => {
   describe('when calling displayNotification()', () => {
     it('should not call navigator.serviceWorker.register when permission is denied',
       inject([WebNotificationsService], (service: WebNotificationsService) => {
-        spyOn(window.navigator.serviceWorker, 'register').and.returnValue({ then: () => { } });
+        spyOn<any>(window.navigator.serviceWorker, 'register').and.returnValue({ then: () => { } });
         service['permission'] = 'denied';
         service.displayNotification('', '');
         expect(window.navigator.serviceWorker.register).not.toHaveBeenCalled();

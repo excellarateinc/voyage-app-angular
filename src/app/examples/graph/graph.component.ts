@@ -20,7 +20,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   };
 
   @Input() chartType: string;
-  @ViewChild('myCanvas') canvasRef: ElementRef;
+  @ViewChild('myCanvas', {static: true}) canvasRef: ElementRef;
 
   constructor(private themeService: ThemeService) { }
 
@@ -34,15 +34,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const ctx = this.canvasRef.nativeElement.getContext('2d');
-    this.chart = new Chart(ctx, this.getChartConfig());
-  }
-
-  randomScalingFactor() {
-    return Math.floor(Math.random() * 201) - 100;
-  }
-
-  getChartConfig() {
-    return {
+    this.chart = new Chart(ctx, {
       type: this.chartType,
       data: {
         labels: [
@@ -139,6 +131,10 @@ export class GraphComponent implements OnInit, AfterViewInit {
           ]
         }
       }
-    };
+    });
+  }
+
+  randomScalingFactor() {
+    return Math.floor(Math.random() * 201) - 100;
   }
 }

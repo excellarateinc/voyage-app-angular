@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../core/user/user.service';
 import { User } from '../core/user/user.model';
 import { BroadcastService } from '../core/broadcast.service';
