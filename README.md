@@ -68,6 +68,9 @@ ng serve -o
 
 This will start a local server which will watch for file changes and reload for you. The port will be displayed to you as `http://localhost:3000`.
 
+To connect the app against a local instance of the Voyage API for development and testing purposes, start the app with --env=devjava command.  
+You can also replace the api url and server url values of environment.ts with those from environment.devjava.ts.
+
 ## Developing
 
 ### Build files
