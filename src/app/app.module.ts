@@ -1,5 +1,5 @@
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,10 +8,35 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { SecurityHttpInterceptor } from './authentication/security-http-interceptor';
 import { ChartsModule } from 'ng2-charts';
+import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
+import { environment } from '../environments/environment';
+
+function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
+  return (): Promise<any> => {
+      return new Promise(async (resolve, reject) => {
+        try {
+          await keycloak.init({
+              config: {
+                  url: environment.keycloak.issuer,
+                  realm: environment.keycloak.realm,
+                  clientId: environment.keycloak.clientId
+              },
+            loadUserProfileAtStartUp: false,
+            initOptions: {
+              onLoad: 'login-required',
+              checkLoginIframe: false
+            },
+            bearerExcludedUrls: ['/assets']
+          });
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      });
+    };
+}
 
 @NgModule({
   declarations: [
@@ -27,16 +52,17 @@ import { ChartsModule } from 'ng2-charts';
     AppRoutingModule,
     CoreModule,
     LayoutModule,
-    AuthenticationModule,
     ChartsModule,
-    HammerModule
+    HammerModule,
+    KeycloakAngularModule
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SecurityHttpInterceptor,
+      provide: APP_INITIALIZER,
+      useFactory: keycloakInitializer,
+      deps: [KeycloakService],
       multi: true
-    }
+  }
   ],
   bootstrap: [AppComponent]
 })

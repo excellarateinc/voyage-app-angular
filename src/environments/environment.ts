@@ -9,5 +9,10 @@ export const environment = {
   SERVER_URL: 'http://localhost:52431',
   OAUTH_REDIRECT_URL: 'http://localhost:3000/dashboard',
   OAUTH_CLIENT_ID: 'client-super',
-  OAUTH_CLIENT_SECRET: 'secret'
+  OAUTH_CLIENT_SECRET: 'secret',
+  keycloak: {
+      issuer: 'http://localhost:8180/auth/',
+      realm: 'VoyageConnectedHealth',
+      clientId: 'patient-frontend',
+    }
 };

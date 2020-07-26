@@ -20,8 +20,8 @@ export class ShellComponent implements OnInit, OnDestroy {
     private media: MediaObserver,
     public themeService: ThemeService) { }
 
-  ngOnInit(): void {
-    this.isAuthenticated = this.authService.isAuthenticated();
+  async ngOnInit(): Promise<void> {
+    this.isAuthenticated = await this.authService.isAuthenticated();
     this.isMobile = this.media.isActive('xs') || this.media.isActive('sm');
     this.watcher = this.media.media$.subscribe((change: MediaChange) => {
       this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
