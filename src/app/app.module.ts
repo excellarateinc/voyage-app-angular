@@ -14,7 +14,7 @@ import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { environment } from '../environments/environment';
 import { SecurityHttpInterceptor } from './authentication/security-http-interceptor';
 
-function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
+function oauthInitializer(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => {
       return new Promise(async (resolve, reject) => {
         try {
@@ -62,7 +62,7 @@ function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: keycloakInitializer,
+      useFactory: oauthInitializer,
       deps: [KeycloakService],
       multi: true
   },
