@@ -20,14 +20,16 @@ function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
         try {
           await keycloak.init({
               config: {
-                  url: environment.keycloak.issuer,
-                  realm: environment.keycloak.realm,
-                  clientId: environment.keycloak.clientId
+                  url: environment.OAUTH_SERVER_URL,
+                  realm: environment.OUATH_REALM,
+                  clientId: environment.OAUTH_CLIENT_ID,
+                  credentials: { secret: environment.OAUTH_CLIENT_SECRET }
               },
             loadUserProfileAtStartUp: false,
             initOptions: {
               onLoad: 'login-required',
-              checkLoginIframe: false
+              checkLoginIframe: false,
+              redirectUri: environment.OAUTH_REDIRECT_URL
             },
             bearerExcludedUrls: ['/assets']
           });

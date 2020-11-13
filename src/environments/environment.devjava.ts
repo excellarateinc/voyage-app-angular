@@ -7,7 +7,9 @@ export const environment = {
   production: false,
   API_URL: 'http://localhost:8080/api/v1',
   SERVER_URL: 'http://localhost:8080',
+  OAUTH_SERVER_URL: 'http://localhost:8180/auth/',
   OAUTH_REDIRECT_URL: 'http://localhost:3000/dashboard',
+  OUATH_REALM: 'VoyageBase',
   OAUTH_CLIENT_ID: 'client-super',
   OAUTH_CLIENT_SECRET: 'secret'
 };
