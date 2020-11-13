@@ -3,10 +3,14 @@ import { KeycloakService } from 'keycloak-angular';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private keycloakService: KeycloakService ) { }
+  constructor(private keycloakService: KeycloakService) { }
 
   async isAuthenticated(): Promise<boolean> {
     return await this.keycloakService.isLoggedIn();
+  }
+
+  async login(): Promise<void> {
+    return await this.keycloakService.login();
   }
 
   logout(): void {

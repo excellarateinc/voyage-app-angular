@@ -11,10 +11,6 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.authenticationService.isAuthenticated()) {
-      const accessToken = this.authenticationService.getToken();
-      request = request.clone({ setHeaders: { Authorization: `Bearer ${accessToken}` } });
-    }
 
     return next.handle(request)
       .pipe(
@@ -27,7 +23,7 @@ export class SecurityHttpInterceptor implements HttpInterceptor {
           if (errors && errors instanceof Array) {
             const error = errors[0];
             if (error.error === '401_verify_user') {
-              this.authenticationService.goToVerification();
+              this.authenticationService.login();
               return observableThrowError(errorResponse);
             }
           }

@@ -1,26 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, CanActivateChild, CanLoad } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot, UrlTree} from '@angular/router';
+import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
 
-@Injectable()
-export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad {
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuardService extends KeycloakAuthGuard {
+  constructor( protected router: Router, protected keycloak: KeycloakService ) {
+    super(router, keycloak);
+  }
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
-
-  canActivate(): boolean {
-    const authenticated = this.authenticationService.isAuthenticated();
-    if (!authenticated) {
-      this.router.navigate(['authentication/login']);
+  async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+    const isLoggedIn = await this.keycloak.isLoggedIn();
+    if (!isLoggedIn) {
+      await this.keycloak.login({
+        redirectUri: window.location.origin + state.url
+      });
       return false;
     }
-    return true;
-  }
-
-  canActivateChild(): boolean {
-    return this.canActivate();
-  }
-
-  canLoad(): boolean {
-    return this.canActivate();
+    let requiredRoles =  [];
+    if (route.data && route.data.roles) {
+      requiredRoles = route.data.roles;
+    }
+    if ( !(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+      return true;
+    }
+    const userRoles = this.keycloak.getUserRoles(true);
+    return requiredRoles.every((role) => userRoles.includes(role));
   }
 }

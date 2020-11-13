@@ -12,6 +12,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { ChartsModule } from 'ng2-charts';
 import { KeycloakService, KeycloakAngularModule } from 'keycloak-angular';
 import { environment } from '../environments/environment';
+import { SecurityHttpInterceptor } from './authentication/security-http-interceptor';
 
 function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => {
@@ -62,6 +63,11 @@ function keycloakInitializer(keycloak: KeycloakService): () => Promise<any> {
       useFactory: keycloakInitializer,
       deps: [KeycloakService],
       multi: true
+  },
+   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityHttpInterceptor,
+    multi: true
   }
   ],
   bootstrap: [AppComponent]
