@@ -5,6 +5,5 @@ export const environment = {
   OAUTH_SERVER_URL: 'http://qa-auth.voyageframework.com',
   OAUTH_REDIRECT_URL: 'http://qa-app-ms.voyageframework.com',
   OUATH_REALM: 'VoyageBase',
-  OAUTH_CLIENT_ID: 'client-super-qa',
-  OAUTH_CLIENT_SECRET: 'secret'
+  OAUTH_CLIENT_ID: 'client-super-qa'
 };

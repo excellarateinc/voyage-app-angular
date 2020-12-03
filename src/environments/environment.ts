@@ -10,6 +10,5 @@ export const environment = {
   OAUTH_SERVER_URL: 'http://localhost:8180/auth/',
   OAUTH_REDIRECT_URL: 'http://localhost:3000/dashboard',
   OUATH_REALM: 'VoyageBaseRealm',
-  OAUTH_CLIENT_ID: 'client-super',
-  OAUTH_CLIENT_SECRET: '671bb469-14a7-489a-83d4-9322ef04d171'
+  OAUTH_CLIENT_ID: 'client-super'
 };

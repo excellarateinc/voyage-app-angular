@@ -22,8 +22,7 @@ function oauthInitializer(keycloak: KeycloakService): () => Promise<any> {
               config: {
                   url: environment.OAUTH_SERVER_URL,
                   realm: environment.OUATH_REALM,
-                  clientId: environment.OAUTH_CLIENT_ID,
-                  credentials: { secret: environment.OAUTH_CLIENT_SECRET }
+                  clientId: environment.OAUTH_CLIENT_ID
               },
             loadUserProfileAtStartUp: false,
             initOptions: {
